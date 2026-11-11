@@ -438,6 +438,7 @@ export const workspaceTree: WorkspaceNode = folder(
     file('opencode.json', 'opencode.json'),
     file('package.json', 'package.json'),
     file('README.md', 'README.md'),
+    file('ROADMAP.md', 'ROADMAP.md'),
     file('tsconfig.json', 'tsconfig.json'),
     file('vite.config.ts', 'vite.config.ts'),
   ],

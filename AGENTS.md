@@ -27,6 +27,7 @@ Node 24 is expected (`.nvmrc`). The package is ESM.
 
 ## Architecture rules
 
+- The workbench-kit transformation is staged in `ROADMAP.md`. Follow the current phase and its exit criteria instead of jumping ahead to package extraction.
 - `src/layout/workbench.config.ts` is the main configuration surface. Region `enabled` flags, activity items, views and default sizes belong there. Do not hard-code layout decisions in `Workbench.tsx` if they can be expressed as config.
 - `src/layout/components/*` are region components. Each region must remain independently removable; do not make one region's rendering depend on another's DOM.
 - `src/views/registry.tsx` maps view IDs to components. New sidebar/panel views are registered there and referenced from config.

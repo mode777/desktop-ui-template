@@ -212,6 +212,10 @@ Sashes are keyboard accessible too: focus a divider and use arrow keys, `Shift` 
 
 vscode-elements is a Lit-based web-component library. React 19 renders the custom elements directly; local JSX typings live in `src/types/vscode-elements.d.ts`. The Codicon stylesheet is served from `public/codicons` and synced from `@vscode/codicons` by `scripts/sync-codicons.mjs` before `dev` and `build` (the `id="vscode-codicon-stylesheet"` link is required for shadow-DOM font loading).
 
+## Roadmap
+
+The next step is to make the workbench reusable at three levels — full preset, composed regions and individual primitives — without losing the copyable template. The staged plan, package boundaries, tree-shaking rules and acceptance criteria are in [ROADMAP.md](ROADMAP.md).
+
 ## Working with OpenCode
 
 The repository is initialized for [OpenCode](https://opencode.ai) with `opencode.json` and a project-specific [`AGENTS.md`](AGENTS.md). The agent guide documents the architecture rules, commands, styling conventions and non-goals so automated changes stay consistent with the template.
