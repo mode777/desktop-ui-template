@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A configurable VS Code-style desktop UI template built with React, TypeScript, Vite and vscode-elements."
+    />
+    <meta name="theme-color" content="#181818" />
+    <script>
+      // Apply a persisted theme before first paint to avoid a flash.
+      try {
+        const persisted = JSON.parse(localStorage.getItem('desktop-ui-template:v1') || '{}')
+        const theme = persisted && persisted.state && persisted.state.theme
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.dataset.theme = theme
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', theme === 'dark' ? '#181818' : '#f8f8f8')
+        }
+      } catch {
+        // Ignore malformed or unavailable storage.
+      }
+    </script>
+    <!-- The id is required by vscode-elements: icon components reuse this
+         stylesheet inside their shadow roots. -->
+    <link rel="stylesheet" href="/codicons/codicon.css" id="vscode-codicon-stylesheet" />
+    <title>Desktop UI Template — VS Code-style workbench</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

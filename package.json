@@ -1,0 +1,50 @@
+{
+  "name": "desktop-ui-template",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A configurable VS Code-style desktop UI template built with React, TypeScript, Vite and vscode-elements.",
+  "license": "MIT",
+  "homepage": "https://mode777.github.io/desktop-ui-template/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mode777/desktop-ui-template.git"
+  },
+  "scripts": {
+    "predev": "node scripts/sync-codicons.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/sync-codicons.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "oxlint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@vscode-elements/elements": "^2.5.1",
+    "@vscode/codicons": "^0.0.45",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.1.0",
+    "jsdom": "^31.0.0",
+    "oxlint": "^1.90.0",
+    "prettier": "^3.9.10",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}
