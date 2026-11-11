@@ -554,8 +554,7 @@
 }
 
 .tab-close {
-  display: grid;
-  flex: none;
+  display: inline-grid;
   place-items: center;
   width: 18px;
   height: 18px;
@@ -563,11 +562,14 @@
   border-radius: 4px;
   color: inherit;
   opacity: 0;
+  pointer-events: none;
+  vertical-align: middle;
 }
 
 .editor-tab:hover .tab-close,
 .editor-tab.is-active .tab-close {
   opacity: 0.9;
+  pointer-events: auto;
 }
 
 .tab-close:hover {

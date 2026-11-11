@@ -227,6 +227,7 @@ export function EditorArea() {
                 <span className="tab-title">{tab.title}</span>
                 <span
                   className={`tab-close ${tab.dirty ? 'is-dirty' : ''}`}
+                  slot="content-after"
                   role="button"
                   tabIndex={-1}
                   aria-label={`Close ${tab.title}`}
