@@ -545,25 +545,30 @@
   font-size: 13px;
 }
 
+.editor-tab vscode-tab-header > vscode-icon[slot='content-before'] {
+  display: block;
+  margin-right: 6px;
+}
+
 .tab-title {
   display: block;
   overflow: hidden;
   max-width: 150px;
+  line-height: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .tab-close {
-  display: inline-grid;
+  display: grid;
   place-items: center;
   width: 18px;
   height: 18px;
-  margin-left: 4px;
+  margin-left: 6px;
   border-radius: 4px;
   color: inherit;
   opacity: 0;
   pointer-events: none;
-  vertical-align: middle;
 }
 
 .editor-tab:hover .tab-close,

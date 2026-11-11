@@ -220,7 +220,7 @@ export function EditorArea() {
               >
                 <vscode-icon
                   name={tabIcon(tab)}
-                  size={14}
+                  size={16}
                   className={tabIconClass(tab)}
                   slot="content-before"
                 />
@@ -239,11 +239,11 @@ export function EditorArea() {
                 >
                   {tab.dirty ? (
                     <>
-                      <vscode-icon name="close" size={13} />
+                      <vscode-icon name="close" size={14} />
                       <span className="tab-dirty-dot" />
                     </>
                   ) : (
-                    <vscode-icon name="close" size={13} />
+                    <vscode-icon name="close" size={14} />
                   )}
                 </span>
               </vscode-tab-header>
