@@ -370,7 +370,9 @@ export const workspaceTree: WorkspaceNode = folder(
           file('menus.ts', 'src/commands/menus.ts'),
         ]),
         folder('components', 'src/components', [
+          file('FileTree.tsx', 'src/components/FileTree.tsx'),
           file('IconButton.tsx', 'src/components/IconButton.tsx'),
+          file('VsContextMenu.tsx', 'src/components/VsContextMenu.tsx'),
         ]),
         folder('data', 'src/data', [file('workspace.ts', 'src/data/workspace.ts')]),
         folder('hooks', 'src/hooks', [
@@ -402,7 +404,10 @@ export const workspaceTree: WorkspaceNode = folder(
           ],
           true,
         ),
-        folder('store', 'src/store', [file('workbench-store.ts', 'src/store/workbench-store.ts')]),
+        folder('store', 'src/store', [
+          file('workbench-store.ts', 'src/store/workbench-store.ts'),
+          file('workbench-types.ts', 'src/store/workbench-types.ts'),
+        ]),
         folder('styles', 'src/styles', [
           file('global.css', 'src/styles/global.css'),
           file('tokens.css', 'src/styles/tokens.css'),
@@ -411,15 +416,26 @@ export const workspaceTree: WorkspaceNode = folder(
         folder('views', 'src/views', [
           file('registry.tsx', 'src/views/registry.tsx'),
           file('ExplorerView.tsx', 'src/views/ExplorerView.tsx'),
+          file('SearchView.tsx', 'src/views/SearchView.tsx'),
+          file('SourceControlView.tsx', 'src/views/SourceControlView.tsx'),
+          file('ExtensionsView.tsx', 'src/views/ExtensionsView.tsx'),
+          file('RunView.tsx', 'src/views/RunView.tsx'),
           file('ChatView.tsx', 'src/views/ChatView.tsx'),
           file('WelcomeView.tsx', 'src/views/WelcomeView.tsx'),
+          file('DocumentView.tsx', 'src/views/DocumentView.tsx'),
         ]),
+        folder('types', 'src/types', [
+          file('vscode-elements.d.ts', 'src/types/vscode-elements.d.ts'),
+        ]),
+        file('vscode-elements.ts', 'src/vscode-elements.ts'),
         file('main.tsx', 'src/main.tsx'),
       ],
       true,
     ),
     file('AGENTS.md', 'AGENTS.md'),
+    file('LICENSE', 'LICENSE'),
     file('index.html', 'index.html'),
+    file('opencode.json', 'opencode.json'),
     file('package.json', 'package.json'),
     file('README.md', 'README.md'),
     file('tsconfig.json', 'tsconfig.json'),

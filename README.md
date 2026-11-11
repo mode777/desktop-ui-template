@@ -97,6 +97,7 @@ src/
     global.css                reset and shared primitives
     workbench.css             shell and view styling
   data/workspace.ts           mock file tree, documents and metadata
+  vscode-elements.ts          registers only the used web components
   types/vscode-elements.d.ts  JSX typings for the custom elements
 ```
 
