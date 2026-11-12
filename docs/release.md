@@ -85,10 +85,10 @@ The trusted publisher is configured once in the npm package settings:
 | Workflow filename | `publish.yml`                                     |
 | Environment       | leave empty; the workflow declares no environment |
 
-The trust is pinned to `.github/workflows/publish.yml`. Renaming that file,
-transferring the repository or adding a required environment requires updating
-the npm setting in the same release cycle. Renaming the workflow is a release
-blocker, not a cosmetic change.
+The trust is pinned to `.github/workflows/publish.yml` and the repository name.
+Renaming the workflow or repository, transferring the repository or adding a
+required environment requires updating the npm setting in the same release
+cycle. Renaming the workflow is a release blocker, not a cosmetic change.
 
 ## One-time bootstrap
 
