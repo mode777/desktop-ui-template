@@ -126,8 +126,10 @@ workbench is browser-only; do not evaluate it during a server render.
 
 - The package is `0.x` and browser-only.
 - The preset persistence key is `desktop-ui-template:v1` in `0.1.0`.
-- The npm scope and name are provisional until the first publish is approved.
-- Publishing is manual and owner-approved; CI holds no publish credentials.
+- The public package is `vscode-workbench`; the provisional name was never
+  published.
+- Releases publish from a `v*` tag through npm trusted publishing; no long-lived
+  token is stored.
 - The tarball ships `LICENSE`, `THIRD_PARTY_NOTICES.md`, the consumer
   documentation, this README and `llms.txt`.
 
