@@ -34,15 +34,14 @@ a CSS grid or your own shell — and only want resizing, tabs or an icon button.
 
 ## Compare the levels
 
-| Level       | Keeps                                                             | Gives up                                                               | State owner | Reference           |
-| ----------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------- | ------------------- |
-| Preset      | Full shell, regions, store, generic commands, quick open, toasts  | Nothing; least code to own                                             | Preset      | `apps/template`     |
-| Composition | Shell, region primitives, resizing, tabs, menus, elements, styles | Preset store, commands, quick open, notifications, default menu wiring | Application | `apps/custom-shell` |
-| Primitives  | Resizing, tab strip, icon button and headless helpers             | Shell, default regions, default tab/panel composition                  | Application | `apps/minimal`      |
+| Level       | Keeps                                                             | Gives up                                                               | State owner | Reference                                           |
+| ----------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------- | --------------------------------------------------- |
+| Preset      | Full shell, regions, store, generic commands, quick open, toasts  | Nothing; least code to own                                             | Preset      | [Concepts: preset](../concepts.md#preset)           |
+| Composition | Shell, region primitives, resizing, tabs, menus, elements, styles | Preset store, commands, quick open, notifications, default menu wiring | Application | [Concepts: composition](../concepts.md#composition) |
+| Primitives  | Resizing, tab strip, icon button and headless helpers             | Shell, default regions, default tab/panel composition                  | Application | [Quickstart](../quickstart.md)                      |
 
-[`apps/template`](../apps/template) uses the preset,
-[`apps/custom-shell`](../apps/custom-shell) composes the full shell without it,
-and [`apps/minimal`](../apps/minimal) uses only the primitives.
+The three levels share the same package, element entries and stylesheets. See
+[Concepts](../concepts.md) for the state and ownership model.
 
 ## Level 1: keep the preset
 
@@ -186,7 +185,8 @@ export function App() {
 
 Keep the shared structural class names (`workbench`, `titlebar`, `sidebar`,
 `editor-tabs`, `panel`, `statusbar`, `resizable-pane`) and put app-only selectors
-in app CSS. The full reference is [`apps/custom-shell`](../apps/custom-shell).
+in app CSS. Use the composition shown above as the starting point and keep your
+application-owned state in a reducer or an existing store.
 
 ### Preset store field mapping
 
@@ -248,8 +248,8 @@ At this level:
 - `ResizablePane`, `TabStrip` and `IconButton` remain controlled and app-free.
 - Core helpers remain available for tab transitions and persistence.
 
-The reference is [`apps/minimal`](../apps/minimal). It uses one tab, one
-`ResizablePane` sidebar and a plain status bar.
+See the [quickstart](../quickstart.md) for a minimal composition with one tab,
+one `ResizablePane` sidebar and a plain status bar.
 
 ## State and persistence
 
@@ -307,10 +307,10 @@ import '@workbench-kit/workbench/styles/tab-strip.css'
 import '@workbench-kit/workbench/styles/status-bar.css'
 ```
 
-That subset is what the minimal example uses: a shell, one resizable pane, a tab
-strip and a status bar. Use `workbench.css` or the `styles` alias when you keep
-most regions; component entries are additive and do not load tokens, base styles
-or each other.
+That subset is what the quickstart uses: a shell, one resizable pane, a tab strip
+and a status bar. Use `workbench.css` or the `styles` alias when you keep most
+regions; component entries are additive and do not load tokens, base styles or
+each other.
 
 Prefer per-tag entries over `@workbench-kit/workbench/elements/all`. Add
 `@workbench-kit/workbench/elements/types` once for JSX declarations.
@@ -328,14 +328,15 @@ Prefer per-tag entries over `@workbench-kit/workbench/elements/all`. Add
 6. Search the bundle for the preset store, command registry, quick open,
    notifications and context menu; none should remain at composition or
    primitive level.
-7. Compare against the matching reference application and run its check command:
-   `npm run check:custom-shell` for composition or `npm run check:minimal` for
-   primitives.
+7. Run your application build and typecheck, then search the output for the
+   preset store, command registry, quick open, notifications and context menu;
+   none should remain at composition or primitive level.
 
 Ejection is reversible: moving back to the preset means passing the same config,
 views, commands and menus to `VSCodeWorkbench` and removing the app-owned region
 state.
 
-See [`api.md`](./api.md) for the full surface, [`migration.md`](./migration.md)
-for the initial move to the package and [`architecture.md`](./architecture.md)
-for the module boundaries.
+See [`../reference/api.md`](../reference/api.md) for the full surface,
+[`../guides/coming-from-template.md`](../guides/coming-from-template.md) for the
+initial move to the package and [`../concepts.md`](../concepts.md) for the
+adoption model.

@@ -43,6 +43,11 @@ describe('requiredTarballFiles', () => {
       'README.md',
       'LICENSE',
       'THIRD_PARTY_NOTICES.md',
+      'AGENTS.md',
+      'llms.txt',
+      'docs/index.md',
+      'docs/quickstart.md',
+      'docs/manifest.json',
       'dist/preset/index.d.ts',
       'dist/preset/index.js',
       'dist/react/index.d.ts',
@@ -66,12 +71,25 @@ describe('forbiddenTarballPath', () => {
     expect(forbiddenTarballPath('package-lock.json')).toContain('lockfiles')
   })
 
-  it('allows the manifest, README, legal files and generated output', () => {
+  it('allows the manifest, README, legal files, consumer docs and generated output', () => {
     expect(forbiddenTarballPath('package.json')).toBeNull()
     expect(forbiddenTarballPath('README.md')).toBeNull()
     expect(forbiddenTarballPath('LICENSE')).toBeNull()
     expect(forbiddenTarballPath('THIRD_PARTY_NOTICES.md')).toBeNull()
+    expect(forbiddenTarballPath('AGENTS.md')).toBeNull()
+    expect(forbiddenTarballPath('llms.txt')).toBeNull()
+    expect(forbiddenTarballPath('docs/index.md')).toBeNull()
+    expect(forbiddenTarballPath('docs/recipes/add-view.md')).toBeNull()
     expect(forbiddenTarballPath('dist/preset/index.js')).toBeNull()
+  })
+
+  it('rejects contributor documentation and application content', () => {
+    expect(forbiddenTarballPath('docs/architecture.md')).toContain('contributor documentation')
+    expect(forbiddenTarballPath('docs/release.md')).toContain('contributor documentation')
+    expect(forbiddenTarballPath('apps/template/README.md')).toContain('repository or application')
+    expect(forbiddenTarballPath('openspec/changes/x/proposal.md')).toContain(
+      'repository or application',
+    )
   })
 })
 

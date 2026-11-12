@@ -7,7 +7,7 @@ subpath exports.
 
 Current version: **0.1.0**. The package is **browser-only** and has no SSR
 support in the `0.x` line. The npm scope and package name are provisional until
-the first publish is approved; see [`release.md`](./release.md).
+the first publish is approved; see the [changelog](../changelog.md).
 
 - [Install](#install)
   - [Minimal quickstart](#minimal-quickstart)
@@ -135,19 +135,17 @@ registers only the two element tags it renders.
 
 ## Entry points
 
-The published subpaths map to five private source modules inside this repository.
-Consumers install only `@workbench-kit/workbench`; the repository names in the
-right-hand column are for contributors.
+Consumers install only `@workbench-kit/workbench` and import the subpaths below.
 
-| Published import                          | Repository source                    | Purpose                                            |
-| ----------------------------------------- | ------------------------------------ | -------------------------------------------------- |
-| `@workbench-kit/workbench`                | `@workbench-kit/preset-vscode`       | Full preset, default store and generic commands.   |
-| `@workbench-kit/workbench/react`          | `@workbench-kit/react`               | Controlled shell, pane, tab strip and icon button. |
-| `@workbench-kit/workbench/core`           | `@workbench-kit/core`                | Headless layout, tab and persistence helpers.      |
-| `@workbench-kit/workbench/elements/<tag>` | `@workbench-kit/elements/<tag>`      | One custom-element registration side effect.       |
-| `@workbench-kit/workbench/elements/types` | `@workbench-kit/elements/types`      | JSX declarations for the registered elements.      |
-| `@workbench-kit/workbench/styles/*.css`   | `@workbench-kit/styles-vscode/*.css` | Tokens, base and component stylesheets.            |
-| `@workbench-kit/workbench/styles`         | `@workbench-kit/styles-vscode`       | Aggregate stylesheet in import order.              |
+| Published import                          | Purpose                                            |
+| ----------------------------------------- | -------------------------------------------------- |
+| `@workbench-kit/workbench`                | Full preset, default store and generic commands.   |
+| `@workbench-kit/workbench/react`          | Controlled shell, pane, tab strip and icon button. |
+| `@workbench-kit/workbench/core`           | Headless layout, tab and persistence helpers.      |
+| `@workbench-kit/workbench/elements/<tag>` | One custom-element registration side effect.       |
+| `@workbench-kit/workbench/elements/types` | JSX declarations for the registered elements.      |
+| `@workbench-kit/workbench/styles/*.css`   | Tokens, base and component stylesheets.            |
+| `@workbench-kit/workbench/styles`         | Aggregate stylesheet in import order.              |
 
 Importing the preset does not load the composition or core entries, and
 importing a lower entry does not load the preset, its store or its commands.
@@ -411,7 +409,7 @@ Store actions are grouped by concern:
 The store persists to `localStorage` under `desktop-ui-template:v1` with schema
 version `1`. The key is fixed in `0.1.0`: two preset workbenches on the same
 origin share state. Consumers that need a different key or isolated instances
-should own their state through composition; see [`eject.md`](./eject.md).
+should own their state through composition; see [`eject.md`](../recipes/eject.md).
 
 ## Composition primitives
 
@@ -939,16 +937,15 @@ All types are exported from the entry shown by their group.
 ## Stability
 
 - The package is `0.x`: minor releases may include breaking changes, patch
-  releases do not. The five internal modules and the facade share one version.
+  releases do not.
 - The package is browser-only. It assumes `window`, `document` and
   `customElements`; SSR and server rendering are out of scope for `0.x`.
 - The npm scope and name `@workbench-kit/workbench` are provisional until the
-  first publish is approved. See [`release.md`](./release.md).
+  first publish is approved. See the [changelog](../changelog.md) for released
+  changes.
 - The preset persistence key is fixed at `desktop-ui-template:v1` in `0.1.0`.
-- The repository module names in the [entry-point table](#entry-points) are not
-  consumer install targets.
 
-See [`migration.md`](./migration.md) for moving from the template,
-[`eject.md`](./eject.md) for moving between adoption levels,
-[`architecture.md`](./architecture.md) for the module boundaries and
-[`../ROADMAP.md`](../ROADMAP.md) for the roadmap.
+See [`../guides/coming-from-template.md`](../guides/coming-from-template.md) for
+moving from the template, [`../recipes/eject.md`](../recipes/eject.md) for moving
+between adoption levels and [`../concepts.md`](../concepts.md) for the adoption
+model.

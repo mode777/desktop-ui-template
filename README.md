@@ -70,15 +70,28 @@ TypeScript 7.
 
 ## Documentation
 
-| Document                                      | What it covers                                                             |
-| --------------------------------------------- | -------------------------------------------------------------------------- |
-| [API reference](docs/api.md)                  | Preset props, primitives, core helpers, element entries, styles and types. |
-| [Migration guide](docs/migration.md)          | Moving a template copy or workspace app to `@workbench-kit/workbench`.     |
-| [Eject guide](docs/eject.md)                  | Preset → composition → primitives, with state and persistence ownership.   |
-| [Release policy](docs/release.md)             | SemVer, changelog, release checklist and the owner-approved publish gate.  |
-| [Architecture](docs/architecture.md)          | Five private modules, one public facade and the enforcement model.         |
-| [Changelog](CHANGELOG.md)                     | Consumer-visible changes and the prepared `0.1.0` surface.                 |
-| [Third-party notices](THIRD_PARTY_NOTICES.md) | Dependency licenses and the Codicons attribution.                          |
+Consumer documentation lives with the package and is hosted separately from the
+repository docs. The repository docs describe how the kit is built and released.
+
+### Using the package
+
+| Document                                                                    | What it covers                                                             |
+| --------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [Package README](packages/workbench/README.md)                              | Install, quickstart, adoption levels, offline docs and agent entry points. |
+| [Hosted documentation](https://mode777.github.io/desktop-ui-template/docs/) | Quickstart, concepts, recipes, reference and the eject guide.              |
+| [llms.txt](https://mode777.github.io/desktop-ui-template/llms.txt)          | A curated index for coding agents.                                         |
+| [Agent guide](packages/workbench/AGENTS.md)                                 | App-level rules, public imports and the verification checklist.            |
+| [Package changelog](packages/workbench/docs/changelog.md)                   | Consumer-visible changes and the prepared `0.1.0` surface.                 |
+
+### Working on the repository
+
+| Document                                         | What it covers                                                            |
+| ------------------------------------------------ | ------------------------------------------------------------------------- |
+| [Contributor migration guide](docs/migration.md) | Moving a template copy or workspace app to `@workbench-kit/workbench`.    |
+| [Release policy](docs/release.md)                | SemVer, changelog, release checklist and the owner-approved publish gate. |
+| [Architecture](docs/architecture.md)             | Five private modules, one public facade and the enforcement model.        |
+| [Roadmap](ROADMAP.md)                            | Staged plan, Phase 7 priority and acceptance criteria.                    |
+| [Third-party notices](THIRD_PARTY_NOTICES.md)    | Dependency licenses and the Codicons attribution.                         |
 
 The public package is `0.x` and browser-only; the npm scope is provisional until
 the first publish is approved. The repository stays copyable and works without
@@ -558,7 +571,7 @@ Increasing a budget without a stated reason is a regression, not a fix.
 
 ## Roadmap
 
-The workbench is reusable at three levels — full preset, composed regions and individual primitives — without losing the copyable template. The five internal modules, the single public package, the template, minimal and custom-shell applications, documentation and release readiness are in place; the registry publish remains a manual, owner-approved step gated on the final scope/name. The staged plan, package boundaries, tree-shaking rules and acceptance criteria are in [ROADMAP.md](ROADMAP.md); the distribution model is in [docs/architecture.md](docs/architecture.md), and the adoption path starts at [docs/api.md](docs/api.md).
+The workbench is reusable at three levels — full preset, composed regions and individual primitives — without losing the copyable template. The five internal modules, the single public package, the template, minimal and custom-shell applications, documentation and release readiness are in place; the registry publish remains a manual, owner-approved step gated on the final scope/name. The staged plan, package boundaries, tree-shaking rules and acceptance criteria are in [ROADMAP.md](ROADMAP.md); the distribution model is in [docs/architecture.md](docs/architecture.md), and the adoption path starts at the [hosted consumer documentation](https://mode777.github.io/desktop-ui-template/docs/).
 
 ## Working with OpenCode
 

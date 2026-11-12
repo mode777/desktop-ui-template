@@ -33,7 +33,7 @@ function fixturePackage() {
         version: '0.1.0',
         private: false,
         type: 'module',
-        files: ['dist', 'LICENSE', 'THIRD_PARTY_NOTICES.md'],
+        files: ['dist', 'docs', 'AGENTS.md', 'llms.txt', 'LICENSE', 'THIRD_PARTY_NOTICES.md'],
         exports: {
           '.': {
             types: './dist/preset/index.d.ts',
@@ -74,8 +74,13 @@ function fixturePackage() {
     )}\n`,
   )
   write(root, 'README.md', '# Fixture package\n')
+  write(root, 'AGENTS.md', '# Fixture agent guide\n')
+  write(root, 'llms.txt', '# Fixture llms index\n')
   write(root, 'LICENSE', 'MIT\n')
   write(root, 'THIRD_PARTY_NOTICES.md', '# Fixture notices\n')
+  write(root, 'docs/index.md', '# Fixture docs\n')
+  write(root, 'docs/quickstart.md', '# Fixture quickstart\n')
+  write(root, 'docs/manifest.json', '{ "pages": [] }\n')
 
   write(
     root,

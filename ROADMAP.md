@@ -1,6 +1,7 @@
 # Workbench Kit Roadmap
 
-**Status:** active — public facade, packed-tarball validation and all three application examples complete; documentation and release readiness complete; registry publication gated on final name approval\
+**Status:** active — public facade, packed-tarball validation and all three application examples complete; contributor documentation and release readiness complete; Phase 7 consumer documentation and agent adoption implemented; post-publish acceptance pending; registry publication gated on final name approval\
+**Next startable change:** none until the Phase 7 post-publish acceptance path runs. Later hardening and any other unstarted items wait behind it; registry publication remains a separate owner gate.\
 **Working name:** Workbench Kit\
 **Scope:** evolve this template into a library-shaped, composable workbench without turning it into a framework\
 **Distribution:** five private internal modules, one published npm package\
@@ -356,14 +357,17 @@ Exit criteria:
 - A consumer app can import preset, composition, primitives, element entries and styles through that package without relative paths into the repo.
 - All five internal modules remain `private: true` and absent from the published runtime dependency graph.
 
-### Phase 6 — Documentation, migration and 0.x release (M)
+### Phase 6 — Contributor documentation and release readiness (M)
 
-**Status:** documentation and release readiness done — the API reference,
-migration and eject guides, release policy, changelog, license/third-party
-notices, `check:docs` and `check:release` are in the repository. Registry
-publication remains gated on owner approval of the final npm scope and name.
+**Status:** contributor documentation and release readiness done — the API
+reference, migration and eject guides, release policy, changelog,
+license/third-party notices, `check:docs` and `check:release` are in the
+repository. These documents describe the repository and assume a checkout.
+Consumer-facing documentation is Phase 7. Registry publication remains gated on
+owner approval of the final npm scope and name.
 
-**Goal:** make adoption safe and predictable for the single published package.
+**Goal:** make the repository and release process safe and predictable for
+contributors and maintainers.
 
 Deliverables:
 
@@ -376,12 +380,99 @@ Deliverables:
 
 Exit criteria:
 
-- A new user can build the minimal app from docs alone, installing one package.
+- Contributor docs cover the API, migration and eject paths.
 - Breaking changes are listed in the changelog.
 - The template remains copyable and works without installing the package.
 - The published tarball contains no app/demo content and no private module dependencies.
 - `npm run check:docs` and `npm run check:release` pass, and the tarball contains its license and notices.
 - The publish step is documented as manual and owner-approved; CI holds no publish credentials.
+
+### Phase 7 — Consumer documentation and agent adoption (M)
+
+**Status:** 7A, 7B and 7C implemented — the package ships its consumer docs,
+agent guide and `llms.txt`; the docs site and raw Markdown are built under
+`/docs/`; the quickstart and adoption checks pass against the packed tarball.
+The registry install and the `published` availability flip remain after the
+publish gate.
+
+**Goal:** make the published package adoptable from the package alone, without
+repository access, by both humans and coding agents, while keeping consumer docs
+completely separate from contributor docs.
+
+**7A — Package-local consumer docs and separation (S/M)**
+
+**Status:** done — consumer docs, the app-level `AGENTS.md`, the package README,
+the tarball contract and the boundary checks are in place.
+
+- Move consumer-only docs into `packages/workbench/docs/`: index, quickstart,
+  concepts, recipes, reference, eject and changelog.
+- Add `packages/workbench/AGENTS.md` for app builders. Keep root `AGENTS.md` and
+  root `docs/` contributor-only, with a one-way pointer.
+- Restructure the package README as the npm landing page with absolute docs
+  links and an offline-docs note.
+- Ship `docs/`, `AGENTS.md` and `llms.txt` in the tarball; extend the pack-check
+  allowlist.
+- Add a docs boundary check: consumer docs may not link to contributor docs,
+  repository paths or private module names; the tarball contains only consumer
+  docs.
+- Scrub private package names from consumer docs; use published specifiers only.
+
+Exit criteria:
+
+- An empty project can install the packed tarball and build the quickstart with
+  no repository access.
+- The consumer boundary check and `check:docs:consumer` pass.
+- The tarball contains consumer docs and no contributor docs.
+
+**7B — Hosted docs site, raw Markdown and `llms.txt` (M)**
+
+**Status:** done — the VitePress site builds under `/docs/`, raw Markdown and
+`llms.txt`/`llms-full.txt` are published with the demos, and the Pages workflow
+builds them.
+
+- Build a consumer-only docs site from `packages/workbench/docs/` under `/docs/`
+  on the existing GitHub Pages site.
+- Publish raw Markdown under `/docs/raw/` for clean agent ingestion.
+- Generate `/llms.txt` and optional `/llms-full.txt` from the docs manifest.
+- Add a human-readable “For AI agents” page with the app-level contract and a
+  copy-paste prompt.
+- Add the docs build to `build:site` and CI; check internal links and
+  `llms.txt` links.
+
+Exit criteria:
+
+- The docs site builds and deploys with the demos.
+- Every `llms.txt` link resolves to a consumer page or raw Markdown.
+- A human can navigate from the landing page to any guide without repository
+  access.
+
+**7C — Agent verification, recipes and blind-agent evaluation (S/M)**
+
+**Status:** done for the packed tarball — recipes, the adoption checker, the
+quickstart build and the blind-agent run pass; the registry rerun follows
+publication.
+
+- Add complete recipes for add view, add command, replace document surface,
+  theme, persistence and eject.
+- Add a consumer-side `check-adoption` script (human and `--json`) for imports,
+  element registration, style order, SSR guard and bundle leaks.
+- Build the documented quickstart in CI, not just the tarball consumer fixture.
+- Run a blind-agent task from the packed tarball with no repository access; turn
+  failures into recipes or checks.
+
+Exit criteria:
+
+- A blind agent can add a view and a command to a fresh app and pass
+  build/typecheck.
+- The quickstart builds from documentation alone.
+- Copyable code blocks contain no `...` elisions.
+
+**Priority and dependencies:**
+
+- 7A is the foundation; 7B renders 7A; 7C validates both.
+- npm publication is not a blocker for 7A/7B. Until publication, acceptance uses
+  `npm pack` plus a local tarball install. 7C reruns against
+  `npm install @workbench-kit/workbench` after publish.
 
 ### Later — hardening (not required for 0.x)
 
@@ -393,7 +484,8 @@ Exit criteria:
 
 ## 8. First pull requests
 
-A pragmatic sequence that keeps `main` shippable:
+A pragmatic sequence that keeps `main` shippable. Items 1-10 are implemented;
+the post-publish acceptance path is the remaining follow-up.
 
 1. **This roadmap + README link.**
 2. **Baseline script:** build size report and boundary check in CI.
@@ -404,6 +496,7 @@ A pragmatic sequence that keeps `main` shippable:
 7. **Preset + demo separation:** move views/data/menus into the app layer.
 8. **Minimal example:** single tab + options sidebar + budget check.
 9. **Internal modules and distribution:** workspace migration, all three `apps/*` applications, `packages/workbench`, the packed-tarball check, documentation and release readiness are done; the owner-approved registry publish remains.
+10. **Consumer documentation and agent adoption:** Phase 7A package-local consumer docs and boundary; 7B hosted docs site, raw Markdown and `llms.txt`; 7C quickstart and adoption verification plus blind-agent evaluation. Implemented and verified against the packed tarball; the post-publish acceptance path remains after publication.
 
 Each step should be a separate PR with a visible demo change or a bundle report. Avoid one giant refactor.
 
@@ -502,4 +595,7 @@ The transformation is complete when:
 - CI checks boundaries, distribution, documentation, release metadata, sizes and the existing lint/test/build suite.
 - One tarball can be packed and consumed without relative imports into the repo.
 - The tarball carries its license and third-party notices.
+- Consumer docs are package-local, shipped in the tarball and hosted without requiring repository access.
+- An agent can build a documented app from the packed package alone; `llms.txt` and raw Markdown link only to consumer pages.
+- Contributor and consumer documentation are physically separate, with a one-way link boundary enforced by checks.
 - A 0.x release is possible without breaking the template's showcase, via a documented, owner-approved publish step.

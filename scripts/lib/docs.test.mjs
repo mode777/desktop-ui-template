@@ -1,20 +1,28 @@
 // @vitest-environment node
-import { existsSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
 import {
   collectPublicValueExports,
+  consumerDocumentationFiles,
+  consumerDocsDir,
+  contributorDocumentationFiles,
   documentationFiles,
   extractMarkdownLinks,
   extractNpmRunScripts,
   extractPublishedSpecifiers,
+  findConsumerBoundaryProblems,
+  findLlmsProblems,
+  findManifestProblems,
   formatDocProblem,
   isExternalLink,
   isPlaceholderSpecifier,
   mentionsName,
   missingExportMentions,
+  readDocsManifest,
   resolveDocLink,
   specifierToExportKey,
 } from './docs.mjs'
@@ -53,15 +61,15 @@ describe('isExternalLink', () => {
 
 describe('resolveDocLink', () => {
   it('resolves a relative link from the source file', () => {
-    const source = resolve(repoRoot, 'docs/api.md')
-    const resolved = resolveDocLink(source, './migration.md#install', repoRoot)
+    const source = resolve(repoRoot, 'packages/workbench/docs/reference/api.md')
+    const resolved = resolveDocLink(source, '../recipes/eject.md#state-and-persistence', repoRoot)
 
-    expect(resolved).toBe(resolve(repoRoot, 'docs/migration.md'))
+    expect(resolved).toBe(resolve(repoRoot, 'packages/workbench/docs/recipes/eject.md'))
     expect(existsSync(resolved)).toBe(true)
   })
 
   it('ignores external, anchor-only and empty links', () => {
-    const source = resolve(repoRoot, 'docs/api.md')
+    const source = resolve(repoRoot, 'packages/workbench/docs/reference/api.md')
 
     expect(resolveDocLink(source, 'https://example.com', repoRoot)).toBeNull()
     expect(resolveDocLink(source, '#install', repoRoot)).toBeNull()
@@ -149,13 +157,53 @@ describe('collectPublicValueExports', () => {
 })
 
 describe('documentationFiles', () => {
-  it('includes root, docs, package and app documentation', () => {
-    const files = documentationFiles(repoRoot)
+  it('includes contributor root, docs and app documentation', () => {
+    const files = contributorDocumentationFiles(repoRoot)
 
     expect(files).toContain(resolve(repoRoot, 'README.md'))
-    expect(files).toContain(resolve(repoRoot, 'docs/api.md'))
-    expect(files).toContain(resolve(repoRoot, 'packages/workbench/README.md'))
+    expect(files).toContain(resolve(repoRoot, 'docs/architecture.md'))
     expect(files).toContain(resolve(repoRoot, 'apps/custom-shell/README.md'))
+    expect(files).not.toContain(resolve(repoRoot, 'packages/workbench/README.md'))
+    expect(documentationFiles(repoRoot)).toEqual(files)
+  })
+
+  it('includes the package README, agent guide, consumer docs and llms.txt', () => {
+    const files = consumerDocumentationFiles(repoRoot)
+
+    expect(files).toContain(resolve(repoRoot, 'packages/workbench/README.md'))
+    expect(files).toContain(resolve(repoRoot, 'packages/workbench/AGENTS.md'))
+    expect(files).toContain(resolve(repoRoot, 'packages/workbench/docs/quickstart.md'))
+    expect(files).toContain(resolve(repoRoot, 'packages/workbench/llms.txt'))
+  })
+})
+
+describe('consumer documentation checks', () => {
+  it('accepts the real consumer tree boundary', () => {
+    expect(
+      findConsumerBoundaryProblems({ repoRoot, files: consumerDocumentationFiles(repoRoot) }),
+    ).toEqual([])
+  })
+
+  it('rejects a link outside the consumer tree and a private package name', () => {
+    const root = mkdtempSync(join(tmpdir(), 'workbench-docs-'))
+    const docsDir = join(root, 'packages/workbench/docs')
+    mkdirSync(docsDir, { recursive: true })
+    const file = join(docsDir, 'bad.md')
+    writeFileSync(file, '[outside](../../../docs/architecture.md)\n\n`@workbench-kit/core`\n')
+
+    const problems = findConsumerBoundaryProblems({ repoRoot: root, files: [file] })
+
+    expect(problems.some((problem) => problem.message.includes('outside'))).toBe(true)
+    expect(problems.some((problem) => problem.message.includes('private package'))).toBe(true)
+    rmSync(root, { recursive: true, force: true })
+  })
+
+  it('accepts the real manifest and llms.txt links', () => {
+    const manifest = readDocsManifest(repoRoot)
+    const llmsText = readFileSync(resolve(repoRoot, 'packages/workbench/llms.txt'), 'utf8')
+
+    expect(findManifestProblems({ repoRoot, manifest })).toEqual([])
+    expect(findLlmsProblems({ docsDir: consumerDocsDir(repoRoot), manifest, llmsText })).toEqual([])
   })
 })
 
@@ -163,9 +211,9 @@ describe('formatDocProblem', () => {
   it('renders a repository-relative location with a line', () => {
     expect(
       formatDocProblem(
-        { file: resolve(repoRoot, 'docs/api.md'), line: 12, message: 'Missing target.' },
+        { file: resolve(repoRoot, 'docs/architecture.md'), line: 12, message: 'Missing target.' },
         repoRoot,
       ),
-    ).toBe('docs/api.md:12: Missing target.')
+    ).toBe('docs/architecture.md:12: Missing target.')
   })
 })

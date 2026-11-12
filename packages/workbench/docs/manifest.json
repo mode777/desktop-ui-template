@@ -1,0 +1,155 @@
+{
+  "packageName": "@workbench-kit/workbench",
+  "version": "0.1.0",
+  "availability": "preview",
+  "siteUrl": "https://mode777.github.io/desktop-ui-template",
+  "title": "Workbench Kit",
+  "description": "A configurable VS Code-style workbench for React applications: preset shell, composition primitives, headless helpers, element registrations and styles.",
+  "sections": [
+    { "id": "start", "title": "Start here" },
+    { "id": "concepts", "title": "Concepts" },
+    { "id": "recipes", "title": "Recipes" },
+    { "id": "guides", "title": "Guides" },
+    { "id": "agents", "title": "For AI agents" },
+    { "id": "reference", "title": "Reference" },
+    { "id": "project", "title": "Project" }
+  ],
+  "pages": [
+    {
+      "path": "index.md",
+      "route": "/",
+      "title": "Workbench Kit",
+      "description": "Choose an adoption path and start building with the workbench kit.",
+      "section": "start",
+      "order": 1
+    },
+    {
+      "path": "quickstart.md",
+      "route": "/quickstart",
+      "title": "Quickstart",
+      "description": "Install the package and render a selective workbench with one tab and one resizable sidebar.",
+      "section": "start",
+      "order": 2
+    },
+    {
+      "path": "concepts.md",
+      "route": "/concepts",
+      "title": "Concepts",
+      "description": "Adoption levels, state ownership, persistence, elements, styles and theming.",
+      "section": "concepts",
+      "order": 1
+    },
+    {
+      "path": "recipes/add-view.md",
+      "route": "/recipes/add-view",
+      "title": "Add a view",
+      "description": "Add a sidebar or panel view and make it reachable from the configured region.",
+      "section": "recipes",
+      "order": 1
+    },
+    {
+      "path": "recipes/add-command.md",
+      "route": "/recipes/add-command",
+      "title": "Add a command",
+      "description": "Add a command, a menu entry and a keyboard shortcut.",
+      "section": "recipes",
+      "order": 2
+    },
+    {
+      "path": "recipes/replace-document.md",
+      "route": "/recipes/replace-document",
+      "title": "Replace the document surface",
+      "description": "Keep tabs and layout while rendering your own editor, preview or document component.",
+      "section": "recipes",
+      "order": 3
+    },
+    {
+      "path": "recipes/theme.md",
+      "route": "/recipes/theme",
+      "title": "Theme the workbench",
+      "description": "Override tokens, add a theme and keep persisted theme behavior.",
+      "section": "recipes",
+      "order": 4
+    },
+    {
+      "path": "recipes/persistence.md",
+      "route": "/recipes/persistence",
+      "title": "Control persistence",
+      "description": "Keep, replace or clear the preset persistence adapter.",
+      "section": "recipes",
+      "order": 5
+    },
+    {
+      "path": "recipes/eject.md",
+      "route": "/recipes/eject",
+      "title": "Eject from the preset",
+      "description": "Move from the preset to composition and from composition to individual primitives.",
+      "section": "recipes",
+      "order": 6
+    },
+    {
+      "path": "guides/coming-from-template.md",
+      "route": "/guides/coming-from-template",
+      "title": "Coming from the template",
+      "description": "Move a copied template application to the published package.",
+      "section": "guides",
+      "order": 1
+    },
+    {
+      "path": "guides/common-mistakes.md",
+      "route": "/guides/common-mistakes",
+      "title": "Common mistakes",
+      "description": "Symptoms, causes and fixes for blank elements, missing styles and adoption errors.",
+      "section": "guides",
+      "order": 2
+    },
+    {
+      "path": "guides/for-ai-agents.md",
+      "route": "/guides/for-ai-agents",
+      "title": "For AI agents",
+      "description": "How coding agents should read the docs, choose a level and verify their work.",
+      "section": "agents",
+      "order": 1
+    },
+    {
+      "path": "reference/api.md",
+      "route": "/reference/api",
+      "title": "API reference",
+      "description": "Preset props, primitives, headless helpers, element entries, styles and public types.",
+      "section": "reference",
+      "order": 1
+    },
+    {
+      "path": "reference/elements.md",
+      "route": "/reference/elements",
+      "title": "Element entries",
+      "description": "Per-tag custom-element registrations and the tags each component renders.",
+      "section": "reference",
+      "order": 2
+    },
+    {
+      "path": "reference/styles.md",
+      "route": "/reference/styles",
+      "title": "Style entries",
+      "description": "Tokens, base styles, the aggregate entry and per-component stylesheets.",
+      "section": "reference",
+      "order": 3
+    },
+    {
+      "path": "reference/types.md",
+      "route": "/reference/types",
+      "title": "Public types",
+      "description": "The public TypeScript types exported by the package.",
+      "section": "reference",
+      "order": 4
+    },
+    {
+      "path": "changelog.md",
+      "route": "/changelog",
+      "title": "Changelog",
+      "description": "Consumer-visible changes and the prepared 0.1.0 surface.",
+      "section": "project",
+      "order": 1
+    }
+  ]
+}

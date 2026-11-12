@@ -33,6 +33,9 @@ describe('assemble-pages-site CLI', () => {
     write(root, 'apps/minimal/dist/.vite/manifest.json', '{}\n')
     write(root, 'apps/custom-shell/dist/index.html', '<title>custom-shell</title>\n')
     write(root, 'apps/custom-shell/dist/codicons/codicon.css', 'custom-shell\n')
+    write(root, 'docs-site/dist/index.html', '<title>docs</title>\n')
+    write(root, 'docs-site/dist/llms.txt', '# llms\n')
+    write(root, 'docs-site/dist/raw/index.md', '# docs\n')
     write(root, 'site/stale.txt', 'stale\n')
 
     const result = run(root)
@@ -49,6 +52,10 @@ describe('assemble-pages-site CLI', () => {
     expect(readFileSync(join(root, 'site/custom-shell/codicons/codicon.css'), 'utf8')).toBe(
       'custom-shell\n',
     )
+    expect(readFileSync(join(root, 'site/docs/index.html'), 'utf8')).toContain('docs')
+    expect(readFileSync(join(root, 'site/docs/llms.txt'), 'utf8')).toBe('# llms\n')
+    expect(readFileSync(join(root, 'site/llms.txt'), 'utf8')).toBe('# llms\n')
+    expect(readFileSync(join(root, 'site/docs/raw/index.md'), 'utf8')).toBe('# docs\n')
     expect(existsSync(join(root, 'site/stale.txt'))).toBe(false)
     expect(existsSync(join(root, 'site/minimal/.vite'))).toBe(false)
   })
@@ -64,6 +71,8 @@ describe('assemble-pages-site CLI', () => {
     expect(result.stderr).toContain('npm run build:minimal')
     expect(result.stderr).toContain('apps/custom-shell/dist/index.html is missing')
     expect(result.stderr).toContain('npm run build:custom-shell')
+    expect(result.stderr).toContain('docs-site/dist/index.html is missing')
+    expect(result.stderr).toContain('npm run build:docs')
     expect(result.stderr).not.toContain('apps/template/dist')
     expect(existsSync(join(root, 'site'))).toBe(false)
   })

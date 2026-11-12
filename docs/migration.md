@@ -25,7 +25,7 @@ different scope. See [`release.md`](./release.md).
 | A full shell with your own state, commands and regions    | Composition | `apps/custom-shell` |
 | One pane, tab strip or resize behavior in your own layout | Primitives  | `apps/minimal`      |
 
-Read [`eject.md`](./eject.md) before choosing. Moving down a level later is
+Read the [eject recipe](../packages/workbench/docs/recipes/eject.md) before choosing. Moving down a level later is
 supported, but the state and command wiring changes.
 
 ## Install
@@ -143,7 +143,7 @@ If the application used its own store, decide between:
 
 The key is not configurable in `0.1.0`. If two preset workbenches share an
 origin, they share state. Use composition if you need isolated instances or a
-different key; see [`eject.md`](./eject.md#state-and-persistence).
+different key; see the [eject recipe](../packages/workbench/docs/recipes/eject.md#state-and-persistence).
 
 ## Elements and styles
 
@@ -212,6 +212,6 @@ view selectors belong in application CSS.
 | Private module import          | The package cannot resolve `@workbench-kit/react` or another workspace name. | Replace it with the published subpath from the mapping table.                                                              |
 | SSR or server rendering        | `window`, `document` or `customElements` is undefined.                       | Render the workbench on the client only; SSR is out of scope for `0.x`.                                                    |
 
-For the complete API surface, see [`api.md`](./api.md). For the move between
-adoption levels, see [`eject.md`](./eject.md). For the architecture behind the
+For the complete API surface, see the [consumer API reference](../packages/workbench/docs/reference/api.md). For the move between
+adoption levels, see the [eject recipe](../packages/workbench/docs/recipes/eject.md). For the architecture behind the
 five private modules, see [`architecture.md`](./architecture.md).

@@ -19,7 +19,7 @@ minor releases may include breaking changes; patch releases do not.
 - Controlled region primitives at `@workbench-kit/workbench/react`:
   `ActivityBar`, `Sidebar`, `Panel`, `StatusBar`, `TitleBar`, `MenuBar` and
   `ContextMenu`.
-- `docs/api.md`, `docs/migration.md`, `docs/eject.md` and `docs/release.md`.
+- Consumer documentation under `packages/workbench/docs/` and the app-level `packages/workbench/AGENTS.md`; contributor docs remain under `docs/`.
 - `npm run check:docs` for documentation links, documented scripts, published
   specifiers and API export coverage.
 - `npm run check:release` for shared versions, npm metadata, changelog headings

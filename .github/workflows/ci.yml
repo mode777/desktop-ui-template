@@ -32,6 +32,9 @@ jobs:
       - name: Verify
         run: npm run check
 
+      - name: Build documentation site
+        run: npm run build:docs
+
       # `npm run check` already built apps/template/dist and apps/minimal/dist,
       # so reuse those outputs instead of building twice. Each step fails the
       # job when that target's gzipped JavaScript grows beyond its own budget

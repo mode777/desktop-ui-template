@@ -1,0 +1,11 @@
+{
+  "name": "adoption-fixture",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@workbench-kit/workbench": "0.1.0",
+    "@vscode-elements/elements": "^2.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

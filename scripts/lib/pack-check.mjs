@@ -43,16 +43,36 @@ export function normaliseTarballPath(path) {
   return path.replace(/^package\//, '')
 }
 
-const ROOT_TARBALL_FILES = ['package.json', 'README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md']
+const ROOT_TARBALL_FILES = [
+  'package.json',
+  'README.md',
+  'LICENSE',
+  'THIRD_PARTY_NOTICES.md',
+  'AGENTS.md',
+  'llms.txt',
+]
+
+const CONSUMER_DOC_FILES = ['docs/index.md', 'docs/quickstart.md', 'docs/manifest.json']
+
+const CONTRIBUTOR_DOC_NAMES = new Set([
+  'architecture.md',
+  'release.md',
+  'migration.md',
+  'roadmap.md',
+])
 
 export function requiredTarballFiles(manifest) {
   return [
-    ...new Set([...ROOT_TARBALL_FILES, ...exportTargets(manifest).map(({ target }) => target)]),
+    ...new Set([
+      ...ROOT_TARBALL_FILES,
+      ...CONSUMER_DOC_FILES,
+      ...exportTargets(manifest).map(({ target }) => target),
+    ]),
   ]
 }
 
 export function forbiddenTarballPath(path) {
-  if (ROOT_TARBALL_FILES.includes(path) || path.startsWith('dist/')) {
+  if (ROOT_TARBALL_FILES.includes(path) || path.startsWith('dist/') || path.startsWith('docs/')) {
     if (path.includes('/src/') || path.startsWith('dist/src/')) {
       return 'private source must not ship'
     }
@@ -73,10 +93,18 @@ export function forbiddenTarballPath(path) {
       return 'TypeScript build metadata must not ship'
     }
 
+    const basename = path.split('/').at(-1) ?? ''
+    if (CONTRIBUTOR_DOC_NAMES.has(basename)) {
+      return 'contributor documentation must not ship'
+    }
+
     return null
   }
 
   if (path.startsWith('src/') || path.includes('/src/')) return 'private source must not ship'
+  if (path.startsWith('apps/') || path.startsWith('packages/') || path.startsWith('openspec/')) {
+    return 'repository or application content must not ship'
+  }
   if (path.startsWith('node_modules/') || path.includes('/node_modules/')) {
     return 'nested dependencies must not ship'
   }
@@ -89,7 +117,7 @@ export function forbiddenTarballPath(path) {
 }
 
 function isAllowedTarballPath(path) {
-  return ROOT_TARBALL_FILES.includes(path) || path.startsWith('dist/')
+  return ROOT_TARBALL_FILES.includes(path) || path.startsWith('dist/') || path.startsWith('docs/')
 }
 
 export function validateTarballFiles(files, manifest) {

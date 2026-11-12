@@ -273,7 +273,8 @@ As of 2026-11-12:
   `npm run check:distribution` validates its privacy, export surface and peers.
 - `npm run check:minimal` and `npm run check:custom-shell` verify that no preset,
   template or demo module reached either example bundle.
-- `docs/api.md`, `docs/migration.md`, `docs/eject.md` and `docs/release.md`
+- `packages/workbench/docs/reference/api.md`, `packages/workbench/docs/recipes/eject.md`
+- `docs/migration.md`, `docs/release.md` and the contributor architecture documents
   document the adoption path and release gate; `npm run check:docs` and
   `npm run check:release` keep them and the package metadata aligned.
 - The remaining work is the manual, owner-approved registry publish for `0.x`;

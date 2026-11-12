@@ -13,6 +13,15 @@ const PUBLIC_ENTRIES = [
   { group: 'core', path: 'packages/core/src/index.ts' },
 ]
 
+const CONSUMER_ROOT = 'packages/workbench'
+const CONSUMER_DOCS = 'packages/workbench/docs'
+const PRIVATE_SPECIFIER =
+  /@workbench-kit\/(?:core|react|elements|styles-vscode|preset-vscode)(?:[\w/-]*)/g
+const CONTRIBUTOR_URL =
+  /^https?:\/\/github\.com\/mode777\/desktop-ui-template\/(?:blob|tree)\/main\/(?:docs\/(?:architecture|release|migration)\.md|ROADMAP\.md|AGENTS\.md)/
+
+const CONSUMER_BRIDGE_FILES = new Set(['guides/coming-from-template.md'])
+
 function lineAt(content, index) {
   return content.slice(0, index).split('\n').length
 }
@@ -223,8 +232,27 @@ function collectValueExports(file, readFile, seen) {
   return names
 }
 
-/** Files whose links, scripts, specifiers and API coverage the docs check owns. */
-export function documentationFiles(repoRoot) {
+function toPosix(path) {
+  return path.split(/[\\/]/).join('/')
+}
+
+function walkFiles(directory, predicate, output = []) {
+  if (!existsSync(directory)) return output
+
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const path = resolve(directory, entry.name)
+    if (entry.isDirectory()) {
+      walkFiles(path, predicate, output)
+      continue
+    }
+    if (predicate(path)) output.push(path)
+  }
+
+  return output
+}
+
+/** Contributor files whose links, scripts and specifiers the docs check owns. */
+export function contributorDocumentationFiles(repoRoot) {
   const rootFiles = [
     'README.md',
     'ROADMAP.md',
@@ -234,7 +262,7 @@ export function documentationFiles(repoRoot) {
   ]
   const files = rootFiles.map((file) => resolve(repoRoot, file))
 
-  for (const file of ['api.md', 'architecture.md', 'eject.md', 'migration.md', 'release.md']) {
+  for (const file of ['architecture.md', 'migration.md', 'release.md']) {
     files.push(resolve(repoRoot, 'docs', file))
   }
 
@@ -242,12 +270,178 @@ export function documentationFiles(repoRoot) {
     const directory = resolve(repoRoot, group)
     if (!existsSync(directory)) continue
     for (const entry of readdirSync(directory)) {
+      if (group === 'packages' && entry === 'workbench') continue
       const readme = resolve(directory, entry, 'README.md')
       if (existsSync(readme)) files.push(readme)
     }
   }
 
   return [...new Set(files)].filter((file) => existsSync(file))
+}
+
+/** Backwards-compatible alias for the contributor documentation set. */
+export function documentationFiles(repoRoot) {
+  return contributorDocumentationFiles(repoRoot)
+}
+
+/** Consumer files whose links, scripts, specifiers and boundary the consumer check owns. */
+export function consumerDocumentationFiles(repoRoot) {
+  const files = [
+    resolve(repoRoot, CONSUMER_ROOT, 'README.md'),
+    resolve(repoRoot, CONSUMER_ROOT, 'AGENTS.md'),
+  ]
+
+  for (const file of walkFiles(resolve(repoRoot, CONSUMER_DOCS), (path) => path.endsWith('.md'))) {
+    files.push(file)
+  }
+
+  const llms = resolve(repoRoot, CONSUMER_ROOT, 'llms.txt')
+  if (existsSync(llms)) files.push(llms)
+
+  return [...new Set(files)].filter((file) => existsSync(file))
+}
+
+export function consumerRoot(repoRoot) {
+  return resolve(repoRoot, CONSUMER_ROOT)
+}
+
+export function consumerDocsDir(repoRoot) {
+  return resolve(repoRoot, CONSUMER_DOCS)
+}
+
+export function findConsumerBoundaryProblems({ repoRoot, files }) {
+  const root = consumerRoot(repoRoot)
+  const problems = []
+
+  for (const file of files) {
+    const content = readFileSync(file, 'utf8')
+    const relativeToDocs = toPosix(relative(consumerDocsDir(repoRoot), file))
+    const isBridge = CONSUMER_BRIDGE_FILES.has(relativeToDocs)
+
+    if (!isBridge) {
+      for (const match of content.matchAll(PRIVATE_SPECIFIER)) {
+        problems.push({
+          file,
+          line: lineAt(content, match.index),
+          message: `Consumer documentation must not name the private package ${match[0]}.`,
+        })
+      }
+    }
+
+    for (const link of extractMarkdownLinks(content)) {
+      if (isExternalLink(link.target)) {
+        if (CONTRIBUTOR_URL.test(link.target)) {
+          problems.push({
+            file,
+            line: link.line,
+            message: `Consumer documentation must not link to contributor documentation: "${link.target}".`,
+          })
+        }
+        continue
+      }
+
+      const target = resolveDocLink(file, link.target, repoRoot)
+      if (target === null) continue
+
+      const relativeTarget = relative(root, target)
+      if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
+        problems.push({
+          file,
+          line: link.line,
+          message: `Consumer link "${link.target}" resolves outside the consumer documentation tree.`,
+        })
+      }
+    }
+  }
+
+  return problems
+}
+
+export function readDocsManifest(repoRoot) {
+  return JSON.parse(readFileSync(resolve(consumerDocsDir(repoRoot), 'manifest.json'), 'utf8'))
+}
+
+export function findManifestProblems({ repoRoot, manifest }) {
+  const docsDir = consumerDocsDir(repoRoot)
+  const problems = []
+  const listed = new Map()
+
+  for (const page of manifest.pages ?? []) {
+    if (listed.has(page.path)) {
+      problems.push({
+        file: resolve(docsDir, 'manifest.json'),
+        message: `Consumer manifest lists ${page.path} more than once.`,
+      })
+    }
+    listed.set(page.path, page)
+
+    if (!existsSync(resolve(docsDir, page.path))) {
+      problems.push({
+        file: resolve(docsDir, 'manifest.json'),
+        message: `Consumer manifest lists missing page ${page.path}.`,
+      })
+    }
+  }
+
+  const files = walkFiles(docsDir, (path) => path.endsWith('.md'))
+  for (const file of files) {
+    const relativePath = toPosix(relative(docsDir, file))
+    if (!listed.has(relativePath)) {
+      problems.push({
+        file,
+        message: `Consumer page ${relativePath} is not listed in docs/manifest.json.`,
+      })
+    }
+  }
+
+  for (const page of manifest.pages ?? []) {
+    if (
+      page.path.includes('architecture') ||
+      page.path.includes('release') ||
+      page.path.includes('migration')
+    ) {
+      problems.push({
+        file: resolve(docsDir, 'manifest.json'),
+        message: `Consumer manifest must not list contributor documentation ${page.path}.`,
+      })
+    }
+  }
+
+  return problems
+}
+
+export function consumerReferenceText(repoRoot) {
+  const referenceDir = resolve(consumerDocsDir(repoRoot), 'reference')
+  return walkFiles(referenceDir, (path) => path.endsWith('.md'))
+    .map((file) => readFileSync(file, 'utf8'))
+    .join('\n')
+}
+
+export function findLlmsProblems({ docsDir, manifest, llmsText }) {
+  const problems = []
+  const rawBase = `${manifest.siteUrl.replace(/\/$/, '')}/docs/raw/`
+
+  for (const link of extractMarkdownLinks(llmsText)) {
+    if (!link.target.startsWith(rawBase)) {
+      problems.push({
+        file: 'packages/workbench/llms.txt',
+        line: link.line,
+        message: `llms.txt link "${link.target}" is not a raw documentation URL.`,
+      })
+      continue
+    }
+
+    const relativePath = link.target.slice(rawBase.length)
+    if (!existsSync(resolve(docsDir, relativePath))) {
+      problems.push({
+        file: 'packages/workbench/llms.txt',
+        line: link.line,
+        message: `llms.txt link "${link.target}" does not resolve to a consumer Markdown file.`,
+      })
+    }
+  }
+
+  return problems
 }
 
 export function formatDocProblem(problem, repoRoot) {

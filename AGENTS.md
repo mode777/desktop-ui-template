@@ -1,5 +1,11 @@
 # AGENTS.md
 
+> **Scope:** This file is for changing the Workbench Kit repository. If you are
+> building an application with the published package, read
+> [`packages/workbench/AGENTS.md`](packages/workbench/AGENTS.md) or the
+> [hosted consumer documentation](https://mode777.github.io/desktop-ui-template/docs/)
+> instead.
+
 This file is the project-specific instruction set for OpenCode (and other coding agents) working in this repository.
 
 ## Project
@@ -46,7 +52,7 @@ package is ESM.
 - The workbench-kit transformation is staged in `ROADMAP.md`. Follow the current phase and its exit criteria. The kit and all three applications are npm workspaces under `packages/` and `apps/`; documentation and release readiness are complete, and the registry publish remains a manual owner-approved step gated on the final scope/name.
 - The five `packages/*` internal modules are **private**, not five published packages. `packages/core`, `packages/react`, `packages/elements`, `packages/styles-vscode` and `packages/preset-vscode` keep the source boundaries and all declare `"private": true`. Never publish them individually.
 - The single publish target is `packages/workbench` (`@workbench-kit/workbench`, name provisional), the generated public facade. It exposes the modules through subpath exports, copies them into one tarball and must not depend on the private workspaces at runtime. `npm run build:facade` regenerates `dist/`; `npm run pack:check` validates the packed artifact. The full model is [`docs/architecture.md`](./docs/architecture.md) and [`distribution.json`](./distribution.json); `npm run check:distribution` enforces package privacy, dependency direction and the public surface.
-- Adoption docs live in `docs/api.md`, `docs/migration.md`, `docs/eject.md` and `docs/release.md`; `CHANGELOG.md` and `THIRD_PARTY_NOTICES.md` are release material. `npm run check:docs` keeps links, scripts, public specifiers and API coverage aligned, and `npm run check:release` keeps versions, npm metadata, the changelog heading and license material consistent. The tarball ships `LICENSE` and `THIRD_PARTY_NOTICES.md`; do not publish from CI or store registry credentials in the repository.
+- Consumer docs live in `packages/workbench/docs/` with the app-level `packages/workbench/AGENTS.md`; contributor docs live in `docs/`, `ROADMAP.md` and this file. `npm run check:docs:consumer` enforces the consumer boundary and API coverage, `npm run check:docs:contributor` checks the repository docs, and `npm run check:release` keeps versions, npm metadata, the changelog heading and license material consistent. The tarball ships `LICENSE`, `THIRD_PARTY_NOTICES.md`, the consumer docs and `llms.txt`; do not publish from CI or store registry credentials in the repository.
 - `packages/preset-vscode` is the composed VS Code-style preset (`VSCodeWorkbench`). It owns the shell composition, thin region adapters over the React primitives, the default store and generic commands. It must never import from `apps/template/src/app` or `apps/template/src/demo`; anything app-specific arrives through props.
 - `packages/react` owns the controlled region chrome: `ActivityBar`, `Sidebar`, `Panel`, `StatusBar`, `TitleBar`, `MenuBar`, `ContextMenu`, plus the shell, pane, tab-strip and icon-button primitives. Generic region markup and interactions belong there; store reads, view resolution and command lookup belong in the preset adapters or the app.
 - `apps/template/src/app/App.tsx` is the template's composition root. It supplies the preset with the config, view registry, commands, menus, quick-open files, document renderer, icons, branding, status bar and initial session.

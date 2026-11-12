@@ -51,12 +51,15 @@ shape:
 
 The packed tarball contains only:
 
-- `package.json`, `README.md`, `LICENSE` and `THIRD_PARTY_NOTICES.md`;
+- `package.json`, `README.md`, `AGENTS.md`, `llms.txt`, `LICENSE` and
+  `THIRD_PARTY_NOTICES.md`;
+- consumer documentation under `docs/`;
 - generated `dist/` output for the preset, React primitives, core helpers,
   element registrations, typings and stylesheets.
 
 It contains no source, tests, fixtures, declaration maps, build metadata,
-application/demo content, private workspace specifiers or nested dependencies.
+contributor documentation, application/demo content, private workspace
+specifiers or nested dependencies.
 React, React DOM and `@vscode-elements/elements` are peers; `zustand` is the only
 runtime dependency.
 
@@ -69,18 +72,23 @@ Run from a clean checkout on the release commit:
 2. `npm ci`
 3. `npm run check`
    This runs lint, formatting, typecheck, boundaries, distribution,
-   documentation, release, tests, all three application builds, both example
-   checks and `pack:check`.
-4. `npm run size` and `npm run size:minimal`
+   documentation, release, tests, all three application builds, the quickstart
+   and adoption checks, both example checks and `pack:check`.
+4. `npm run build:site`
+   Confirm `site/docs/`, `site/docs/raw/`, `site/llms.txt` and
+   `site/docs/llms-full.txt` are present.
+5. `npm run size` and `npm run size:minimal`
    Confirm both budgets pass and record the numbers in the release notes.
-5. Update the version in the five internal manifests and the facade, and add the
+6. Update the version in the five internal manifests and the facade, and add the
    matching changelog section with its breaking-change notes.
-6. `npm run build:facade`
-7. `npm run pack:check`
-8. `npm pack --dry-run` from `packages/workbench` and inspect the file list,
-   license material and export targets.
-9. Commit the version and changelog, then tag the commit `v<version>` (for
-   example `v0.1.0`).
+7. `npm run build:facade`
+8. `npm run pack:check`
+9. `npm pack --dry-run` from `packages/workbench` and inspect the file list,
+   license material, consumer docs, `AGENTS.md`, `llms.txt` and export targets.
+10. Confirm `availability` is `preview` in
+    `packages/workbench/docs/manifest.json` until the publish succeeds.
+11. Commit the version and changelog, then tag the commit `v<version>` (for
+    example `v0.1.0`).
 
 Do not tag or publish while the examples or checks fail.
 
@@ -119,11 +127,17 @@ Then:
 
 1. Import the preset, `react`, `core`, one element entry and one stylesheet
    subpath from the installed package.
-2. Build or run the documented minimal quickstart from [`api.md`](./api.md#install).
-3. Confirm `LICENSE` and `THIRD_PARTY_NOTICES.md` are present in the installed
+2. Build or run the documented quickstart from [`packages/workbench/docs/quickstart.md`](../packages/workbench/docs/quickstart.md).
+3. Confirm `docs/`, `AGENTS.md` and `llms.txt` are present in the installed
    package.
-4. Confirm the package version and export map on the registry.
-5. Only then announce the release and publish GitHub release notes.
+4. Confirm `LICENSE` and `THIRD_PARTY_NOTICES.md` are present in the installed
+   package.
+5. Confirm the package version and export map on the registry.
+6. Set `availability` to `published` in
+   `packages/workbench/docs/manifest.json`, run `npm run generate:llms`, and
+   rebuild and republish the documentation site so the banner and `llms.txt`
+   reflect the published status.
+7. Only then announce the release and publish GitHub release notes.
 
 ## Rollback and deprecation
 
@@ -146,5 +160,5 @@ approval.
 - The first release is validated by the template, minimal and custom-shell
   examples. A release that breaks any of them is not ready.
 
-See [`api.md`](./api.md) for the public surface, [`migration.md`](./migration.md)
-for adoption and [`eject.md`](./eject.md) for moving between levels.
+See the [consumer API reference](../packages/workbench/docs/reference/api.md) for the public surface, [`migration.md`](./migration.md)
+for adoption and the [eject recipe](../packages/workbench/docs/recipes/eject.md) for moving between levels.

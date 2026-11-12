@@ -50,6 +50,12 @@ const applications = [
     target: 'custom-shell',
     build: 'npm run build:custom-shell',
   },
+  {
+    label: 'docs',
+    source: 'docs-site/dist',
+    target: 'docs',
+    build: 'npm run build:docs',
+  },
 ]
 
 const missing = applications.filter(
@@ -79,7 +85,12 @@ for (const application of applications) {
   }
 }
 
+const docsLlms = join(outPath, 'docs/llms.txt')
+if (existsSync(docsLlms)) cpSync(docsLlms, join(outPath, 'llms.txt'))
+
 console.log(`Pages site assembled in ${relative(repoRoot, outPath)}/`)
 console.log('  /              template (full preset)')
 console.log('  /minimal/      minimal example')
 console.log('  /custom-shell/ custom-shell example')
+console.log('  /docs/         consumer documentation')
+console.log('  /llms.txt      agent index for the consumer documentation')

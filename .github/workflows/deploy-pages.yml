@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build all examples
+      - name: Build demos and documentation
         run: npm run build:site
 
       - name: Configure Pages

@@ -24,6 +24,9 @@
   ],
   "files": [
     "dist",
+    "docs",
+    "AGENTS.md",
+    "llms.txt",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"
   ],
