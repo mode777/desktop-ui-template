@@ -7,7 +7,7 @@ const manifest = {
   packageName: 'vscode-workbench',
   version: '0.1.0',
   availability: 'preview',
-  siteUrl: 'https://example.test/desktop-ui-template',
+  siteUrl: 'https://example.test/vscode-workbench',
   title: 'Workbench Kit',
   description: 'A workbench for tests.',
   sections: [
@@ -51,19 +51,19 @@ describe('llms generation', () => {
     expect(index).toContain('preview')
     expect(index).toContain('## Start here')
     expect(index).toContain('## Project')
-    expect(index).toContain('https://example.test/desktop-ui-template/docs/raw/quickstart.md')
+    expect(index).toContain('https://example.test/vscode-workbench/docs/raw/quickstart.md')
     expect(index).not.toContain('docs/architecture.md')
   })
 
   it('builds a full text with page sources', () => {
     const full = renderLlmsFull(manifest, (path) => `# ${path}\n`)
-    expect(full).toContain('Source: https://example.test/desktop-ui-template/docs/raw/index.md')
+    expect(full).toContain('Source: https://example.test/vscode-workbench/docs/raw/index.md')
     expect(full).toContain('# quickstart.md')
   })
 
   it('computes a raw URL from the manifest site URL', () => {
     expect(rawUrlFor(manifest, manifest.pages[0])).toBe(
-      'https://example.test/desktop-ui-template/docs/raw/index.md',
+      'https://example.test/vscode-workbench/docs/raw/index.md',
     )
   })
 

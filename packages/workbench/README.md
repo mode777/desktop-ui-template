@@ -95,9 +95,9 @@ state. You can eject later without forking the components.
 
 ## Documentation
 
-- [Hosted documentation](https://mode777.github.io/desktop-ui-template/docs/) -
+- [Hosted documentation](https://mode777.github.io/vscode-workbench/docs/) -
   quickstart, concepts, recipes, reference and eject guide.
-- [llms.txt](https://mode777.github.io/desktop-ui-template/llms.txt) - a curated
+- [llms.txt](https://mode777.github.io/vscode-workbench/llms.txt) - a curated
   index for coding agents.
 - [Offline docs](./docs/index.md) - the same Markdown ships inside this package.
 - [Agent guide](./AGENTS.md) - app-level rules and the verification checklist.

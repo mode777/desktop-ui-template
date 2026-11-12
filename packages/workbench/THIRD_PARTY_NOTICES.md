@@ -37,4 +37,4 @@ attribution and the upstream license files with the assets.
 ## Reporting
 
 If you believe a dependency or attribution is missing, open an issue at
-[github.com/mode777/desktop-ui-template/issues](https://github.com/mode777/desktop-ui-template/issues).
+[github.com/mode777/vscode-workbench/issues](https://github.com/mode777/vscode-workbench/issues).

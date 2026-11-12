@@ -3,7 +3,7 @@
 > **Scope:** This file is for changing the Workbench Kit repository. If you are
 > building an application with the published package, read
 > [`packages/workbench/AGENTS.md`](packages/workbench/AGENTS.md) or the
-> [hosted consumer documentation](https://mode777.github.io/desktop-ui-template/docs/)
+> [hosted consumer documentation](https://mode777.github.io/vscode-workbench/docs/)
 > instead.
 
 This file is the project-specific instruction set for OpenCode (and other coding agents) working in this repository.

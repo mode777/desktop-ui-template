@@ -10,10 +10,10 @@
   ],
   "description": "A configurable VS Code-style desktop UI template built with React, TypeScript, Vite and vscode-elements.",
   "license": "MIT",
-  "homepage": "https://mode777.github.io/desktop-ui-template/",
+  "homepage": "https://mode777.github.io/vscode-workbench/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mode777/desktop-ui-template.git"
+    "url": "https://github.com/mode777/vscode-workbench.git"
   },
   "scripts": {
     "dev": "npm run dev -w @workbench-kit/template-app",

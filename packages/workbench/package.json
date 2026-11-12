@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mode777/desktop-ui-template.git",
+    "url": "git+https://github.com/mode777/vscode-workbench.git",
     "directory": "packages/workbench"
   },
-  "homepage": "https://github.com/mode777/desktop-ui-template/tree/main/packages/workbench#readme",
+  "homepage": "https://github.com/mode777/vscode-workbench/tree/main/packages/workbench#readme",
   "bugs": {
-    "url": "https://github.com/mode777/desktop-ui-template/issues"
+    "url": "https://github.com/mode777/vscode-workbench/issues"
   },
   "publishConfig": {
     "access": "public"

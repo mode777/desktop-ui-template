@@ -39,7 +39,7 @@ export function TerminalView() {
     const command = raw.trim()
     if (!command) return
 
-    print(`➜ desktop-ui-template git:(main) ${command}`, 'command')
+    print(`➜ vscode-workbench git:(main) ${command}`, 'command')
     setHistory((current) => [command, ...current].slice(0, 30))
     setHistoryIndex(-1)
 
@@ -53,7 +53,7 @@ export function TerminalView() {
         print('AGENTS.md   README.md   apps/   package.json   packages/   public/   test/')
         break
       case 'pwd':
-        print('/home/agent/workspace/desktop-ui-template')
+        print('/home/agent/workspace/vscode-workbench')
         break
       case 'whoami':
         print('agent')
@@ -131,7 +131,7 @@ export function TerminalView() {
         ))}
       </div>
       <div className="terminal-prompt">
-        <span className="terminal-prompt-path">➜ desktop-ui-template</span>
+        <span className="terminal-prompt-path">➜ vscode-workbench</span>
         <span className="terminal-prompt-branch">git:(main)</span>
         <input
           ref={inputRef}

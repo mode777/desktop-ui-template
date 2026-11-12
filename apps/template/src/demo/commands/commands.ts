@@ -179,7 +179,7 @@ export const demoCommands: WorkbenchCommand[] = [
     run: () => {
       state().showPanelView('output')
       state().appendOutput('[debug] Starting mock debug session…')
-      state().appendOutput('[debug] Attached to desktop-ui-template')
+      state().appendOutput('[debug] Attached to vscode-workbench')
       notify('Mock debug session started', 'success')
     },
   },
@@ -230,11 +230,7 @@ export const demoCommands: WorkbenchCommand[] = [
     title: 'GitHub Repository',
     category: 'Help',
     run: () =>
-      window.open(
-        'https://github.com/mode777/desktop-ui-template',
-        '_blank',
-        'noopener,noreferrer',
-      ),
+      window.open('https://github.com/mode777/vscode-workbench', '_blank', 'noopener,noreferrer'),
   },
   {
     id: 'help.elements',

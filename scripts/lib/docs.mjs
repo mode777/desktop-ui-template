@@ -4,7 +4,7 @@ import { dirname, isAbsolute, relative, resolve } from 'node:path'
 /** Matches inline Markdown links, excluding images. */
 const MARKDOWN_LINK = /(?<!!)\[[^\]]*\]\(([^)]+)\)/g
 const NPM_RUN = /\bnpm run ([A-Za-z0-9:_-]+)/g
-const PUBLISHED_SPECIFIER = /vscode-workbench(?![-\w])(?:\/[A-Za-z0-9._/-]+)?/g
+const PUBLISHED_SPECIFIER = /(?<![\w./-])vscode-workbench(?![-\w])(?:\/[A-Za-z0-9._/-]+)?/g
 const PLACEHOLDER_CHARS = /[<{*]/
 
 const PUBLIC_ENTRIES = [
@@ -18,7 +18,7 @@ const CONSUMER_DOCS = 'packages/workbench/docs'
 const PRIVATE_SPECIFIER =
   /@workbench-kit\/(?:core|react|elements|styles-vscode|preset-vscode)(?:[\w/-]*)/g
 const CONTRIBUTOR_URL =
-  /^https?:\/\/github\.com\/mode777\/desktop-ui-template\/(?:blob|tree)\/main\/(?:docs\/(?:architecture|release|migration)\.md|ROADMAP\.md|AGENTS\.md)/
+  /^https?:\/\/github\.com\/mode777\/vscode-workbench\/(?:blob|tree)\/main\/(?:docs\/(?:architecture|release|migration)\.md|ROADMAP\.md|AGENTS\.md)/
 
 const CONSUMER_BRIDGE_FILES = new Set(['guides/coming-from-template.md'])
 

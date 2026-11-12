@@ -78,6 +78,6 @@ final unscoped name.
 - MIT license and third-party notices covering React, React DOM, Zustand,
   vscode-elements and Codicons.
 
-[Unreleased]: https://github.com/mode777/desktop-ui-template/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.1
-[0.1.0]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.0
+[Unreleased]: https://github.com/mode777/vscode-workbench/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.1
+[0.1.0]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.0

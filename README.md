@@ -2,11 +2,11 @@
 
 A configurable, VS Code-style desktop UI shell for the web. Built with **React 19**, **TypeScript**, **Vite 8**, **Zustand** and the [**vscode-elements**](https://github.com/vscode-elements/elements) web components.
 
-[![CI](https://github.com/mode777/desktop-ui-template/actions/workflows/ci.yml/badge.svg)](https://github.com/mode777/desktop-ui-template/actions/workflows/ci.yml)
-[![Deploy to GitHub Pages](https://github.com/mode777/desktop-ui-template/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/mode777/desktop-ui-template/actions/workflows/deploy-pages.yml)
+[![CI](https://github.com/mode777/vscode-workbench/actions/workflows/ci.yml/badge.svg)](https://github.com/mode777/vscode-workbench/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/mode777/vscode-workbench/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/mode777/vscode-workbench/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Live:** [full template](https://mode777.github.io/desktop-ui-template/) · [minimal example](https://mode777.github.io/desktop-ui-template/minimal/) · [custom-shell example](https://mode777.github.io/desktop-ui-template/custom-shell/)
+**Live:** [full template](https://mode777.github.io/vscode-workbench/) · [minimal example](https://mode777.github.io/vscode-workbench/minimal/) · [custom-shell example](https://mode777.github.io/vscode-workbench/custom-shell/)
 
 ![Desktop UI Template screenshot](docs/screenshot.png)
 
@@ -75,13 +75,13 @@ repository docs. The repository docs describe how the kit is built and released.
 
 ### Using the package
 
-| Document                                                                    | What it covers                                                             |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Package README](packages/workbench/README.md)                              | Install, quickstart, adoption levels, offline docs and agent entry points. |
-| [Hosted documentation](https://mode777.github.io/desktop-ui-template/docs/) | Quickstart, concepts, recipes, reference and the eject guide.              |
-| [llms.txt](https://mode777.github.io/desktop-ui-template/llms.txt)          | A curated index for coding agents.                                         |
-| [Agent guide](packages/workbench/AGENTS.md)                                 | App-level rules, public imports and the verification checklist.            |
-| [Package changelog](packages/workbench/docs/changelog.md)                   | Consumer-visible changes and the prepared `0.1.0` surface.                 |
+| Document                                                                 | What it covers                                                             |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| [Package README](packages/workbench/README.md)                           | Install, quickstart, adoption levels, offline docs and agent entry points. |
+| [Hosted documentation](https://mode777.github.io/vscode-workbench/docs/) | Quickstart, concepts, recipes, reference and the eject guide.              |
+| [llms.txt](https://mode777.github.io/vscode-workbench/llms.txt)          | A curated index for coding agents.                                         |
+| [Agent guide](packages/workbench/AGENTS.md)                              | App-level rules, public imports and the verification checklist.            |
+| [Package changelog](packages/workbench/docs/changelog.md)                | Consumer-visible changes and the prepared `0.1.0` surface.                 |
 
 ### Working on the repository
 
@@ -254,7 +254,7 @@ directly from `@workbench-kit/react` primitives, backed by `@workbench-kit/core`
 It renders one tab, one resizable options sidebar and a status bar, and imports
 neither `@workbench-kit/preset-vscode` nor `apps/template/src/app` or
 `apps/template/src/demo`. It exists to prove selective adoption and to fail CI if
-preset or demo code leaks into a small app. Live: [minimal example](https://mode777.github.io/desktop-ui-template/minimal/).
+preset or demo code leaks into a small app. Live: [minimal example](https://mode777.github.io/vscode-workbench/minimal/).
 
 [`apps/custom-shell`](./apps/custom-shell/README.md) is the composition-level
 reference: a complete workbench assembled from `WorkbenchShell`,
@@ -262,7 +262,7 @@ reference: a complete workbench assembled from `WorkbenchShell`,
 bar, primary and secondary sidebars, tabbed editor, bottom panel and status bar.
 It uses a local reducer instead of the preset store, registers only
 `vscode-icon`, `vscode-tab-header`, `vscode-tabs` and `vscode-tab-panel`, and
-passes its own production-bundle composition check. Live: [custom-shell example](https://mode777.github.io/desktop-ui-template/custom-shell/).
+passes its own production-bundle composition check. Live: [custom-shell example](https://mode777.github.io/vscode-workbench/custom-shell/).
 
 The three adoption levels, using these examples as references:
 
@@ -571,7 +571,7 @@ Increasing a budget without a stated reason is a regression, not a fix.
 
 ## Roadmap
 
-The workbench is reusable at three levels — full preset, composed regions and individual primitives — without losing the copyable template. The five internal modules, the single public package, the template, minimal and custom-shell applications, documentation and release readiness are in place; the registry publish remains a manual, owner-approved step gated on the final scope/name. The staged plan, package boundaries, tree-shaking rules and acceptance criteria are in [ROADMAP.md](ROADMAP.md); the distribution model is in [docs/architecture.md](docs/architecture.md), and the adoption path starts at the [hosted consumer documentation](https://mode777.github.io/desktop-ui-template/docs/).
+The workbench is reusable at three levels — full preset, composed regions and individual primitives — without losing the copyable template. The five internal modules, the single public package, the template, minimal and custom-shell applications, documentation and release readiness are in place; `vscode-workbench` is published through the tag-triggered trusted-publishing workflow. The staged plan, package boundaries, tree-shaking rules and acceptance criteria are in [ROADMAP.md](ROADMAP.md); the distribution model is in [docs/architecture.md](docs/architecture.md), and the adoption path starts at the [hosted consumer documentation](https://mode777.github.io/vscode-workbench/docs/).
 
 ## Working with OpenCode
 

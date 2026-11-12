@@ -21,7 +21,7 @@ export default defineConfig({
   lang: 'en-US',
   title: manifest.title,
   description: manifest.description,
-  base: '/desktop-ui-template/docs/',
+  base: '/vscode-workbench/docs/',
   srcDir: resolve(here, '../content'),
   srcExclude: ['public/**'],
   outDir: resolve(here, '../dist'),
@@ -29,7 +29,7 @@ export default defineConfig({
   lastUpdated: false,
   head: [
     ['meta', { name: 'theme-color', content: '#181818' }],
-    ['link', { rel: 'icon', href: '/desktop-ui-template/favicon.svg' }],
+    ['link', { rel: 'icon', href: '/vscode-workbench/favicon.svg' }],
   ],
   themeConfig: {
     nav: [
@@ -42,7 +42,7 @@ export default defineConfig({
     sidebar: sections,
     search: { provider: 'local' },
     outline: { level: [2, 3] },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/mode777/desktop-ui-template' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/mode777/vscode-workbench' }],
     footer: {
       message: 'Workbench Kit is MIT licensed. The package is browser-only and 0.x.',
       copyright: 'Copyright the Workbench Kit contributors',

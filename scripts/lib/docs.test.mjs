@@ -109,6 +109,15 @@ describe('extractPublishedSpecifiers', () => {
     expect(isPlaceholderSpecifier('vscode-workbench/styles/*.css')).toBe(true)
     expect(isPlaceholderSpecifier('vscode-workbench/react')).toBe(false)
   })
+
+  it('ignores package-shaped paths inside URLs', () => {
+    const markdown =
+      'See https://github.com/mode777/vscode-workbench/issues and https://mode777.github.io/vscode-workbench/docs/. Use `vscode-workbench/react`.'
+
+    expect(extractPublishedSpecifiers(markdown).map((entry) => entry.specifier)).toEqual([
+      'vscode-workbench/react',
+    ])
+  })
 })
 
 describe('specifierToExportKey', () => {

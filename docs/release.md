@@ -81,7 +81,7 @@ The trusted publisher is configured once in the npm package settings:
 | Package           | `vscode-workbench`                                |
 | Provider          | GitHub Actions                                    |
 | Organization/user | `mode777`                                         |
-| Repository        | `desktop-ui-template`                             |
+| Repository        | `vscode-workbench`                                |
 | Workflow filename | `publish.yml`                                     |
 | Environment       | leave empty; the workflow declares no environment |
 
@@ -108,7 +108,7 @@ cat > package.json <<'JSON'
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mode777/desktop-ui-template.git",
+    "url": "git+https://github.com/mode777/vscode-workbench.git",
     "directory": "packages/workbench"
   }
 }
@@ -207,7 +207,7 @@ Then:
   is taken, stop and choose another approved name. Do not create a token.
 - **Trusted publisher `404`, `401` or `ENEEDAUTH`** — the repository, workflow
   filename or environment does not match the npm setting. The workflow must be
-  `publish.yml` in `mode777/desktop-ui-template` with no environment, and the job
+  `publish.yml` in `mode777/vscode-workbench` with no environment, and the job
   must grant `id-token: write`.
 - **npm authentication fails with an older CLI** — trusted publishing requires
   npm 11.5.1 or later. Node 24 from `.nvmrc` supplies a compatible npm.

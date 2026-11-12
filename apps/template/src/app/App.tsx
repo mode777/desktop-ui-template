@@ -67,7 +67,7 @@ export function App() {
         icon: 'code',
         onActivate: () => runWorkbenchCommand('go.welcome'),
       }}
-      commandCenterLabel="desktop-ui-template"
+      commandCenterLabel="vscode-workbench"
       statusBar={<StatusBar />}
       initialSession={{
         tabs: createInitialTabs(),

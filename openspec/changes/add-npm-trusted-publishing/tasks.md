@@ -15,7 +15,7 @@
 
 ## 3. Release documentation and repository guidance
 
-- [x] 3.1 Rewrite the publish sections of `docs/release.md`: add the table of contents entries, the one-time `vscode-workbench@0.0.0-bootstrap.0` placeholder under the `bootstrap` tag, the trusted-publisher settings (`mode777`, `desktop-ui-template`, `publish.yml`, empty environment), the automatic tag-release flow, the updated pre-release checklist ending in a tag push, and post-publish provenance/placeholder cleanup checks. Verify `npm run check:docs:contributor` passes and every `npm run` command named in the document exists.
+- [x] 3.1 Rewrite the publish sections of `docs/release.md`: add the table of contents entries, the one-time `vscode-workbench@0.0.0-bootstrap.0` placeholder under the `bootstrap` tag, the trusted-publisher settings (`mode777`, `vscode-workbench`, `publish.yml`, empty environment), the automatic tag-release flow, the updated pre-release checklist ending in a tag push, and post-publish provenance/placeholder cleanup checks. Verify `npm run check:docs:contributor` passes and every `npm run` command named in the document exists.
 - [x] 3.2 Update `AGENTS.md`, `docs/architecture.md`, `docs/migration.md` and `ROADMAP.md` to replace the provisional package name, the manual-publish policy and the CI-no-credentials statements with `vscode-workbench`, the one-time bootstrap and the OIDC tag workflow. Verify `npm run check:docs:contributor` and `npm run check:release` pass.
 - [x] 3.3 Add a short troubleshooting note to `docs/release.md` covering an unavailable unscoped name, the trusted-publisher repository/workflow mismatch, missing `id-token: write`, npm below 11.5.1, and tag/version mismatch. Verify the note names each error and the exact fix.
 

@@ -21,7 +21,7 @@ minor releases may include breaking changes; patch releases do not.
   `ContextMenu`.
 - Consumer documentation covering the quickstart, concepts, recipes, reference
   and eject path, shipped in the package and hosted at
-  <https://mode777.github.io/desktop-ui-template/docs/>.
+  <https://mode777.github.io/vscode-workbench/docs/>.
 - A generated `llms.txt` index, an app-level `AGENTS.md` guide and raw Markdown
   pages for coding agents.
 - `LICENSE` and `THIRD_PARTY_NOTICES.md` in the public tarball.
@@ -78,6 +78,6 @@ final unscoped name.
 - MIT license and third-party notices covering React, React DOM, Zustand,
   vscode-elements and Codicons.
 
-[Unreleased]: https://github.com/mode777/desktop-ui-template/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.1
-[0.1.0]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.0
+[Unreleased]: https://github.com/mode777/vscode-workbench/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.1
+[0.1.0]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.0

@@ -6,38 +6,38 @@ Package: `vscode-workbench` 0.1.1. Availability: published on the public npm reg
 
 ## Start here
 
-- [Workbench Kit](https://mode777.github.io/desktop-ui-template/docs/raw/index.md): Choose an adoption path and start building with the workbench kit.
-- [Quickstart](https://mode777.github.io/desktop-ui-template/docs/raw/quickstart.md): Install the package and render a selective workbench with one tab and one resizable sidebar.
+- [Workbench Kit](https://mode777.github.io/vscode-workbench/docs/raw/index.md): Choose an adoption path and start building with the workbench kit.
+- [Quickstart](https://mode777.github.io/vscode-workbench/docs/raw/quickstart.md): Install the package and render a selective workbench with one tab and one resizable sidebar.
 
 ## Concepts
 
-- [Concepts](https://mode777.github.io/desktop-ui-template/docs/raw/concepts.md): Adoption levels, state ownership, persistence, elements, styles and theming.
+- [Concepts](https://mode777.github.io/vscode-workbench/docs/raw/concepts.md): Adoption levels, state ownership, persistence, elements, styles and theming.
 
 ## Recipes
 
-- [Add a view](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/add-view.md): Add a sidebar or panel view and make it reachable from the configured region.
-- [Add a command](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/add-command.md): Add a command, a menu entry and a keyboard shortcut.
-- [Replace the document surface](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/replace-document.md): Keep tabs and layout while rendering your own editor, preview or document component.
-- [Theme the workbench](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/theme.md): Override tokens, add a theme and keep persisted theme behavior.
-- [Control persistence](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/persistence.md): Keep, replace or clear the preset persistence adapter.
-- [Eject from the preset](https://mode777.github.io/desktop-ui-template/docs/raw/recipes/eject.md): Move from the preset to composition and from composition to individual primitives.
+- [Add a view](https://mode777.github.io/vscode-workbench/docs/raw/recipes/add-view.md): Add a sidebar or panel view and make it reachable from the configured region.
+- [Add a command](https://mode777.github.io/vscode-workbench/docs/raw/recipes/add-command.md): Add a command, a menu entry and a keyboard shortcut.
+- [Replace the document surface](https://mode777.github.io/vscode-workbench/docs/raw/recipes/replace-document.md): Keep tabs and layout while rendering your own editor, preview or document component.
+- [Theme the workbench](https://mode777.github.io/vscode-workbench/docs/raw/recipes/theme.md): Override tokens, add a theme and keep persisted theme behavior.
+- [Control persistence](https://mode777.github.io/vscode-workbench/docs/raw/recipes/persistence.md): Keep, replace or clear the preset persistence adapter.
+- [Eject from the preset](https://mode777.github.io/vscode-workbench/docs/raw/recipes/eject.md): Move from the preset to composition and from composition to individual primitives.
 
 ## Guides
 
-- [Coming from the template](https://mode777.github.io/desktop-ui-template/docs/raw/guides/coming-from-template.md): Move a copied template application to the published package.
-- [Common mistakes](https://mode777.github.io/desktop-ui-template/docs/raw/guides/common-mistakes.md): Symptoms, causes and fixes for blank elements, missing styles and adoption errors.
+- [Coming from the template](https://mode777.github.io/vscode-workbench/docs/raw/guides/coming-from-template.md): Move a copied template application to the published package.
+- [Common mistakes](https://mode777.github.io/vscode-workbench/docs/raw/guides/common-mistakes.md): Symptoms, causes and fixes for blank elements, missing styles and adoption errors.
 
 ## For AI agents
 
-- [For AI agents](https://mode777.github.io/desktop-ui-template/docs/raw/guides/for-ai-agents.md): How coding agents should read the docs, choose a level and verify their work.
+- [For AI agents](https://mode777.github.io/vscode-workbench/docs/raw/guides/for-ai-agents.md): How coding agents should read the docs, choose a level and verify their work.
 
 ## Reference
 
-- [API reference](https://mode777.github.io/desktop-ui-template/docs/raw/reference/api.md): Preset props, primitives, headless helpers, element entries, styles and public types.
-- [Element entries](https://mode777.github.io/desktop-ui-template/docs/raw/reference/elements.md): Per-tag custom-element registrations and the tags each component renders.
-- [Style entries](https://mode777.github.io/desktop-ui-template/docs/raw/reference/styles.md): Tokens, base styles, the aggregate entry and per-component stylesheets.
-- [Public types](https://mode777.github.io/desktop-ui-template/docs/raw/reference/types.md): The public TypeScript types exported by the package.
+- [API reference](https://mode777.github.io/vscode-workbench/docs/raw/reference/api.md): Preset props, primitives, headless helpers, element entries, styles and public types.
+- [Element entries](https://mode777.github.io/vscode-workbench/docs/raw/reference/elements.md): Per-tag custom-element registrations and the tags each component renders.
+- [Style entries](https://mode777.github.io/vscode-workbench/docs/raw/reference/styles.md): Tokens, base styles, the aggregate entry and per-component stylesheets.
+- [Public types](https://mode777.github.io/vscode-workbench/docs/raw/reference/types.md): The public TypeScript types exported by the package.
 
 ## Project
 
-- [Changelog](https://mode777.github.io/desktop-ui-template/docs/raw/changelog.md): Consumer-visible changes and the initial public surface.
+- [Changelog](https://mode777.github.io/vscode-workbench/docs/raw/changelog.md): Consumer-visible changes and the initial public surface.

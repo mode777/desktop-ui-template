@@ -2,7 +2,7 @@
   "packageName": "vscode-workbench",
   "version": "0.1.1",
   "availability": "published",
-  "siteUrl": "https://mode777.github.io/desktop-ui-template",
+  "siteUrl": "https://mode777.github.io/vscode-workbench",
   "title": "Workbench Kit",
   "description": "A configurable VS Code-style workbench for React applications: preset shell, composition primitives, headless helpers, element registrations and styles.",
   "sections": [

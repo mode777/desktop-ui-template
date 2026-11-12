@@ -127,7 +127,7 @@ cat > package.json <<'JSON'
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mode777/desktop-ui-template.git",
+    "url": "git+https://github.com/mode777/vscode-workbench.git",
     "directory": "packages/workbench"
   }
 }
@@ -164,7 +164,7 @@ npm package settings:
 | Package           | `vscode-workbench`                                 |
 | Provider          | GitHub Actions                                     |
 | Organization/user | `mode777`                                          |
-| Repository        | `desktop-ui-template`                              |
+| Repository        | `vscode-workbench`                                 |
 | Workflow filename | `publish.yml`                                      |
 | Environment       | leave empty (the workflow declares no environment) |
 
