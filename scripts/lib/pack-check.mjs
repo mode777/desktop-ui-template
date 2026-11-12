@@ -261,14 +261,14 @@ globalThis.self = browser
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
 
 for (const subpath of resolveSubpaths) {
-  const specifier = subpath.startsWith('.') ? \`@workbench-kit/workbench\${subpath.slice(1)}\` : subpath
+  const specifier = subpath.startsWith('.') ? \`vscode-workbench\${subpath.slice(1)}\` : subpath
   const resolved = fileURLToPath(import.meta.resolve(specifier))
 
   if (!existsSync(resolved)) throw new Error(\`Missing export target for \${specifier}: \${resolved}\`)
 }
 
 for (const { subpath, exports: names } of valueChecks) {
-  const specifier = subpath === '.' ? '@workbench-kit/workbench' : \`@workbench-kit/workbench\${subpath.slice(1)}\`
+  const specifier = subpath === '.' ? 'vscode-workbench' : \`vscode-workbench\${subpath.slice(1)}\`
   const module = await import(specifier)
 
   for (const name of names) {
@@ -279,7 +279,7 @@ for (const { subpath, exports: names } of valueChecks) {
 }
 
 for (const { subpath } of elementChecks) {
-  const specifier = \`@workbench-kit/workbench\${subpath.slice(1)}\`
+  const specifier = \`vscode-workbench\${subpath.slice(1)}\`
   await import(specifier)
 }
 
@@ -299,8 +299,7 @@ export function createConsumerTypecheckSource({ jsSubpaths, cssSubpaths, typesSu
   const lines = []
 
   for (const subpath of jsSubpaths) {
-    const specifier =
-      subpath === '.' ? '@workbench-kit/workbench' : `@workbench-kit/workbench${subpath.slice(1)}`
+    const specifier = subpath === '.' ? 'vscode-workbench' : `vscode-workbench${subpath.slice(1)}`
     const names = VALUE_EXPORTS[subpath]
 
     if (names) {
@@ -311,14 +310,14 @@ export function createConsumerTypecheckSource({ jsSubpaths, cssSubpaths, typesSu
   }
 
   if (typesSubpath) {
-    lines.push(`import ${quote(`@workbench-kit/workbench${typesSubpath.slice(1)}`)}`)
+    lines.push(`import ${quote(`vscode-workbench${typesSubpath.slice(1)}`)}`)
   }
 
   for (const subpath of cssSubpaths) {
-    lines.push(`import ${quote(`@workbench-kit/workbench${subpath.slice(1)}`)}`)
+    lines.push(`import ${quote(`vscode-workbench${subpath.slice(1)}`)}`)
   }
 
-  lines.push("import type { WorkbenchConfig } from '@workbench-kit/workbench'")
+  lines.push("import type { WorkbenchConfig } from 'vscode-workbench'")
   lines.push('')
   lines.push(
     'export const consumerChecks = [VSCodeWorkbench, useWorkbenchStore, WorkbenchShell, TabStrip, clampSize]',
@@ -346,5 +345,5 @@ export function createConsumerTsConfig() {
 }
 
 export function createCssDeclarations() {
-  return "declare module '*.css'\ndeclare module '@workbench-kit/workbench/styles'\n"
+  return "declare module '*.css'\ndeclare module 'vscode-workbench/styles'\n"
 }

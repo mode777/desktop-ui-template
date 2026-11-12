@@ -12,13 +12,13 @@ Styles are explicit imports. Importing JavaScript does not load CSS.
 
 ## Aggregate entries
 
-| Entry                                           | Scope                                                |
-| ----------------------------------------------- | ---------------------------------------------------- |
-| `@workbench-kit/workbench/styles/tokens.css`    | Palette, theme and shared custom properties          |
-| `@workbench-kit/workbench/styles/global.css`    | Base/reset styles scoped to the workbench            |
-| `@workbench-kit/workbench/styles/workbench.css` | Every component entry below, in the documented order |
-| `@workbench-kit/workbench/styles/index.css`     | Tokens, global and workbench in that order           |
-| `@workbench-kit/workbench/styles`               | Alias of the aggregate entry                         |
+| Entry                                   | Scope                                                |
+| --------------------------------------- | ---------------------------------------------------- |
+| `vscode-workbench/styles/tokens.css`    | Palette, theme and shared custom properties          |
+| `vscode-workbench/styles/global.css`    | Base/reset styles scoped to the workbench            |
+| `vscode-workbench/styles/workbench.css` | Every component entry below, in the documented order |
+| `vscode-workbench/styles/index.css`     | Tokens, global and workbench in that order           |
+| `vscode-workbench/styles`               | Alias of the aggregate entry                         |
 
 ## Component entries
 
@@ -45,12 +45,12 @@ component's rules.
 ## Example
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 ```
 
 Use `workbench.css` or the `styles` alias when the application renders most

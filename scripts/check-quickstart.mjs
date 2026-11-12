@@ -64,7 +64,7 @@ try {
 
   const consumerDir = join(tempRoot, 'consumer')
   const consumerModules = join(consumerDir, 'node_modules')
-  const packageLink = join(consumerModules, '@workbench-kit/workbench')
+  const packageLink = join(consumerModules, 'vscode-workbench')
 
   mkdirSync(dirname(packageLink), { recursive: true })
   renameSync(join(extractRoot, 'package'), packageLink)
@@ -104,7 +104,7 @@ try {
         type: 'module',
         scripts: { build: 'vite build', typecheck: 'tsc --noEmit' },
         dependencies: {
-          '@workbench-kit/workbench': '0.1.0',
+          'vscode-workbench': '0.1.0',
           '@vscode-elements/elements': '^2.5.1',
           react: '^19.0.0',
           'react-dom': '^19.0.0',

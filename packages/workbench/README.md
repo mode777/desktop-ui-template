@@ -1,4 +1,4 @@
-# @workbench-kit/workbench
+# vscode-workbench
 
 A configurable VS Code-style workbench for React applications. The package
 exposes a full preset, controlled composition primitives, headless helpers,
@@ -15,7 +15,7 @@ registry. When the first owner-approved publish lands, install the package and
 its peers with:
 
 ```bash
-npm install @workbench-kit/workbench react react-dom @vscode-elements/elements
+npm install vscode-workbench react react-dom @vscode-elements/elements
 ```
 
 Until then, build the package in the repository and install the local tarball:
@@ -36,18 +36,13 @@ styles and the component entries you use:
 
 ```tsx
 import { useState } from 'react'
-import { closeTabIn, reorderTabIn } from '@workbench-kit/workbench/core'
-import {
-  ResizablePane,
-  TabStrip,
-  WorkbenchShell,
-  type TabStripItem,
-} from '@workbench-kit/workbench/react'
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import { closeTabIn, reorderTabIn } from 'vscode-workbench/core'
+import { ResizablePane, TabStrip, WorkbenchShell, type TabStripItem } from 'vscode-workbench/react'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 
 const initialTabs: TabStripItem[] = [{ id: 'readme', title: 'README.md' }]
 
@@ -122,7 +117,7 @@ The hosted site also publishes raw Markdown for clean agent ingestion.
 ## For AI agents
 
 Read [`AGENTS.md`](./AGENTS.md), then the [consumer docs](./docs/index.md). Use
-only public `@workbench-kit/workbench` subpaths, register only rendered
+only public `vscode-workbench` subpaths, register only rendered
 custom-element tags, import `tokens.css` and `global.css` before component
 styles, and verify with the application's build and TypeScript check. The
 workbench is browser-only; do not evaluate it during a server render.

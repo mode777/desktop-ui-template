@@ -23,19 +23,19 @@ function app(files) {
 
 const goodPackage = JSON.stringify({
   dependencies: {
-    '@workbench-kit/workbench': '0.1.0',
+    'vscode-workbench': '0.1.0',
     react: '^19.0.0',
     'react-dom': '^19.0.0',
     '@vscode-elements/elements': '^2.5.1',
   },
 })
 
-const goodSource = `import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import { WorkbenchShell } from '@workbench-kit/workbench/react'
+const goodSource = `import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import { WorkbenchShell } from 'vscode-workbench/react'
 
 export function App() {
   return <WorkbenchShell><vscode-icon name="files" /><vscode-tab-header title="README" /></WorkbenchShell>
@@ -68,9 +68,9 @@ describe('checkAdoption', () => {
     const root = app({
       'package.json': goodPackage,
       'src/main.tsx': `import '@workbench-kit/react'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
 export function App() { return <WorkbenchShell><vscode-icon name="files" /></WorkbenchShell> }
 `,
     })
@@ -84,8 +84,8 @@ export function App() { return <WorkbenchShell><vscode-icon name="files" /></Wor
   it('reports missing base styles', () => {
     const root = app({
       'package.json': goodPackage,
-      'src/main.tsx': `import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/styles/shell.css'
+      'src/main.tsx': `import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/styles/shell.css'
 export function App() { return <WorkbenchShell><vscode-icon name="files" /></WorkbenchShell> }
 `,
     })
@@ -99,7 +99,7 @@ export function App() { return <WorkbenchShell><vscode-icon name="files" /></Wor
   it('reports preset and demo leaks in a composition app', () => {
     const root = app({
       'package.json': goodPackage,
-      'src/main.tsx': `${goodSource}\nimport { useWorkbenchStore } from '@workbench-kit/workbench'
+      'src/main.tsx': `${goodSource}\nimport { useWorkbenchStore } from 'vscode-workbench'
 export const store = useWorkbenchStore
 `,
     })
@@ -111,7 +111,7 @@ export const store = useWorkbenchStore
   it('reports version and peer problems', () => {
     const root = app({
       'package.json': JSON.stringify({
-        dependencies: { '@workbench-kit/workbench': '^0.2.0', react: '^18.0.0' },
+        dependencies: { 'vscode-workbench': '^0.2.0', react: '^18.0.0' },
       }),
       'src/main.tsx': goodSource,
     })
@@ -125,7 +125,7 @@ export const store = useWorkbenchStore
   it('allows preset markers at the preset level', () => {
     const root = app({
       'package.json': goodPackage,
-      'src/main.tsx': `import { VSCodeWorkbench, useWorkbenchStore } from '@workbench-kit/workbench'
+      'src/main.tsx': `import { VSCodeWorkbench, useWorkbenchStore } from 'vscode-workbench'
 export const store = useWorkbenchStore
 export function App() { return <VSCodeWorkbench /> }
 `,

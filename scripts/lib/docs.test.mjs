@@ -92,33 +92,30 @@ describe('extractNpmRunScripts', () => {
 describe('extractPublishedSpecifiers', () => {
   it('extracts declared subpaths and trims punctuation', () => {
     const markdown =
-      'Use `@workbench-kit/workbench`, `@workbench-kit/workbench/react`, and `@workbench-kit/workbench/styles/tokens.css`.'
+      'Use `vscode-workbench`, `vscode-workbench/react`, and `vscode-workbench/styles/tokens.css`.'
 
     expect(extractPublishedSpecifiers(markdown).map((entry) => entry.specifier)).toEqual([
-      '@workbench-kit/workbench',
-      '@workbench-kit/workbench/react',
-      '@workbench-kit/workbench/styles/tokens.css',
+      'vscode-workbench',
+      'vscode-workbench/react',
+      'vscode-workbench/styles/tokens.css',
     ])
   })
 
   it('skips placeholders and unknown private-looking names', () => {
-    const markdown =
-      'Use `@workbench-kit/workbench/elements/<tag>` or `@workbench-kit/workbench/styles/*.css`.'
+    const markdown = 'Use `vscode-workbench/elements/<tag>` or `vscode-workbench/styles/*.css`.'
 
     expect(extractPublishedSpecifiers(markdown)).toEqual([])
-    expect(isPlaceholderSpecifier('@workbench-kit/workbench/elements/<tag>')).toBe(true)
-    expect(isPlaceholderSpecifier('@workbench-kit/workbench/styles/*.css')).toBe(true)
-    expect(isPlaceholderSpecifier('@workbench-kit/workbench/react')).toBe(false)
+    expect(isPlaceholderSpecifier('vscode-workbench/elements/<tag>')).toBe(true)
+    expect(isPlaceholderSpecifier('vscode-workbench/styles/*.css')).toBe(true)
+    expect(isPlaceholderSpecifier('vscode-workbench/react')).toBe(false)
   })
 })
 
 describe('specifierToExportKey', () => {
   it('maps the package root and subpaths to export keys', () => {
-    expect(specifierToExportKey('@workbench-kit/workbench')).toBe('.')
-    expect(specifierToExportKey('@workbench-kit/workbench/react')).toBe('./react')
-    expect(specifierToExportKey('@workbench-kit/workbench/styles/tokens.css')).toBe(
-      './styles/tokens.css',
-    )
+    expect(specifierToExportKey('vscode-workbench')).toBe('.')
+    expect(specifierToExportKey('vscode-workbench/react')).toBe('./react')
+    expect(specifierToExportKey('vscode-workbench/styles/tokens.css')).toBe('./styles/tokens.css')
     expect(specifierToExportKey('@workbench-kit/core')).toBeNull()
   })
 })

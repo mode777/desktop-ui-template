@@ -42,7 +42,7 @@ your own state or context inside it.
 
 ```tsx
 // src/views.tsx
-import type { WorkbenchViewRegistry } from '@workbench-kit/workbench'
+import type { WorkbenchViewRegistry } from 'vscode-workbench'
 import { ExplorerView } from './views/ExplorerView'
 import { InspectorView } from './views/InspectorView'
 
@@ -72,7 +72,7 @@ The registry key and the `id` should match. The `icon` is a Codicon name.
 
 ```ts
 // src/workbench.config.ts
-import type { WorkbenchConfig } from '@workbench-kit/workbench'
+import type { WorkbenchConfig } from 'vscode-workbench'
 
 export const config: WorkbenchConfig = {
   titleBar: {
@@ -123,7 +123,7 @@ from the View menu and the command palette.
 
 ```tsx
 // src/App.tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
+import { VSCodeWorkbench } from 'vscode-workbench'
 import { commands } from './commands'
 import { menus } from './menus'
 import { config } from './workbench.config'

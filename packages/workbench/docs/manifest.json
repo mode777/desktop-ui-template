@@ -1,5 +1,5 @@
 {
-  "packageName": "@workbench-kit/workbench",
+  "packageName": "vscode-workbench",
   "version": "0.1.0",
   "availability": "preview",
   "siteUrl": "https://mode777.github.io/desktop-ui-template",

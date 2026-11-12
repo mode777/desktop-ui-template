@@ -29,7 +29,7 @@ function fixturePackage() {
     'package.json',
     `${JSON.stringify(
       {
-        name: '@workbench-kit/workbench',
+        name: 'vscode-workbench',
         version: '0.1.0',
         private: false,
         type: 'module',

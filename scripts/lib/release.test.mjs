@@ -4,9 +4,40 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 
-import { checkRelease, formatReleaseProblem } from './release.mjs'
+import { checkRelease, checkReleaseTag, formatReleaseProblem } from './release.mjs'
 
 const roots = []
+
+const validWorkflow = `name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm ci
+      - run: npm run check
+      - run: npm publish --access public --provenance
+        working-directory: packages/workbench
+`
+
+function writeWorkflow(root, content = validWorkflow) {
+  const directory = join(root, '.github', 'workflows')
+  mkdirSync(directory, { recursive: true })
+  writeFileSync(join(directory, 'publish.yml'), content)
+  return join(directory, 'publish.yml')
+}
 
 function createFixture() {
   const root = mkdtempSync(join(tmpdir(), 'workbench-release-'))
@@ -19,7 +50,7 @@ function createFixture() {
       path: `packages/${name}`,
     })),
     publicPackage: {
-      name: '@workbench-kit/workbench',
+      name: 'vscode-workbench',
       path: 'packages/workbench',
     },
   }
@@ -48,7 +79,7 @@ function createFixture() {
     join(facadeDirectory, 'package.json'),
     `${JSON.stringify(
       {
-        name: '@workbench-kit/workbench',
+        name: 'vscode-workbench',
         version: '0.1.0',
         private: false,
         license: 'MIT',
@@ -62,6 +93,8 @@ function createFixture() {
       2,
     )}\n`,
   )
+
+  writeWorkflow(root)
 
   return root
 }
@@ -156,5 +189,116 @@ describe('checkRelease', () => {
         root,
       ),
     ).toBe('packages/core/package.json: Version differs. (version-mismatch)')
+  })
+})
+
+describe('publish workflow checks', () => {
+  it('requires the publish workflow file', () => {
+    const root = createFixture()
+    rmSync(join(root, '.github'), { recursive: true, force: true })
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-missing' }),
+    )
+  })
+
+  it('requires a v* tag trigger', () => {
+    const root = createFixture()
+    writeWorkflow(root, validWorkflow.replace("- 'v*'", "- 'release-*'"))
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-trigger' }),
+    )
+  })
+
+  it('requires the OIDC permission', () => {
+    const root = createFixture()
+    writeWorkflow(root, validWorkflow.replace('id-token: write', 'id-token: none'))
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-oidc' }),
+    )
+  })
+
+  it('keeps contents read', () => {
+    const root = createFixture()
+    writeWorkflow(root, validWorkflow.split('contents: read').join('contents: write'))
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-permissions' }),
+    )
+  })
+
+  it('rejects long-lived token references', () => {
+    const root = createFixture()
+    writeWorkflow(
+      root,
+      validWorkflow.replace(
+        '- run: npm publish',
+        'env:\n          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}\n      - run: npm publish',
+      ),
+    )
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-token' }),
+    )
+  })
+
+  it('publishes only from the facade directory', () => {
+    const root = createFixture()
+    writeWorkflow(
+      root,
+      validWorkflow.replace(
+        'working-directory: packages/workbench',
+        'working-directory: packages/core',
+      ),
+    )
+
+    const result = checkRelease(root)
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({ rule: 'publish-workflow-target' }),
+    )
+  })
+})
+
+describe('checkReleaseTag', () => {
+  it('accepts the tag that matches the facade version', () => {
+    const root = createFixture()
+    const result = checkReleaseTag(root, 'v0.1.0')
+
+    expect(result.tag).toBe('v0.1.0')
+    expect(result.version).toBe('0.1.0')
+    expect(result.expectedTag).toBe('v0.1.0')
+    expect(result.problems).toEqual([])
+  })
+
+  it('rejects a tag that differs from the facade version', () => {
+    const root = createFixture()
+    const result = checkReleaseTag(root, 'v0.2.0')
+
+    expect(result.problems).toContainEqual(
+      expect.objectContaining({
+        rule: 'tag-version-mismatch',
+        file: join(root, 'packages/workbench/package.json'),
+      }),
+    )
+  })
+
+  it('rejects a missing tag', () => {
+    const root = createFixture()
+    const result = checkReleaseTag(root, '')
+
+    expect(result.problems).toContainEqual(expect.objectContaining({ rule: 'missing-tag' }))
   })
 })

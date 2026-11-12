@@ -51,10 +51,10 @@ from the package.
 
 ```ts
 // src/main.tsx
-import '@workbench-kit/workbench/styles/tokens.css'
+import 'vscode-workbench/styles/tokens.css'
 import './theme.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 ```
 
 The order matters: tokens define the defaults, your file overrides them, and the
@@ -63,7 +63,7 @@ base and component styles consume the result.
 ## 3. Use the preset theme state
 
 ```tsx
-import { useWorkbenchStore } from '@workbench-kit/workbench'
+import { useWorkbenchStore } from 'vscode-workbench'
 
 export function ThemeToggle() {
   const theme = useWorkbenchStore((state) => state.theme)

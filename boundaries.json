@@ -22,7 +22,7 @@
       "layer": "kit-preset",
       "root": "packages/preset-vscode"
     },
-    "@workbench-kit/workbench": {
+    "vscode-workbench": {
       "layer": "kit-workbench",
       "root": "packages/workbench"
     }

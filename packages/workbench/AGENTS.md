@@ -1,6 +1,6 @@
 # Workbench Kit application guide
 
-You are working in an application that depends on `@workbench-kit/workbench`.
+You are working in an application that depends on `vscode-workbench`.
 This guide is for application work. It is not a guide for changing the package
 itself.
 
@@ -16,7 +16,7 @@ not your application. Application changes belong in the application's source.
 5. `docs/reference/api.md` for exact props, callbacks and types.
 
 If you only have the installed package, the same files are in
-`node_modules/@workbench-kit/workbench/`.
+`node_modules/vscode-workbench/`.
 
 ## Choose one level
 
@@ -34,14 +34,14 @@ store with a second source of truth for the same layout or tab fields.
 Use the single package and its subpaths:
 
 ```ts
-import { VSCodeWorkbench, useWorkbenchStore } from '@workbench-kit/workbench'
-import { WorkbenchShell, TabStrip } from '@workbench-kit/workbench/react'
-import { closeTabIn, readVersioned } from '@workbench-kit/workbench/core'
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/styles/tokens.css'
+import { VSCodeWorkbench, useWorkbenchStore } from 'vscode-workbench'
+import { WorkbenchShell, TabStrip } from 'vscode-workbench/react'
+import { closeTabIn, readVersioned } from 'vscode-workbench/core'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/styles/tokens.css'
 ```
 
-Do not import any package name other than `@workbench-kit/workbench`. The
+Do not import any package name other than `vscode-workbench`. The
 repository-internal workspace names are not install targets.
 
 Do not edit files under `node_modules`. If the kit needs a change, that is a
@@ -94,8 +94,8 @@ Custom elements are side-effect registrations. Register only the tags the
 application renders:
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
 ```
 
 The preset registers its own subset. Composition and primitive consumers must
@@ -103,7 +103,7 @@ register the tags behind the components they use. A missing registration usually
 shows up as a blank custom element, not a build error.
 
 Prefer per-tag entries over `elements/all`. Add
-`@workbench-kit/workbench/elements/types` once if the application needs the JSX
+`vscode-workbench/elements/types` once if the application needs the JSX
 declarations.
 
 ## Styles
@@ -112,9 +112,9 @@ Import tokens and base styles first, then the aggregate or the exact component
 entries:
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 ```
 
 Component entries are additive; they do not load tokens, base styles or another
@@ -156,7 +156,7 @@ Stop and ask the user before:
 
 1. The build passes.
 2. The TypeScript check passes.
-3. The app imports only public `@workbench-kit/workbench` subpaths.
+3. The app imports only public `vscode-workbench` subpaths.
 4. Every rendered custom-element tag has a registration import.
 5. Tokens, global styles and the needed component styles are loaded.
 6. The app renders in the browser without unknown custom-element or SSR errors.

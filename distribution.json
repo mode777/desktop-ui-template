@@ -28,7 +28,7 @@
     }
   ],
   "publicPackage": {
-    "name": "@workbench-kit/workbench",
+    "name": "vscode-workbench",
     "path": "packages/workbench",
     "requiredExportPrefixes": [".", "./react", "./core", "./elements/", "./styles/"],
     "requiredPeers": ["react", "react-dom", "@vscode-elements/elements"]

@@ -1,12 +1,12 @@
-# Migrating to @workbench-kit/workbench
+# Migrating to vscode-workbench
 
 This guide moves an application from a copied template or from the repository's
 private workspace packages to the single published package. The target is always
-one install: `@workbench-kit/workbench`.
+one install: `vscode-workbench`.
 
-The npm scope and package name are provisional until the first publish is
-approved. Replace the package name in the commands below if the release uses a
-different scope. See [`release.md`](./release.md).
+The package is published as `vscode-workbench`; the provisional
+`@workbench-kit/workbench` name was never published. See
+[`release.md`](./release.md).
 
 - [Choose the adoption level](#choose-the-adoption-level)
 - [Install](#install)
@@ -31,7 +31,7 @@ supported, but the state and command wiring changes.
 ## Install
 
 ```bash
-npm install @workbench-kit/workbench react react-dom @vscode-elements/elements
+npm install vscode-workbench react react-dom @vscode-elements/elements
 ```
 
 React 19 and React DOM 19 are peer dependencies. `@vscode-elements/elements`
@@ -47,19 +47,19 @@ consumers.
 
 ### From the current workspace packages
 
-| Old import                                     | New import                                        |
-| ---------------------------------------------- | ------------------------------------------------- |
-| `@workbench-kit/preset-vscode`                 | `@workbench-kit/workbench`                        |
-| `@workbench-kit/react`                         | `@workbench-kit/workbench/react`                  |
-| `@workbench-kit/core`                          | `@workbench-kit/workbench/core`                   |
-| `@workbench-kit/elements/all`                  | `@workbench-kit/workbench/elements/all`           |
-| `@workbench-kit/elements/<tag>`                | `@workbench-kit/workbench/elements/<tag>`         |
-| `@workbench-kit/elements/types`                | `@workbench-kit/workbench/elements/types`         |
-| `@workbench-kit/styles-vscode/tokens.css`      | `@workbench-kit/workbench/styles/tokens.css`      |
-| `@workbench-kit/styles-vscode/global.css`      | `@workbench-kit/workbench/styles/global.css`      |
-| `@workbench-kit/styles-vscode/workbench.css`   | `@workbench-kit/workbench/styles/workbench.css`   |
-| `@workbench-kit/styles-vscode/<component>.css` | `@workbench-kit/workbench/styles/<component>.css` |
-| `@workbench-kit/styles-vscode`                 | `@workbench-kit/workbench/styles`                 |
+| Old import                                     | New import                                |
+| ---------------------------------------------- | ----------------------------------------- |
+| `@workbench-kit/preset-vscode`                 | `vscode-workbench`                        |
+| `@workbench-kit/react`                         | `vscode-workbench/react`                  |
+| `@workbench-kit/core`                          | `vscode-workbench/core`                   |
+| `@workbench-kit/elements/all`                  | `vscode-workbench/elements/all`           |
+| `@workbench-kit/elements/<tag>`                | `vscode-workbench/elements/<tag>`         |
+| `@workbench-kit/elements/types`                | `vscode-workbench/elements/types`         |
+| `@workbench-kit/styles-vscode/tokens.css`      | `vscode-workbench/styles/tokens.css`      |
+| `@workbench-kit/styles-vscode/global.css`      | `vscode-workbench/styles/global.css`      |
+| `@workbench-kit/styles-vscode/workbench.css`   | `vscode-workbench/styles/workbench.css`   |
+| `@workbench-kit/styles-vscode/<component>.css` | `vscode-workbench/styles/<component>.css` |
+| `@workbench-kit/styles-vscode`                 | `vscode-workbench/styles`                 |
 
 `<component>` is one of `shell`, `title-bar`, `menu-bar`, `icon-button`,
 `activity-bar`, `resizable-pane`, `sidebar`, `tab-strip`, `editor-area`,
@@ -67,32 +67,32 @@ consumers.
 
 ### From the pre-workspace template
 
-| Old location                                           | New owner                                                                         |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| `src/layout/Workbench.tsx`                             | `VSCodeWorkbench`, or `WorkbenchShell` + regions for composition                  |
-| `src/layout/components/TitleBar.tsx`                   | `TitleBar` from `@workbench-kit/workbench/react`; preset keeps a store adapter    |
-| `src/layout/components/ActivityBar.tsx`                | `ActivityBar` from `@workbench-kit/workbench/react`; preset maps items            |
-| `src/layout/components/Sidebar.tsx`                    | `Sidebar` from `@workbench-kit/workbench/react`; preset resolves views            |
-| `src/layout/components/SecondarySideBar.tsx`           | `Sidebar` with a secondary modifier; preset resolves views                        |
-| `src/layout/components/BottomPanel.tsx`                | `Panel` from `@workbench-kit/workbench/react`; preset maps view content           |
-| `src/layout/components/EditorArea.tsx`                 | Preset editor area; application owns the document renderer                        |
-| `src/layout/components/StatusBar.tsx`                  | `StatusBar` from `@workbench-kit/workbench/react`, or the preset `statusBar` prop |
-| `src/layout/components/MenuBar.tsx`                    | `MenuBar` from `@workbench-kit/workbench/react`                                   |
-| `src/layout/components/VsContextMenu.tsx`              | `ContextMenu` from `@workbench-kit/workbench/react`                               |
-| `src/layout/components/QuickOpen.tsx`                  | Preset quick open; application supplies files and open callback                   |
-| `src/layout/components/Notifications.tsx`              | Preset notification surface                                                       |
-| `src/layout/components/ResizablePane.tsx`              | `ResizablePane` from `@workbench-kit/workbench/react`                             |
-| `src/components/IconButton.tsx`                        | `IconButton` from `@workbench-kit/workbench/react`                                |
-| `src/layout/workbench.config.ts`                       | Application config passed as the `config` prop                                    |
-| `src/layout/types.ts`                                  | Public types from `@workbench-kit/workbench`                                      |
-| `src/store/workbench-store.ts`                         | `useWorkbenchStore` from the preset, or consumer-owned state                      |
-| `src/commands/*`                                       | Application commands composed with `defaultCommands`                              |
-| `src/views/*` and `src/data/*`                         | Stay in the application                                                           |
-| `src/styles/tokens.css`, `global.css`, `workbench.css` | Package style entries                                                             |
-| `src/vscode-elements.ts`                               | Per-tag entries, or `elements/all` for a demo                                     |
+| Old location                                           | New owner                                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `src/layout/Workbench.tsx`                             | `VSCodeWorkbench`, or `WorkbenchShell` + regions for composition          |
+| `src/layout/components/TitleBar.tsx`                   | `TitleBar` from `vscode-workbench/react`; preset keeps a store adapter    |
+| `src/layout/components/ActivityBar.tsx`                | `ActivityBar` from `vscode-workbench/react`; preset maps items            |
+| `src/layout/components/Sidebar.tsx`                    | `Sidebar` from `vscode-workbench/react`; preset resolves views            |
+| `src/layout/components/SecondarySideBar.tsx`           | `Sidebar` with a secondary modifier; preset resolves views                |
+| `src/layout/components/BottomPanel.tsx`                | `Panel` from `vscode-workbench/react`; preset maps view content           |
+| `src/layout/components/EditorArea.tsx`                 | Preset editor area; application owns the document renderer                |
+| `src/layout/components/StatusBar.tsx`                  | `StatusBar` from `vscode-workbench/react`, or the preset `statusBar` prop |
+| `src/layout/components/MenuBar.tsx`                    | `MenuBar` from `vscode-workbench/react`                                   |
+| `src/layout/components/VsContextMenu.tsx`              | `ContextMenu` from `vscode-workbench/react`                               |
+| `src/layout/components/QuickOpen.tsx`                  | Preset quick open; application supplies files and open callback           |
+| `src/layout/components/Notifications.tsx`              | Preset notification surface                                               |
+| `src/layout/components/ResizablePane.tsx`              | `ResizablePane` from `vscode-workbench/react`                             |
+| `src/components/IconButton.tsx`                        | `IconButton` from `vscode-workbench/react`                                |
+| `src/layout/workbench.config.ts`                       | Application config passed as the `config` prop                            |
+| `src/layout/types.ts`                                  | Public types from `vscode-workbench`                                      |
+| `src/store/workbench-store.ts`                         | `useWorkbenchStore` from the preset, or consumer-owned state              |
+| `src/commands/*`                                       | Application commands composed with `defaultCommands`                      |
+| `src/views/*` and `src/data/*`                         | Stay in the application                                                   |
+| `src/styles/tokens.css`, `global.css`, `workbench.css` | Package style entries                                                     |
+| `src/vscode-elements.ts`                               | Per-tag entries, or `elements/all` for a demo                             |
 
 A tab strip extracted from `EditorArea` becomes `TabStrip` from
-`@workbench-kit/workbench/react`. A pane extracted from `ResizablePane` becomes
+`vscode-workbench/react`. A pane extracted from `ResizablePane` becomes
 the controlled `ResizablePane` with `size` and `onSizeChange`. The region chrome
 maps directly as well: `ActivityBar` takes items and an active id, `Sidebar`
 takes header data and a body slot, `Panel` takes tab content, `StatusBar` takes
@@ -112,7 +112,7 @@ The preset knows about regions, not about your product. Keep these in your app:
 Compose generic and application commands explicitly:
 
 ```ts
-import { createCommandRegistry, defaultCommands } from '@workbench-kit/workbench'
+import { createCommandRegistry, defaultCommands } from 'vscode-workbench'
 
 const commands = createCommandRegistry([...defaultCommands, ...appCommands])
 ```
@@ -151,13 +151,13 @@ Register only the custom elements your markup renders. The preset registers its
 own subset; a composition consumer must register at least:
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
 ```
 
-Add `@workbench-kit/workbench/elements/types` once in a TypeScript declaration
+Add `vscode-workbench/elements/types` once in a TypeScript declaration
 file or app entry so JSX knows the registered tags. Prefer per-tag entries over
-`@workbench-kit/workbench/elements/all`.
+`vscode-workbench/elements/all`.
 
 Import styles explicitly. There are two equivalent paths:
 
@@ -167,17 +167,17 @@ Import styles explicitly. There are two equivalent paths:
   component stylesheets the application renders.
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 import './app.css'
 ```
 
-`@workbench-kit/workbench/styles/workbench.css` is the aggregate of every
-component entry. `@workbench-kit/workbench/styles` is the aggregate alias that
+`vscode-workbench/styles/workbench.css` is the aggregate of every
+component entry. `vscode-workbench/styles` is the aggregate alias that
 also loads tokens and global styles in order. Component entries are additive:
 they do not load tokens, base styles or another component's rules. Application
 view selectors belong in application CSS.
@@ -203,7 +203,7 @@ view selectors belong in application CSS.
 
 | Failure                        | Symptom                                                                      | Fix                                                                                                                        |
 | ------------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Aggregate element registration | The bundle contains every tag, or unused elements are registered.            | Import only `@workbench-kit/workbench/elements/<tag>` for tags in your markup; keep `elements/all` for demos.              |
+| Aggregate element registration | The bundle contains every tag, or unused elements are registered.            | Import only `vscode-workbench/elements/<tag>` for tags in your markup; keep `elements/all` for demos.                      |
 | Missing element tag            | A custom element renders unstyled or does not upgrade.                       | Add the matching per-tag import and the `elements/types` declaration.                                                      |
 | Wrong CSS order                | Tokens are missing, colors fall back, or shell spacing collapses.            | Import `tokens.css` and `global.css` first, then `workbench.css` or the component entries. Component entries are additive. |
 | Duplicate React                | “Invalid hook call” or two React instances in one bundle.                    | Keep React and React DOM as shared peers; do not install a second copy inside the workbench package or an app dependency.  |

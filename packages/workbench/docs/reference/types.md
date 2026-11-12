@@ -4,9 +4,9 @@ Types are imported from the same public subpaths as their values. They have no
 runtime cost.
 
 ```ts
-import type { WorkbenchConfig, WorkbenchViewRegistry, WorkbenchTab } from '@workbench-kit/workbench'
-import type { TabStripItem, ResizablePaneProps } from '@workbench-kit/workbench/react'
-import type { StorageAdapter, TabCollection } from '@workbench-kit/workbench/core'
+import type { WorkbenchConfig, WorkbenchViewRegistry, WorkbenchTab } from 'vscode-workbench'
+import type { TabStripItem, ResizablePaneProps } from 'vscode-workbench/react'
+import type { StorageAdapter, TabCollection } from 'vscode-workbench/core'
 ```
 
 ## Preset types
@@ -35,7 +35,7 @@ import type { StorageAdapter, TabCollection } from '@workbench-kit/workbench/cor
 
 ## Element types
 
-`@workbench-kit/workbench/elements/types` declares the registered custom
+`vscode-workbench/elements/types` declares the registered custom
 elements for JSX. It is a type-only import with no runtime side effect.
 
 See the [API reference](./api.md) for the props and callbacks behind these types.

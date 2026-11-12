@@ -23,7 +23,7 @@
     "preview:docs": "npm run preview -w @workbench-kit/docs-site",
     "build": "npm run build:packages && tsc -b && npm run build -w @workbench-kit/template-app",
     "build:packages": "npm run build -w @workbench-kit/core && npm run build -w @workbench-kit/react && npm run build -w @workbench-kit/elements && npm run build -w @workbench-kit/preset-vscode && npm run build:facade",
-    "build:facade": "npm run build -w @workbench-kit/workbench",
+    "build:facade": "npm run build -w vscode-workbench",
     "build:minimal": "npm run build -w @workbench-kit/minimal-app",
     "build:custom-shell": "npm run build -w @workbench-kit/custom-shell-app",
     "build:docs": "node scripts/sync-docs-raw.mjs && node scripts/generate-llms.mjs --site-dir docs-site/content/public && npm run build -w @workbench-kit/docs-site",
@@ -50,6 +50,7 @@
     "generate:llms": "node scripts/generate-llms.mjs",
     "check:styles": "node scripts/check-styles.mjs",
     "check:release": "node scripts/check-release.mjs",
+    "check:release-tag": "node scripts/check-release-tag.mjs",
     "check:quickstart": "node scripts/check-quickstart.mjs",
     "check:adoption": "node scripts/check-adoption.mjs --app test/fixtures/adoption-app"
   },

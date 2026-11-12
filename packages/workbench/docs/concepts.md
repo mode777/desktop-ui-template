@@ -22,14 +22,14 @@ A complete preset entry looks like this:
 // src/main.tsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
+import { VSCodeWorkbench } from 'vscode-workbench'
 import { commands } from './commands'
 import { menus } from './menus'
 import { views } from './views'
 import { config } from './workbench.config'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 
 function App() {
   return (
@@ -101,8 +101,8 @@ side-effectful registration entries, not React components. Register only the tag
 your markup renders:
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
 ```
 
 The preset registers its own subset. A composition or primitive consumer must
@@ -121,12 +121,12 @@ Import `tokens.css` and `global.css` first, then either the aggregate
 `workbench.css` or the component entries your application renders:
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 ```
 
 Component entries are additive. They do not load tokens, base styles or another

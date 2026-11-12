@@ -85,7 +85,7 @@ describe('workspacePackageForPath', () => {
       'kit-preset',
     )
     expect(workspacePackageForPath('packages/workbench/dist/core/index.js', config)).toEqual({
-      name: '@workbench-kit/workbench',
+      name: 'vscode-workbench',
       layer: 'kit-workbench',
       root: 'packages/workbench',
     })
@@ -261,7 +261,7 @@ describe('checkBoundaries', () => {
     const allowed = check([
       addSource(
         'apps/template/src/app/facade.ts',
-        "import { WorkbenchShell } from '@workbench-kit/workbench/react'\n",
+        "import { WorkbenchShell } from 'vscode-workbench/react'\n",
       ),
     ])
 

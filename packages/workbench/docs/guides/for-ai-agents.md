@@ -1,7 +1,7 @@
 # For AI agents
 
 This page is for a coding agent building an application with
-`@workbench-kit/workbench`, and for the human who wants to point an agent at the
+`vscode-workbench`, and for the human who wants to point an agent at the
 right context. It is normal documentation, not a separate machine-only format.
 
 ## Read in this order
@@ -30,7 +30,7 @@ the generated index is `llms.txt` at the package root.
 - **Choose one level.** Use the preset for the full shell, composition when you
   need your own layout or state, and primitives inside an existing layout. Do
   not mix the preset store with a second source of truth for the same fields.
-- **Use public imports only.** Import from `@workbench-kit/workbench` and its
+- **Use public imports only.** Import from `vscode-workbench` and its
   documented subpaths. Do not import repository-internal workspace names.
 - **Register what you render.** Import the per-tag element entry for every
   `vscode-*` tag your markup or primitives render. Prefer per-tag entries over
@@ -48,13 +48,13 @@ the generated index is `llms.txt` at the package root.
 ## Copy-paste prompt
 
 ```text
-You are building an application with @workbench-kit/workbench.
+You are building an application with vscode-workbench.
 
 Before changing code:
 1. Read the package README and docs/index.md.
 2. Read docs/concepts.md and choose the preset, composition or primitive level.
 3. Read the recipe for the task.
-4. Use only public @workbench-kit/workbench subpaths.
+4. Use only public vscode-workbench subpaths.
 5. Register only the custom-element tags you render.
 6. Import tokens.css and global.css before component styles.
 7. Keep views, data, commands, menus and branding in the application.

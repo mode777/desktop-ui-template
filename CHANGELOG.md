@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `@workbench-kit/workbench` are recorded here. The format
+All notable changes to `vscode-workbench` are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/) and the package follows
 [Semantic Versioning](https://semver.org/). While the major version is `0`,
 minor releases may include breaking changes; patch releases do not.
@@ -9,14 +9,14 @@ minor releases may include breaking changes; patch releases do not.
 
 ### Added
 
-- Per-component stylesheet entries at `@workbench-kit/workbench/styles/shell.css`,
+- Per-component stylesheet entries at `vscode-workbench/styles/shell.css`,
   `title-bar.css`, `menu-bar.css`, `icon-button.css`, `activity-bar.css`,
   `resizable-pane.css`, `sidebar.css`, `tab-strip.css`, `editor-area.css`,
   `panel.css`, `status-bar.css`, `quick-open.css`, `context-menu.css` and
   `notifications.css`. `workbench.css` remains the aggregate entry.
 - `npm run check:styles` for component entry declarations, aggregate order,
   demo-selector isolation and example style subsets.
-- Controlled region primitives at `@workbench-kit/workbench/react`:
+- Controlled region primitives at `vscode-workbench/react`:
   `ActivityBar`, `Sidebar`, `Panel`, `StatusBar`, `TitleBar`, `MenuBar` and
   `ContextMenu`.
 - Consumer documentation under `packages/workbench/docs/` and the app-level `packages/workbench/AGENTS.md`; contributor docs remain under `docs/`.
@@ -30,6 +30,9 @@ minor releases may include breaking changes; patch releases do not.
 
 ### Changed
 
+- The public package is now named `vscode-workbench`. The provisional
+  `@workbench-kit/workbench` name was never published, so there is no consumer
+  migration.
 - The preset region components are now thin adapters over the React primitives;
   the custom-shell example composes the same primitives with local state.
 - The minimal and custom-shell examples import only the component stylesheets
@@ -41,22 +44,23 @@ minor releases may include breaking changes; patch releases do not.
 
 ## [0.1.0] - 2026-11-12
 
-The first prepared public release of `@workbench-kit/workbench`. Publishing is
-gated on owner approval of the final npm scope and name.
+The first prepared public release of `vscode-workbench`. The provisional
+`@workbench-kit/workbench` name was never published; the first release uses the
+final unscoped name.
 
 ### Added
 
 - One public package exposing the five internal modules through subpath exports.
-- The full VS Code-style preset at `@workbench-kit/workbench`, including the
+- The full VS Code-style preset at `vscode-workbench`, including the
   default layout store and generic workbench commands.
-- Controlled composition primitives at `@workbench-kit/workbench/react`:
+- Controlled composition primitives at `vscode-workbench/react`:
   `WorkbenchShell`, `ResizablePane`, `TabStrip` and `IconButton`.
 - Headless layout, tab and versioned persistence helpers at
-  `@workbench-kit/workbench/core`.
+  `vscode-workbench/core`.
 - Per-tag element registrations and JSX typings under
-  `@workbench-kit/workbench/elements/*`.
+  `vscode-workbench/elements/*`.
 - Token, base, shell/region and aggregate stylesheets under
-  `@workbench-kit/workbench/styles/*`.
+  `vscode-workbench/styles/*`.
 - Three adoption levels: preset, composition and primitives, validated by the
   template, minimal and custom-shell applications.
 - A single packed-tarball check for export targets, runtime imports, consumer

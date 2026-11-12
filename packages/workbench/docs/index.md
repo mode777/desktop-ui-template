@@ -5,7 +5,7 @@ It gives you the shell, regions, tabs, resizing, element registrations and
 styles. Your application keeps its views, data, commands, branding and document
 surface.
 
-The package is published as `@workbench-kit/workbench` with subpath entries for
+The package is published as `vscode-workbench` with subpath entries for
 the preset, composition primitives, headless helpers, element registrations and
 styles. You can adopt it at three levels.
 
@@ -50,7 +50,7 @@ verify the result. The short version:
 
 1. Read the package README and this documentation.
 2. Choose the preset, composition or primitive level.
-3. Use only `@workbench-kit/workbench` subpaths.
+3. Use only `vscode-workbench` subpaths.
 4. Register only the custom-element tags you render.
 5. Import tokens and base styles before component styles.
 6. Run the application build and typecheck before reporting success.

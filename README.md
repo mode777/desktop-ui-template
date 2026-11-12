@@ -62,7 +62,7 @@ npm run preview            # serve the production build
 
 Requires Node 24 (see `.nvmrc`). The repository is an npm workspace; one root
 `npm install` links the five private `@workbench-kit/*` modules and the public
-`@workbench-kit/workbench` facade. The five modules remain `private`; the facade
+`vscode-workbench` facade. The five modules remain `private`; the facade
 is the single generated package with subpath exports. See
 [docs/architecture.md](docs/architecture.md) and the
 [package README](packages/workbench/README.md). The template uses Vite 8 and
@@ -87,7 +87,7 @@ repository docs. The repository docs describe how the kit is built and released.
 
 | Document                                         | What it covers                                                            |
 | ------------------------------------------------ | ------------------------------------------------------------------------- |
-| [Contributor migration guide](docs/migration.md) | Moving a template copy or workspace app to `@workbench-kit/workbench`.    |
+| [Contributor migration guide](docs/migration.md) | Moving a template copy or workspace app to `vscode-workbench`.            |
 | [Release policy](docs/release.md)                | SemVer, changelog, release checklist and the owner-approved publish gate. |
 | [Architecture](docs/architecture.md)             | Five private modules, one public facade and the enforcement model.        |
 | [Roadmap](ROADMAP.md)                            | Staged plan, Phase 7 priority and acceptance criteria.                    |
@@ -214,16 +214,16 @@ entries. The preset never imports `apps/template/src/app`
 or `apps/template/src/demo`; views, data, commands, menus and branding arrive through props.
 
 They are not published individually. The single public artifact is the
-`@workbench-kit/workbench` package, generated from the internal module builds
+`vscode-workbench` package, generated from the internal module builds
 into `packages/workbench/dist/`. It exposes the same adoption levels through
 subpath exports:
 
 ```tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench' // preset
-import { WorkbenchShell, TabStrip } from '@workbench-kit/workbench/react' // composition
-import { clampSize } from '@workbench-kit/workbench/core' // primitives
-import '@workbench-kit/workbench/elements/icon' // one element tag
-import '@workbench-kit/workbench/styles/tokens.css'
+import { VSCodeWorkbench } from 'vscode-workbench' // preset
+import { WorkbenchShell, TabStrip } from 'vscode-workbench/react' // composition
+import { clampSize } from 'vscode-workbench/core' // primitives
+import 'vscode-workbench/elements/icon' // one element tag
+import 'vscode-workbench/styles/tokens.css'
 ```
 
 Inside the repository the modules keep their `@workbench-kit/<module>` names so

@@ -10,7 +10,7 @@ describe('mock workbench package content', () => {
 
     const manifest = JSON.parse(file!.content)
 
-    expect(manifest.name).toBe('@workbench-kit/workbench')
+    expect(manifest.name).toBe('vscode-workbench')
     expect(manifest.private).toBe(false)
     expect(manifest.license).toBe('MIT')
     expect(manifest.publishConfig).toEqual({ access: 'public' })

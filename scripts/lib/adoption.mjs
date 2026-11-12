@@ -3,8 +3,8 @@ import { dirname, extname, join, relative, resolve } from 'node:path'
 
 const PRIVATE_IMPORT =
   /@workbench-kit\/(?:core|react|elements|styles-vscode|preset-vscode)(?:[\w/-]*)/
-const ELEMENT_IMPORT = /@workbench-kit\/(?:workbench\/)?elements\/([a-z-]+)/g
-const STYLE_IMPORT = /@workbench-kit\/(?:workbench\/)?styles\/([a-z-]+\.css)/g
+const ELEMENT_IMPORT = /(?:@workbench-kit|vscode-workbench)\/elements\/([a-z-]+)/g
+const STYLE_IMPORT = /(?:@workbench-kit|vscode-workbench)\/styles\/([a-z-]+\.css)/g
 const RENDERED_TAG = /<(vscode-[a-z-]+)/g
 const CREATED_TAG = /createElement\(\s*['"](vscode-[a-z-]+)['"]\s*\)/g
 const SOURCE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx', '.css', '.html'])
@@ -136,26 +136,16 @@ export function checkAdoption({ appDir, level = 'auto', packageManifest = null }
     const hasAggregate =
       importedStyles.has('workbench.css') ||
       importedStyles.has('index.css') ||
-      sources.some((source) => /@workbench-kit\/(?:workbench\/)?styles['"]/.test(source))
+      sources.some((source) => /(?:@workbench-kit|vscode-workbench)\/styles['"]/.test(source))
     const componentStyles = [...importedStyles].filter(
       (style) => !['tokens.css', 'global.css', 'workbench.css', 'index.css'].includes(style),
     )
 
     if (!importedStyles.has('tokens.css')) {
-      push(
-        'missing-base-style',
-        'error',
-        null,
-        'Missing @workbench-kit/workbench/styles/tokens.css.',
-      )
+      push('missing-base-style', 'error', null, 'Missing vscode-workbench/styles/tokens.css.')
     }
     if (!importedStyles.has('global.css')) {
-      push(
-        'missing-base-style',
-        'error',
-        null,
-        'Missing @workbench-kit/workbench/styles/global.css.',
-      )
+      push('missing-base-style', 'error', null, 'Missing vscode-workbench/styles/global.css.')
     }
     if (!hasAggregate && componentStyles.length === 0) {
       push(
@@ -196,21 +186,16 @@ export function checkAdoption({ appDir, level = 'auto', packageManifest = null }
     const manifest = readJson(packagePath)
     const declared = { ...(manifest.dependencies ?? {}), ...(manifest.devDependencies ?? {}) }
     const expectedVersion = packageManifest?.version
-    const workbenchRange = declared['@workbench-kit/workbench']
+    const workbenchRange = declared['vscode-workbench']
 
     if (!workbenchRange) {
-      push(
-        'missing-package',
-        'error',
-        null,
-        'package.json does not declare @workbench-kit/workbench.',
-      )
+      push('missing-package', 'error', null, 'package.json does not declare vscode-workbench.')
     } else if (expectedVersion && declaredVersion(workbenchRange) !== expectedVersion) {
       push(
         'version-mismatch',
         'error',
         null,
-        `Declared @workbench-kit/workbench ${workbenchRange} does not match package version ${expectedVersion}.`,
+        `Declared vscode-workbench ${workbenchRange} does not match package version ${expectedVersion}.`,
       )
     }
 

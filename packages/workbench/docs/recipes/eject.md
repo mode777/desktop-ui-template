@@ -46,7 +46,7 @@ The three levels share the same package, element entries and stylesheets. See
 ## Level 1: keep the preset
 
 ```tsx
-import { VSCodeWorkbench, createCommandRegistry, defaultCommands } from '@workbench-kit/workbench'
+import { VSCodeWorkbench, createCommandRegistry, defaultCommands } from 'vscode-workbench'
 
 ;<VSCodeWorkbench
   config={config}
@@ -82,8 +82,8 @@ import {
   TabStrip,
   TitleBar,
   WorkbenchShell,
-} from '@workbench-kit/workbench/react'
-import { closeTabIn } from '@workbench-kit/workbench/core'
+} from 'vscode-workbench/react'
+import { closeTabIn } from 'vscode-workbench/core'
 
 const items = [
   { id: 'options', title: 'Options', icon: 'settings-gear' },
@@ -215,8 +215,8 @@ so you do not need to reimplement those transitions.
 Keep only the behavior you need inside an existing layout:
 
 ```tsx
-import { ResizablePane, TabStrip } from '@workbench-kit/workbench/react'
-import { clampSize } from '@workbench-kit/workbench/core'
+import { ResizablePane, TabStrip } from 'vscode-workbench/react'
+import { clampSize } from 'vscode-workbench/core'
 
 export function Inspector({ children }) {
   const [width, setWidth] = useState(320)
@@ -259,7 +259,7 @@ use any state model — `useReducer`, another store or a server-backed state.
 For persistence without the preset, use the injected storage seam:
 
 ```ts
-import { readVersioned, writeVersioned, type StorageAdapter } from '@workbench-kit/workbench/core'
+import { readVersioned, writeVersioned, type StorageAdapter } from 'vscode-workbench/core'
 
 const storage: StorageAdapter = {
   getItem: (key) => localStorage.getItem(key),
@@ -297,14 +297,14 @@ by these helpers unless you pass it explicitly.
 | Primitives  | Register only the tags your markup uses; `vscode-icon` for `IconButton`, `vscode-tab-header` for `TabStrip`. | Import tokens, global and only the component entries you use, or scope your own structural CSS. |
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 ```
 
 That subset is what the quickstart uses: a shell, one resizable pane, a tab strip
@@ -312,8 +312,8 @@ and a status bar. Use `workbench.css` or the `styles` alias when you keep most
 regions; component entries are additive and do not load tokens, base styles or
 each other.
 
-Prefer per-tag entries over `@workbench-kit/workbench/elements/all`. Add
-`@workbench-kit/workbench/elements/types` once for JSX declarations.
+Prefer per-tag entries over `vscode-workbench/elements/all`. Add
+`vscode-workbench/elements/types` once for JSX declarations.
 
 ## Verify the ejection
 

@@ -2,7 +2,7 @@
 
 > A configurable VS Code-style workbench for React applications: preset shell, composition primitives, headless helpers, element registrations and styles.
 
-Package: `@workbench-kit/workbench` 0.1.0. Availability: preview; not yet on the public npm registry.
+Package: `vscode-workbench` 0.1.0. Availability: preview; not yet on the public npm registry.
 
 ## Start here
 

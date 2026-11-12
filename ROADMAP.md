@@ -1,7 +1,7 @@
 # Workbench Kit Roadmap
 
-**Status:** active — public facade, packed-tarball validation and all three application examples complete; contributor documentation and release readiness complete; Phase 7 consumer documentation and agent adoption implemented; post-publish acceptance pending; registry publication gated on final name approval\
-**Next startable change:** none until the Phase 7 post-publish acceptance path runs. Later hardening and any other unstarted items wait behind it; registry publication remains a separate owner gate.\
+**Status:** active — public facade, packed-tarball validation and all three application examples complete; contributor documentation and release readiness complete; Phase 7 consumer documentation and agent adoption implemented; post-publish acceptance pending; registry publication is tag-triggered through npm trusted publishing after the one-time bootstrap\
+**Next startable change:** the first tag-triggered `vscode-workbench` release, followed by the Phase 7 post-publish acceptance path. Later hardening and any other unstarted items wait behind it; the npm bootstrap and trusted-publisher setup are complete.\
 **Working name:** Workbench Kit\
 **Scope:** evolve this template into a library-shaped, composable workbench without turning it into a framework\
 **Distribution:** five private internal modules, one published npm package\
@@ -363,8 +363,8 @@ Exit criteria:
 reference, migration and eject guides, release policy, changelog,
 license/third-party notices, `check:docs` and `check:release` are in the
 repository. These documents describe the repository and assume a checkout.
-Consumer-facing documentation is Phase 7. Registry publication remains gated on
-owner approval of the final npm scope and name.
+Consumer-facing documentation is Phase 7. The public name is `vscode-workbench`;
+release publishing is tag-triggered after the one-time npm bootstrap.
 
 **Goal:** make the repository and release process safe and predictable for
 contributors and maintainers.
@@ -376,7 +376,7 @@ Deliverables:
 - An “eject” guide: start with the preset, move to composition, then primitives.
 - Changelog and versioning policy for the single package; internal modules share its version.
 - License and third-party notices.
-- **Pending:** publish `0.x` only after at least two real consumers or examples validate the API and the owner approves the final scope/name.
+- **Pending:** publish the first `0.x` release by pushing its version tag; the owner approved the final name `vscode-workbench` and the package has been bootstrapped.
 
 Exit criteria:
 
@@ -385,7 +385,7 @@ Exit criteria:
 - The template remains copyable and works without installing the package.
 - The published tarball contains no app/demo content and no private module dependencies.
 - `npm run check:docs` and `npm run check:release` pass, and the tarball contains its license and notices.
-- The publish step is documented as manual and owner-approved; CI holds no publish credentials.
+- The publish step is documented as tag-triggered and uses short-lived OIDC credentials; CI holds no long-lived publish token.
 
 ### Phase 7 — Consumer documentation and agent adoption (M)
 
@@ -393,7 +393,7 @@ Exit criteria:
 agent guide and `llms.txt`; the docs site and raw Markdown are built under
 `/docs/`; the quickstart and adoption checks pass against the packed tarball.
 The registry install and the `published` availability flip remain after the
-publish gate.
+first tag-triggered release.
 
 **Goal:** make the published package adoptable from the package alone, without
 repository access, by both humans and coding agents, while keeping consumer docs
@@ -472,7 +472,7 @@ Exit criteria:
 - 7A is the foundation; 7B renders 7A; 7C validates both.
 - npm publication is not a blocker for 7A/7B. Until publication, acceptance uses
   `npm pack` plus a local tarball install. 7C reruns against
-  `npm install @workbench-kit/workbench` after publish.
+  `npm install vscode-workbench` after publish.
 
 ### Later — hardening (not required for 0.x)
 
@@ -495,7 +495,7 @@ the post-publish acceptance path is the remaining follow-up.
 6. **`kit/react/WorkbenchShell`:** compose the existing regions without importing views.
 7. **Preset + demo separation:** move views/data/menus into the app layer.
 8. **Minimal example:** single tab + options sidebar + budget check.
-9. **Internal modules and distribution:** workspace migration, all three `apps/*` applications, `packages/workbench`, the packed-tarball check, documentation and release readiness are done; the owner-approved registry publish remains.
+9. **Internal modules and distribution:** workspace migration, all three `apps/*` applications, `packages/workbench`, the packed-tarball check, documentation and release readiness are done; the first tag-triggered trusted-publishing release of `vscode-workbench` remains.
 10. **Consumer documentation and agent adoption:** Phase 7A package-local consumer docs and boundary; 7B hosted docs site, raw Markdown and `llms.txt`; 7C quickstart and adoption verification plus blind-agent evaluation. Implemented and verified against the packed tarball; the post-publish acceptance path remains after publication.
 
 Each step should be a separate PR with a visible demo change or a bundle report. Avoid one giant refactor.
@@ -566,7 +566,7 @@ These should be resolved before publishing, not necessarily before the internal 
 - **vscode-elements:** peer dependency or optional adapter? Recommendation: peer for `elements` and `preset-vscode`; core stays framework-agnostic.
 - **CSS:** plain prefixed CSS with layers vs CSS modules. Recommendation: prefixed CSS + layers for overrideability and simpler library builds.
 - **Preset contents:** shell only, or shell + demo views? Recommendation: shell + generic commands, with demo views in the template.
-- **Public package scope/name:** placeholder `@scope/workbench` (repo working name `@workbench-kit/workbench`); decide before first publish.
+- **Public package scope/name:** resolved — `vscode-workbench` (unscoped). The provisional `@workbench-kit/workbench` name was never published.
 - **Public facade build:** resolved for Phase 5 — copy the module output and styles into the facade, rewrite specifiers and complete extensions; no bundler. The contract remains one tarball with stable subpaths.
 - **Internal versioning:** all five modules share the facade's version for 0.x; independent versioning is out of scope unless a real consumer requires it.
 - **Monorepo tool:** npm workspaces is sufficient unless release tooling requires pnpm/turborepo.
@@ -598,4 +598,4 @@ The transformation is complete when:
 - Consumer docs are package-local, shipped in the tarball and hosted without requiring repository access.
 - An agent can build a documented app from the packed package alone; `llms.txt` and raw Markdown link only to consumer pages.
 - Contributor and consumer documentation are physically separate, with a one-way link boundary enforced by checks.
-- A 0.x release is possible without breaking the template's showcase, via a documented, owner-approved publish step.
+- A 0.x release is possible without breaking the template's showcase, via the documented tag-triggered trusted-publishing workflow.

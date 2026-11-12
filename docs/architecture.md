@@ -69,8 +69,8 @@ module.
 
 ## 3. One published package
 
-The single publish target is `packages/workbench` (name
-**`@workbench-kit/workbench`**, provisional). It is a distribution facade: it
+The single publish target is `packages/workbench` (published as
+**`vscode-workbench`**). It is a distribution facade: it
 contains the export map and build output, not a second copy of the UI code.
 
 The public package must:
@@ -86,7 +86,7 @@ The implemented export map:
 
 ```json
 {
-  "name": "@workbench-kit/workbench",
+  "name": "vscode-workbench",
   "type": "module",
   "sideEffects": ["**/*.css", "./dist/elements/*.js", "./dist/preset/elements.js"],
   "exports": {
@@ -122,13 +122,13 @@ new tag or stylesheet cannot silently drift out of the public surface.
 Inside the repository, the five modules keep their internal names because the
 package boundaries are real:
 
-| Consumer intent       | Published import                             | Repository import                         |
-| --------------------- | -------------------------------------------- | ----------------------------------------- |
-| Full shell            | `@workbench-kit/workbench`                   | `@workbench-kit/preset-vscode`            |
-| Controlled primitives | `@workbench-kit/workbench/react`             | `@workbench-kit/react`                    |
-| Headless helpers      | `@workbench-kit/workbench/core`              | `@workbench-kit/core`                     |
-| Element registration  | `@workbench-kit/workbench/elements/icon`     | `@workbench-kit/elements/icon`            |
-| CSS                   | `@workbench-kit/workbench/styles/tokens.css` | `@workbench-kit/styles-vscode/tokens.css` |
+| Consumer intent       | Published import                     | Repository import                         |
+| --------------------- | ------------------------------------ | ----------------------------------------- |
+| Full shell            | `vscode-workbench`                   | `@workbench-kit/preset-vscode`            |
+| Controlled primitives | `vscode-workbench/react`             | `@workbench-kit/react`                    |
+| Headless helpers      | `vscode-workbench/core`              | `@workbench-kit/core`                     |
+| Element registration  | `vscode-workbench/elements/icon`     | `@workbench-kit/elements/icon`            |
+| CSS                   | `vscode-workbench/styles/tokens.css` | `@workbench-kit/styles-vscode/tokens.css` |
 
 A published consumer never needs to know that five source modules exist. A
 repository contributor does, because that is how the boundaries are enforced
@@ -277,9 +277,10 @@ As of 2026-11-12:
 - `docs/migration.md`, `docs/release.md` and the contributor architecture documents
   document the adoption path and release gate; `npm run check:docs` and
   `npm run check:release` keep them and the package metadata aligned.
-- The remaining work is the manual, owner-approved registry publish for `0.x`;
-  the package name is still provisional.
+- The remaining work is the first tag-triggered trusted-publishing release of
+  `vscode-workbench` and the post-publish acceptance path; the package name is
+  final and the one-time npm bootstrap is complete.
 
 The next structural steps are recorded in [`ROADMAP.md`](../ROADMAP.md):
-documentation and release readiness are complete, and the registry publish
-remains gated on final name approval.
+documentation and release readiness are complete, and the registry publish is
+tag-triggered through npm trusted publishing.

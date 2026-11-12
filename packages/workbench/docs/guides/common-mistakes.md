@@ -16,8 +16,8 @@ React renders the tag, but the browser does not know how to upgrade it.
 primitives render:
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
 ```
 
 **Verify:** The browser console has no unknown custom-element warning and the
@@ -53,9 +53,9 @@ not imported.
 component entries:
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 ```
 
 **Verify:** Computed styles show the `--vscode-*` token values. See the
@@ -69,11 +69,11 @@ the app works only inside the repository.
 **Cause:** The code still imports a workspace name instead of the published
 subpath.
 
-**Fix:** Replace the import with `@workbench-kit/workbench`,
+**Fix:** Replace the import with `vscode-workbench`,
 `.../react`, `.../core`, `.../elements/<tag>` or `.../styles/<file>`.
 
 **Verify:** Search the application source for `@workbench-kit/` and confirm every
-result starts with `@workbench-kit/workbench`.
+result starts with `vscode-workbench`.
 
 ## Server-side rendering crashes
 
@@ -171,13 +171,13 @@ fix below, then rerun the check.
 
 | Finding                   | Symptom                                                             | Fix                                                             | Recipe                                                |
 | ------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------- |
-| `private-import`          | A repository-internal package name is imported                      | Replace it with a `@workbench-kit/workbench` subpath            | [Coming from the template](./coming-from-template.md) |
+| `private-import`          | A repository-internal package name is imported                      | Replace it with a `vscode-workbench` subpath                    | [Coming from the template](./coming-from-template.md) |
 | `unregistered-element`    | A rendered `vscode-*` tag has no element registration import        | Import the matching per-tag entry                               | [Quickstart](../quickstart.md)                        |
 | `missing-base-style`      | The shell renders without tokens or base styles                     | Import `styles/tokens.css` and `styles/global.css`              | [Theme](../recipes/theme.md)                          |
 | `missing-component-style` | Regions render with missing component rules                         | Import `styles/workbench.css` or the exact component entries    | [Theme](../recipes/theme.md)                          |
 | `preset-leak`             | A composition or primitives app includes preset or demo markers     | Remove the preset import or marker; move the state into the app | [Eject](../recipes/eject.md)                          |
 | `aggregate-elements`      | A selective app imports `elements/all`                              | Replace it with per-tag entries                                 | [Quickstart](../quickstart.md)                        |
-| `missing-package`         | `package.json` does not declare the workbench package               | Add `@workbench-kit/workbench` to dependencies                  | [Quickstart](../quickstart.md)                        |
+| `missing-package`         | `package.json` does not declare the workbench package               | Add `vscode-workbench` to dependencies                          | [Quickstart](../quickstart.md)                        |
 | `version-mismatch`        | The declared workbench version differs from the installed package   | Match the declared version to the package version               | [Changelog](../changelog.md)                          |
 | `missing-peer`            | React, React DOM or vscode-elements is not declared                 | Add the missing peer to dependencies                            | [Quickstart](../quickstart.md)                        |
 | `peer-version`            | React, React DOM or vscode-elements is outside the supported range  | Use React 19, React DOM 19 and vscode-elements 2.5 or newer     | [Quickstart](../quickstart.md)                        |

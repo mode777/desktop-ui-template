@@ -152,7 +152,7 @@ try {
 
   const consumerDir = join(tempRoot, 'consumer')
   const consumerModules = join(consumerDir, 'node_modules')
-  const facadeLink = join(consumerModules, '@workbench-kit/workbench')
+  const facadeLink = join(consumerModules, 'vscode-workbench')
 
   mkdirSync(dirname(facadeLink), { recursive: true })
   renameSync(extractedPackage, facadeLink)

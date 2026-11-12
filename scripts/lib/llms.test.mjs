@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { rawUrlFor, renderLlmsFull, renderLlmsIndex, validateManifest } from './llms.mjs'
 
 const manifest = {
-  packageName: '@workbench-kit/workbench',
+  packageName: 'vscode-workbench',
   version: '0.1.0',
   availability: 'preview',
   siteUrl: 'https://example.test/desktop-ui-template',
@@ -46,7 +46,7 @@ describe('llms generation', () => {
   it('builds absolute raw links grouped by section', () => {
     const index = renderLlmsIndex(manifest)
 
-    expect(index).toContain('@workbench-kit/workbench')
+    expect(index).toContain('vscode-workbench')
     expect(index).toContain('0.1.0')
     expect(index).toContain('preview')
     expect(index).toContain('## Start here')

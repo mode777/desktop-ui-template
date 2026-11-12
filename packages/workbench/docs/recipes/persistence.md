@@ -49,7 +49,7 @@ adapter.
 
 ```ts
 // src/persistence.ts
-import { readVersioned, writeVersioned, type StorageAdapter } from '@workbench-kit/workbench/core'
+import { readVersioned, writeVersioned, type StorageAdapter } from 'vscode-workbench/core'
 
 export interface AppLayout {
   sidebarWidth: number
@@ -90,7 +90,7 @@ when the adapter throws. The preset key is not used unless you pass it.
 ## Use a server or memory adapter
 
 ```ts
-import type { StorageAdapter } from '@workbench-kit/workbench/core'
+import type { StorageAdapter } from 'vscode-workbench/core'
 
 export function createMemoryStorage(initial: Record<string, string> = {}): StorageAdapter {
   const values = new Map(Object.entries(initial))

@@ -6,22 +6,22 @@ markup or primitives render.
 
 ## Per-tag entries
 
-| Entry                                            | Registers                                              |
-| ------------------------------------------------ | ------------------------------------------------------ |
-| `@workbench-kit/workbench/elements/all`          | Every tag below                                        |
-| `@workbench-kit/workbench/elements/badge`        | `vscode-badge`                                         |
-| `@workbench-kit/workbench/elements/button`       | `vscode-button`                                        |
-| `@workbench-kit/workbench/elements/collapsible`  | `vscode-collapsible`                                   |
-| `@workbench-kit/workbench/elements/context-menu` | `vscode-context-menu`                                  |
-| `@workbench-kit/workbench/elements/icon`         | `vscode-icon`                                          |
-| `@workbench-kit/workbench/elements/tab-header`   | `vscode-tab-header`                                    |
-| `@workbench-kit/workbench/elements/tab-panel`    | `vscode-tab-panel`                                     |
-| `@workbench-kit/workbench/elements/tabs`         | `vscode-tabs`, `vscode-tab-header`, `vscode-tab-panel` |
-| `@workbench-kit/workbench/elements/textarea`     | `vscode-textarea`                                      |
-| `@workbench-kit/workbench/elements/textfield`    | `vscode-textfield`                                     |
-| `@workbench-kit/workbench/elements/tree`         | `vscode-tree`                                          |
+| Entry                                    | Registers                                              |
+| ---------------------------------------- | ------------------------------------------------------ |
+| `vscode-workbench/elements/all`          | Every tag below                                        |
+| `vscode-workbench/elements/badge`        | `vscode-badge`                                         |
+| `vscode-workbench/elements/button`       | `vscode-button`                                        |
+| `vscode-workbench/elements/collapsible`  | `vscode-collapsible`                                   |
+| `vscode-workbench/elements/context-menu` | `vscode-context-menu`                                  |
+| `vscode-workbench/elements/icon`         | `vscode-icon`                                          |
+| `vscode-workbench/elements/tab-header`   | `vscode-tab-header`                                    |
+| `vscode-workbench/elements/tab-panel`    | `vscode-tab-panel`                                     |
+| `vscode-workbench/elements/tabs`         | `vscode-tabs`, `vscode-tab-header`, `vscode-tab-panel` |
+| `vscode-workbench/elements/textarea`     | `vscode-textarea`                                      |
+| `vscode-workbench/elements/textfield`    | `vscode-textfield`                                     |
+| `vscode-workbench/elements/tree`         | `vscode-tree`                                          |
 
-`@workbench-kit/workbench/elements/types` provides the JSX declarations and has
+`vscode-workbench/elements/types` provides the JSX declarations and has
 no runtime side effect.
 
 ## What the preset registers
@@ -57,9 +57,9 @@ renders. Register the tags for the primitives you actually use.
 ## Example
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/elements/tabs'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/elements/tabs'
 ```
 
 Do not import `elements/all` in a selective application unless the bundle size

@@ -168,7 +168,7 @@ describe('consumer fixtures', () => {
     })
 
     expect(source).toContain('JSDOM')
-    expect(source).toContain('@workbench-kit/workbench${subpath.slice(1)}')
+    expect(source).toContain('vscode-workbench${subpath.slice(1)}')
     expect(source).toContain('vscode-icon')
     expect(source).toContain('"./styles/tokens.css"')
     expect(source).toContain("typeof module[name] === 'undefined'")
@@ -182,14 +182,14 @@ describe('consumer fixtures', () => {
     })
 
     expect(source).toContain(
-      "import { VSCodeWorkbench, useWorkbenchStore, defaultCommands, createCommandRegistry } from '@workbench-kit/workbench'",
+      "import { VSCodeWorkbench, useWorkbenchStore, defaultCommands, createCommandRegistry } from 'vscode-workbench'",
     )
     expect(source).toContain(
-      "import { WorkbenchShell, TabStrip, ResizablePane, IconButton } from '@workbench-kit/workbench/react'",
+      "import { WorkbenchShell, TabStrip, ResizablePane, IconButton } from 'vscode-workbench/react'",
     )
-    expect(source).toContain("import '@workbench-kit/workbench/elements/icon'")
-    expect(source).toContain("import '@workbench-kit/workbench/elements/types'")
-    expect(source).toContain("import '@workbench-kit/workbench/styles/tokens.css'")
+    expect(source).toContain("import 'vscode-workbench/elements/icon'")
+    expect(source).toContain("import 'vscode-workbench/elements/types'")
+    expect(source).toContain("import 'vscode-workbench/styles/tokens.css'")
     expect(source).toContain('WorkbenchConfig')
     expect(createCssDeclarations()).toContain("declare module '*.css'")
     expect(createConsumerTsConfig().compilerOptions.moduleResolution).toBe('Bundler')

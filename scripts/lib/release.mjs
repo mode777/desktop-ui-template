@@ -2,9 +2,80 @@ import { existsSync, readFileSync } from 'node:fs'
 import { relative, resolve } from 'node:path'
 
 const REQUIRED_FACADE_FILES = ['LICENSE', 'THIRD_PARTY_NOTICES.md']
+const PUBLISH_WORKFLOW = '.github/workflows/publish.yml'
 
 function readJson(file) {
   return JSON.parse(readFileSync(file, 'utf8'))
+}
+
+function checkPublishWorkflow(repoRoot, problems) {
+  const workflowPath = resolve(repoRoot, PUBLISH_WORKFLOW)
+
+  if (!existsSync(workflowPath)) {
+    problems.push(
+      problem(
+        'publish-workflow-missing',
+        workflowPath,
+        'Missing the tag-triggered publish workflow.',
+      ),
+    )
+    return
+  }
+
+  const workflow = readFileSync(workflowPath, 'utf8')
+
+  if (!/tags:\s*(?:\n\s*-\s*['"]?v\*['"]?|\[\s*['"]?v\*['"]?\s*\])/.test(workflow)) {
+    problems.push(
+      problem(
+        'publish-workflow-trigger',
+        workflowPath,
+        'The publish workflow must trigger on v* tags.',
+      ),
+    )
+  }
+
+  if (!/id-token:\s*write\b/.test(workflow)) {
+    problems.push(
+      problem(
+        'publish-workflow-oidc',
+        workflowPath,
+        'The publish workflow must grant id-token: write for trusted publishing.',
+      ),
+    )
+  }
+
+  if (!/contents:\s*read\b/.test(workflow)) {
+    problems.push(
+      problem(
+        'publish-workflow-permissions',
+        workflowPath,
+        'The publish workflow must keep contents: read.',
+      ),
+    )
+  }
+
+  if (/\b(?:NPM_TOKEN|NODE_AUTH_TOKEN|_authToken)\b/.test(workflow)) {
+    problems.push(
+      problem(
+        'publish-workflow-token',
+        workflowPath,
+        'The publish workflow must not reference a long-lived npm token.',
+      ),
+    )
+  }
+
+  if (
+    !/working-directory:\s*packages\/workbench\b/.test(workflow) ||
+    !/run:\s*npm publish\b/.test(workflow)
+  ) {
+    problems.push(
+      problem(
+        'publish-workflow-target',
+        workflowPath,
+        'The publish workflow must run npm publish from packages/workbench.',
+      ),
+    )
+  }
 }
 
 function escapeRegExp(value) {
@@ -162,12 +233,60 @@ export function checkRelease(repoRoot) {
     }
   }
 
+  checkPublishWorkflow(repoRoot, problems)
+
   return {
     version,
     facadeName: facade.name,
     internalCount: internalModules.length,
     problems,
   }
+}
+
+export function checkReleaseTag(repoRoot, tag) {
+  const problems = []
+  const configPath = resolve(repoRoot, 'distribution.json')
+
+  if (!existsSync(configPath)) {
+    return {
+      tag,
+      version: null,
+      expectedTag: null,
+      problems: [problem('missing-distribution', configPath, 'Missing distribution.json.')],
+    }
+  }
+
+  const config = readJson(configPath)
+  const facadeManifestPath = resolve(repoRoot, config.publicPackage.path, 'package.json')
+
+  if (!existsSync(facadeManifestPath)) {
+    return {
+      tag,
+      version: null,
+      expectedTag: null,
+      problems: [
+        problem('missing-manifest', facadeManifestPath, 'Missing public facade manifest.'),
+      ],
+    }
+  }
+
+  const facade = readJson(facadeManifestPath)
+  const version = facade.version
+  const expectedTag = version ? `v${version}` : null
+
+  if (!tag) {
+    problems.push(problem('missing-tag', facadeManifestPath, 'No release tag was provided.'))
+  } else if (tag !== expectedTag) {
+    problems.push(
+      problem(
+        'tag-version-mismatch',
+        facadeManifestPath,
+        `Release tag is ${tag}; expected ${expectedTag} from the facade version.`,
+      ),
+    )
+  }
+
+  return { tag, version, expectedTag, problems }
 }
 
 export function formatReleaseProblem(problemEntry, repoRoot) {

@@ -16,7 +16,7 @@ element and style contracts directly.
 When the package is available on the registry:
 
 ```bash
-npm install @workbench-kit/workbench react react-dom @vscode-elements/elements
+npm install vscode-workbench react react-dom @vscode-elements/elements
 ```
 
 The package is currently in preview. Until the first publish, build the package
@@ -74,22 +74,22 @@ export default defineConfig({ plugins: [react()] })
 ```tsx
 import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { closeTabIn, reorderTabIn } from '@workbench-kit/workbench/core'
+import { closeTabIn, reorderTabIn } from 'vscode-workbench/core'
 import {
   IconButton,
   ResizablePane,
   TabStrip,
   WorkbenchShell,
   type TabStripItem,
-} from '@workbench-kit/workbench/react'
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+} from 'vscode-workbench/react'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 
 const initialTabs: TabStripItem[] = [{ id: 'readme', title: 'README.md' }]
 

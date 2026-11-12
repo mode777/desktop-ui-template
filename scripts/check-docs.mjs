@@ -121,8 +121,7 @@ function checkApiCoverage() {
   }
 
   for (const key of exportKeys) {
-    const specifier =
-      key === '.' ? '@workbench-kit/workbench' : `@workbench-kit/workbench${key.slice(1)}`
+    const specifier = key === '.' ? 'vscode-workbench' : `vscode-workbench${key.slice(1)}`
     if (!referenceText.includes(specifier)) {
       problems.push({
         file: apiPath,

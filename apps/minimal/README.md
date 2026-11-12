@@ -53,7 +53,7 @@ The dependency-boundary check enforces the first three, and `check:minimal` veri
 that no demo or preset module reached the production bundle.
 
 These are repository module names. The same entries are available from the single
-public package as `@workbench-kit/workbench/react`, `.../elements/icon` and
+public package as `vscode-workbench/react`, `.../elements/icon` and
 `.../styles/*.css`; see [`docs/architecture.md`](../../docs/architecture.md#3-one-published-package).
 
 ## Styles

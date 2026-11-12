@@ -230,7 +230,7 @@ A VS Code-style desktop UI template for React.
 - Built with vscode-elements web components
 `,
   'packages/workbench/package.json': `{
-  "name": "@workbench-kit/workbench",
+  "name": "vscode-workbench",
   "version": "0.1.0",
   "private": false,
   "type": "module",
@@ -260,20 +260,20 @@ A VS Code-style desktop UI template for React.
   }
 }
 `,
-  'packages/workbench/README.md': `# @workbench-kit/workbench
+  'packages/workbench/README.md': `# vscode-workbench
 
 The single public distribution package. Version 0.1.0, 0.x and browser-only.
 
 | What you need    | Published import                             |
 | ---------------- | -------------------------------------------- |
-| Full preset      | \`@workbench-kit/workbench\`                   |
-| Composition      | \`@workbench-kit/workbench/react\`             |
-| Headless helpers | \`@workbench-kit/workbench/core\`              |
-| Element tag      | \`@workbench-kit/workbench/elements/icon\`     |
-| Element typings  | \`@workbench-kit/workbench/elements/types\`    |
-| Tokens           | \`@workbench-kit/workbench/styles/tokens.css\` |
-| Component styles | \`@workbench-kit/workbench/styles/shell.css\`  |
-| All styles       | \`@workbench-kit/workbench/styles\`             |
+| Full preset      | \`vscode-workbench\`                   |
+| Composition      | \`vscode-workbench/react\`             |
+| Headless helpers | \`vscode-workbench/core\`              |
+| Element tag      | \`vscode-workbench/elements/icon\`     |
+| Element typings  | \`vscode-workbench/elements/types\`    |
+| Tokens           | \`vscode-workbench/styles/tokens.css\` |
+| Component styles | \`vscode-workbench/styles/shell.css\`  |
+| All styles       | \`vscode-workbench/styles\`             |
 
 React, React DOM and vscode-elements are peers. Ships LICENSE and
 THIRD_PARTY_NOTICES.md alongside dist/.

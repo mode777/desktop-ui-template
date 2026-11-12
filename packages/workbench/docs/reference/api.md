@@ -1,6 +1,6 @@
 # Workbench Kit API reference
 
-`@workbench-kit/workbench` is the single public package for the workbench kit.
+`vscode-workbench` is the single public package for the workbench kit.
 It exposes the full VS Code-style preset, the controlled composition primitives,
 the headless helpers, per-tag element registration and the stylesheets through
 subpath exports.
@@ -23,7 +23,7 @@ the first publish is approved; see the [changelog](../changelog.md).
 ## Install
 
 ```bash
-npm install @workbench-kit/workbench react react-dom @vscode-elements/elements
+npm install vscode-workbench react react-dom @vscode-elements/elements
 ```
 
 React 19 and React DOM 19 are peer dependencies, and
@@ -42,7 +42,7 @@ the generated entry with the files below.
 npm create vite@latest my-workbench -- --template react-ts
 cd my-workbench
 npm install
-npm install @workbench-kit/workbench @vscode-elements/elements
+npm install vscode-workbench @vscode-elements/elements
 ```
 
 `vite.config.ts`:
@@ -62,19 +62,19 @@ export default defineConfig({ plugins: [react()] })
 ```tsx
 import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { closeTabIn, reorderTabIn } from '@workbench-kit/workbench/core'
+import { closeTabIn, reorderTabIn } from 'vscode-workbench/core'
 import {
   IconButton,
   ResizablePane,
   TabStrip,
   WorkbenchShell,
   type TabStripItem,
-} from '@workbench-kit/workbench/react'
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+} from 'vscode-workbench/react'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 
 const initialTabs: TabStripItem[] = [{ id: 'readme', title: 'README.md' }]
 
@@ -135,29 +135,29 @@ registers only the two element tags it renders.
 
 ## Entry points
 
-Consumers install only `@workbench-kit/workbench` and import the subpaths below.
+Consumers install only `vscode-workbench` and import the subpaths below.
 
-| Published import                          | Purpose                                            |
-| ----------------------------------------- | -------------------------------------------------- |
-| `@workbench-kit/workbench`                | Full preset, default store and generic commands.   |
-| `@workbench-kit/workbench/react`          | Controlled shell, pane, tab strip and icon button. |
-| `@workbench-kit/workbench/core`           | Headless layout, tab and persistence helpers.      |
-| `@workbench-kit/workbench/elements/<tag>` | One custom-element registration side effect.       |
-| `@workbench-kit/workbench/elements/types` | JSX declarations for the registered elements.      |
-| `@workbench-kit/workbench/styles/*.css`   | Tokens, base and component stylesheets.            |
-| `@workbench-kit/workbench/styles`         | Aggregate stylesheet in import order.              |
+| Published import                  | Purpose                                            |
+| --------------------------------- | -------------------------------------------------- |
+| `vscode-workbench`                | Full preset, default store and generic commands.   |
+| `vscode-workbench/react`          | Controlled shell, pane, tab strip and icon button. |
+| `vscode-workbench/core`           | Headless layout, tab and persistence helpers.      |
+| `vscode-workbench/elements/<tag>` | One custom-element registration side effect.       |
+| `vscode-workbench/elements/types` | JSX declarations for the registered elements.      |
+| `vscode-workbench/styles/*.css`   | Tokens, base and component stylesheets.            |
+| `vscode-workbench/styles`         | Aggregate stylesheet in import order.              |
 
 Importing the preset does not load the composition or core entries, and
 importing a lower entry does not load the preset, its store or its commands.
 
 ```tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
-import { WorkbenchShell, TabStrip } from '@workbench-kit/workbench/react'
-import { clampSize } from '@workbench-kit/workbench/core'
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/workbench.css'
+import { VSCodeWorkbench } from 'vscode-workbench'
+import { WorkbenchShell, TabStrip } from 'vscode-workbench/react'
+import { clampSize } from 'vscode-workbench/core'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/workbench.css'
 ```
 
 ## Preset
@@ -170,7 +170,7 @@ data and branding stay in the application.
 ### `VSCodeWorkbench`
 
 ```tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
+import { VSCodeWorkbench } from 'vscode-workbench'
 
 export function App() {
   return (
@@ -211,7 +211,7 @@ Every region entry is required. Setting `enabled` to `false` removes that region
 from the shell; the remaining regions reclaim the space.
 
 ```ts
-import type { WorkbenchConfig } from '@workbench-kit/workbench'
+import type { WorkbenchConfig } from 'vscode-workbench'
 
 export const config: WorkbenchConfig = {
   titleBar: {
@@ -263,7 +263,7 @@ export const config: WorkbenchConfig = {
 ### Views
 
 ```ts
-import type { WorkbenchViewRegistry } from '@workbench-kit/workbench'
+import type { WorkbenchViewRegistry } from 'vscode-workbench'
 
 const views: WorkbenchViewRegistry = {
   primary: {
@@ -298,7 +298,7 @@ each keyed by view id. A view definition is the same shape in every region.
 ### Commands
 
 ```ts
-import { createCommandRegistry, defaultCommands } from '@workbench-kit/workbench'
+import { createCommandRegistry, defaultCommands } from 'vscode-workbench'
 
 const commands = createCommandRegistry([
   ...defaultCommands,
@@ -332,7 +332,7 @@ workbench commands and never references app views, files or branding.
 ### Menus and quick open
 
 ```ts
-import type { MenuDefinition, QuickOpenProvider } from '@workbench-kit/workbench'
+import type { MenuDefinition, QuickOpenProvider } from 'vscode-workbench'
 
 const menus: MenuDefinition[] = [
   {
@@ -377,7 +377,7 @@ the shell's status-bar slot.
 The preset ships a Zustand store for consumers that want the default behavior.
 
 ```ts
-import { useWorkbenchStore } from '@workbench-kit/workbench'
+import { useWorkbenchStore } from 'vscode-workbench'
 
 const theme = useWorkbenchStore((state) => state.theme)
 const toggleTheme = useWorkbenchStore((state) => state.toggleTheme)
@@ -426,7 +426,7 @@ import {
   TabStrip,
   TitleBar,
   WorkbenchShell,
-} from '@workbench-kit/workbench/react'
+} from 'vscode-workbench/react'
 ```
 
 ### `WorkbenchShell`
@@ -496,7 +496,7 @@ activation and bottom actions do.
 `ActivityBarItem` has `id`, `title`, `icon` and optional `badge`.
 `ActivityBarAction` has `id`, `title` and `icon`. The primitive renders
 `vscode-icon` through `IconButton`, so register
-`@workbench-kit/workbench/elements/icon`.
+`vscode-workbench/elements/icon`.
 
 ### `Sidebar`
 
@@ -533,7 +533,7 @@ resolve views or own visibility.
 
 `SidebarAction` has `id`, `icon` and `label`. The primitive renders
 `vscode-icon` through `IconButton`, so register
-`@workbench-kit/workbench/elements/icon`.
+`vscode-workbench/elements/icon`.
 
 ### `Panel`
 
@@ -645,8 +645,8 @@ identifiers; it does not execute commands or hold a registry.
 `MenuBarMenu` has `id`, `label` and `entries`. `MenuBarEntry` has optional
 `label`, `commandId`, `keybinding` and `separator`. MenuBar renders
 `vscode-context-menu` and `vscode-icon`; register
-`@workbench-kit/workbench/elements/context-menu` and
-`@workbench-kit/workbench/elements/icon` before rendering it.
+`vscode-workbench/elements/context-menu` and
+`vscode-workbench/elements/icon` before rendering it.
 
 ### `ContextMenu`
 
@@ -679,7 +679,7 @@ visibility, position and entries.
 | `ignoreSelector` | `string`                  | no       | Clicks inside this selector do not close the menu.    |
 
 `ContextMenuItem` has optional `label`, `value`, `keybinding` and `separator`.
-Register `@workbench-kit/workbench/elements/context-menu` before rendering the
+Register `vscode-workbench/elements/context-menu` before rendering the
 primitive.
 
 ### `ResizablePane`
@@ -788,7 +788,7 @@ import {
   cycleTab,
   readVersioned,
   writeVersioned,
-} from '@workbench-kit/workbench/core'
+} from 'vscode-workbench/core'
 ```
 
 ### Size and resizing
@@ -840,29 +840,29 @@ your own tab type can extend it.
 Each subpath registers exactly one custom element and is a side effect. Import
 only the tags your markup renders.
 
-| Subpath                                          | Registered tag        |
-| ------------------------------------------------ | --------------------- |
-| `@workbench-kit/workbench/elements/all`          | every tag below       |
-| `@workbench-kit/workbench/elements/badge`        | `vscode-badge`        |
-| `@workbench-kit/workbench/elements/button`       | `vscode-button`       |
-| `@workbench-kit/workbench/elements/collapsible`  | `vscode-collapsible`  |
-| `@workbench-kit/workbench/elements/context-menu` | `vscode-context-menu` |
-| `@workbench-kit/workbench/elements/icon`         | `vscode-icon`         |
-| `@workbench-kit/workbench/elements/tab-header`   | `vscode-tab-header`   |
-| `@workbench-kit/workbench/elements/tab-panel`    | `vscode-tab-panel`    |
-| `@workbench-kit/workbench/elements/tabs`         | `vscode-tabs`         |
-| `@workbench-kit/workbench/elements/textarea`     | `vscode-textarea`     |
-| `@workbench-kit/workbench/elements/textfield`    | `vscode-textfield`    |
-| `@workbench-kit/workbench/elements/tree`         | `vscode-tree`         |
+| Subpath                                  | Registered tag        |
+| ---------------------------------------- | --------------------- |
+| `vscode-workbench/elements/all`          | every tag below       |
+| `vscode-workbench/elements/badge`        | `vscode-badge`        |
+| `vscode-workbench/elements/button`       | `vscode-button`       |
+| `vscode-workbench/elements/collapsible`  | `vscode-collapsible`  |
+| `vscode-workbench/elements/context-menu` | `vscode-context-menu` |
+| `vscode-workbench/elements/icon`         | `vscode-icon`         |
+| `vscode-workbench/elements/tab-header`   | `vscode-tab-header`   |
+| `vscode-workbench/elements/tab-panel`    | `vscode-tab-panel`    |
+| `vscode-workbench/elements/tabs`         | `vscode-tabs`         |
+| `vscode-workbench/elements/textarea`     | `vscode-textarea`     |
+| `vscode-workbench/elements/textfield`    | `vscode-textfield`    |
+| `vscode-workbench/elements/tree`         | `vscode-tree`         |
 
 ```ts
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/elements/tab-panel'
-import '@workbench-kit/workbench/elements/tabs'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/elements/tab-panel'
+import 'vscode-workbench/elements/tabs'
 ```
 
-`@workbench-kit/workbench/elements/types` provides the JSX declarations for the
+`vscode-workbench/elements/types` provides the JSX declarations for the
 registered elements; it has no runtime side effect. `elements/all` is a
 convenience for demos and template-style applications; selective consumers should
 prefer per-tag entries.
@@ -883,40 +883,40 @@ component's rules.
 
 ### Aggregate styles
 
-| Entry                                           | Scope                                                              |
-| ----------------------------------------------- | ------------------------------------------------------------------ |
-| `@workbench-kit/workbench/styles/tokens.css`    | Palette, theme and shared custom properties.                       |
-| `@workbench-kit/workbench/styles/global.css`    | Base/reset styles scoped to the workbench.                         |
-| `@workbench-kit/workbench/styles/workbench.css` | Aggregate of every component entry below, in the documented order. |
-| `@workbench-kit/workbench/styles/index.css`     | Aggregate entry: tokens, global and workbench in that order.       |
-| `@workbench-kit/workbench/styles`               | Alias of the aggregate entry.                                      |
+| Entry                                   | Scope                                                              |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| `vscode-workbench/styles/tokens.css`    | Palette, theme and shared custom properties.                       |
+| `vscode-workbench/styles/global.css`    | Base/reset styles scoped to the workbench.                         |
+| `vscode-workbench/styles/workbench.css` | Aggregate of every component entry below, in the documented order. |
+| `vscode-workbench/styles/index.css`     | Aggregate entry: tokens, global and workbench in that order.       |
+| `vscode-workbench/styles`               | Alias of the aggregate entry.                                      |
 
 ### Component styles
 
-| Entry                                                | Scope                                                              |
-| ---------------------------------------------------- | ------------------------------------------------------------------ |
-| `@workbench-kit/workbench/styles/shell.css`          | Workbench root, body and center layout.                            |
-| `@workbench-kit/workbench/styles/title-bar.css`      | Title bar, app mark, command center, layout and window controls.   |
-| `@workbench-kit/workbench/styles/menu-bar.css`       | Menu bar buttons and overflow entries.                             |
-| `@workbench-kit/workbench/styles/icon-button.css`    | Icon button variants and badge.                                    |
-| `@workbench-kit/workbench/styles/activity-bar.css`   | Activity bar rail, groups and active indicator.                    |
-| `@workbench-kit/workbench/styles/resizable-pane.css` | Resizable pane surfaces and resize sashes.                         |
-| `@workbench-kit/workbench/styles/sidebar.css`        | Primary/secondary sidebar containers and view header/body.         |
-| `@workbench-kit/workbench/styles/tab-strip.css`      | Editor tab strip, tab items, close/dirty states and strip actions. |
-| `@workbench-kit/workbench/styles/editor-area.css`    | Editor area shell, breadcrumbs, preview badge and content.         |
-| `@workbench-kit/workbench/styles/panel.css`          | Bottom panel and its tab panels.                                   |
-| `@workbench-kit/workbench/styles/status-bar.css`     | Status bar sides and items.                                        |
-| `@workbench-kit/workbench/styles/quick-open.css`     | Quick open overlay, list, items and footer.                        |
-| `@workbench-kit/workbench/styles/context-menu.css`   | Context menu positioner.                                           |
-| `@workbench-kit/workbench/styles/notifications.css`  | Notification stack, notification items and their animation.        |
+| Entry                                        | Scope                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------ |
+| `vscode-workbench/styles/shell.css`          | Workbench root, body and center layout.                            |
+| `vscode-workbench/styles/title-bar.css`      | Title bar, app mark, command center, layout and window controls.   |
+| `vscode-workbench/styles/menu-bar.css`       | Menu bar buttons and overflow entries.                             |
+| `vscode-workbench/styles/icon-button.css`    | Icon button variants and badge.                                    |
+| `vscode-workbench/styles/activity-bar.css`   | Activity bar rail, groups and active indicator.                    |
+| `vscode-workbench/styles/resizable-pane.css` | Resizable pane surfaces and resize sashes.                         |
+| `vscode-workbench/styles/sidebar.css`        | Primary/secondary sidebar containers and view header/body.         |
+| `vscode-workbench/styles/tab-strip.css`      | Editor tab strip, tab items, close/dirty states and strip actions. |
+| `vscode-workbench/styles/editor-area.css`    | Editor area shell, breadcrumbs, preview badge and content.         |
+| `vscode-workbench/styles/panel.css`          | Bottom panel and its tab panels.                                   |
+| `vscode-workbench/styles/status-bar.css`     | Status bar sides and items.                                        |
+| `vscode-workbench/styles/quick-open.css`     | Quick open overlay, list, items and footer.                        |
+| `vscode-workbench/styles/context-menu.css`   | Context menu positioner.                                           |
+| `vscode-workbench/styles/notifications.css`  | Notification stack, notification items and their animation.        |
 
 ```ts
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/resizable-pane.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import '@workbench-kit/workbench/styles/status-bar.css'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/resizable-pane.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import 'vscode-workbench/styles/status-bar.css'
 ```
 
 Use `workbench.css` (or the `styles` alias) when the application renders most
@@ -940,7 +940,7 @@ All types are exported from the entry shown by their group.
   releases do not.
 - The package is browser-only. It assumes `window`, `document` and
   `customElements`; SSR and server rendering are out of scope for `0.x`.
-- The npm scope and name `@workbench-kit/workbench` are provisional until the
+- The npm scope and name `vscode-workbench` are provisional until the
   first publish is approved. See the [changelog](../changelog.md) for released
   changes.
 - The preset persistence key is fixed at `desktop-ui-template:v1` in `0.1.0`.

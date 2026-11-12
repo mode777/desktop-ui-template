@@ -29,7 +29,7 @@ import {
   defaultCommands,
   useWorkbenchStore,
   type WorkbenchCommand,
-} from '@workbench-kit/workbench'
+} from 'vscode-workbench'
 
 const openInspector: WorkbenchCommand = {
   id: 'inspector.open',
@@ -51,7 +51,7 @@ contains only generic workbench commands.
 
 ```ts
 // src/menus.ts
-import type { MenuDefinition } from '@workbench-kit/workbench'
+import type { MenuDefinition } from 'vscode-workbench'
 
 export const menus: MenuDefinition[] = [
   {
@@ -105,7 +105,7 @@ export function useHotkeys() {
 
 ```tsx
 // src/App.tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
+import { VSCodeWorkbench } from 'vscode-workbench'
 import { commands } from './commands'
 import { menus } from './menus'
 import { useHotkeys } from './use-hotkeys'

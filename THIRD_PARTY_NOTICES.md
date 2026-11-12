@@ -1,7 +1,7 @@
 # Third-party notices
 
 This project is MIT licensed. It depends on the following third-party packages.
-The published `@workbench-kit/workbench` tarball does not vendor their source;
+The published `vscode-workbench` tarball does not vendor their source;
 consumers install the declared runtime and peer dependencies and receive each
 package's own license.
 

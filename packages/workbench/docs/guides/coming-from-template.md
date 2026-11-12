@@ -17,14 +17,14 @@ import and file-location change. Your application code stays yours.
 The package publishes one install target. Replace the repository workspace
 imports with these subpaths:
 
-| Repository import                     | Published import                          |
-| ------------------------------------- | ----------------------------------------- |
-| `@workbench-kit/preset-vscode`        | `@workbench-kit/workbench`                |
-| `@workbench-kit/react`                | `@workbench-kit/workbench/react`          |
-| `@workbench-kit/core`                 | `@workbench-kit/workbench/core`           |
-| `@workbench-kit/elements/<tag>`       | `@workbench-kit/workbench/elements/<tag>` |
-| `@workbench-kit/styles-vscode/<file>` | `@workbench-kit/workbench/styles/<file>`  |
-| `@workbench-kit/styles-vscode`        | `@workbench-kit/workbench/styles`         |
+| Repository import                     | Published import                  |
+| ------------------------------------- | --------------------------------- |
+| `@workbench-kit/preset-vscode`        | `vscode-workbench`                |
+| `@workbench-kit/react`                | `vscode-workbench/react`          |
+| `@workbench-kit/core`                 | `vscode-workbench/core`           |
+| `@workbench-kit/elements/<tag>`       | `vscode-workbench/elements/<tag>` |
+| `@workbench-kit/styles-vscode/<file>` | `vscode-workbench/styles/<file>`  |
+| `@workbench-kit/styles-vscode`        | `vscode-workbench/styles`         |
 
 The package also has one dependency, `zustand`, which the preset uses for its
 default store. React, React DOM and `@vscode-elements/elements` are peers.
@@ -34,7 +34,7 @@ default store. React, React DOM and `@vscode-elements/elements` are peers.
 1. Install the package and peers:
 
    ```bash
-   npm install @workbench-kit/workbench react react-dom @vscode-elements/elements
+   npm install vscode-workbench react react-dom @vscode-elements/elements
    ```
 
    While the package is in preview, pack it locally and install the tarball
@@ -50,7 +50,7 @@ default store. React, React DOM and `@vscode-elements/elements` are peers.
    After:
 
    ```tsx
-   import { VSCodeWorkbench, useWorkbenchStore } from '@workbench-kit/workbench'
+   import { VSCodeWorkbench, useWorkbenchStore } from 'vscode-workbench'
    ```
 
 3. Replace style imports. Before:
@@ -64,9 +64,9 @@ default store. React, React DOM and `@vscode-elements/elements` are peers.
    After:
 
    ```ts
-   import '@workbench-kit/workbench/styles/tokens.css'
-   import '@workbench-kit/workbench/styles/global.css'
-   import '@workbench-kit/workbench/styles/workbench.css'
+   import 'vscode-workbench/styles/tokens.css'
+   import 'vscode-workbench/styles/global.css'
+   import 'vscode-workbench/styles/workbench.css'
    ```
 
 4. Replace element registrations. Before:
@@ -79,8 +79,8 @@ default store. React, React DOM and `@vscode-elements/elements` are peers.
    After:
 
    ```ts
-   import '@workbench-kit/workbench/elements/icon'
-   import '@workbench-kit/workbench/elements/tab-header'
+   import 'vscode-workbench/elements/icon'
+   import 'vscode-workbench/elements/tab-header'
    ```
 
 5. Keep your application files where they are. A typical copied application has
@@ -100,7 +100,7 @@ npm run build
 
 Then confirm:
 
-- The composition root imports only `@workbench-kit/workbench` subpaths.
+- The composition root imports only `vscode-workbench` subpaths.
 - The app renders the same regions and restores the existing session.
 - Views, commands, menus and branding still work.
 - The build has no unresolved `@workbench-kit/preset-vscode`,
@@ -112,10 +112,10 @@ Then confirm:
 | Symptom                        | Cause                                        | Fix                                                   |
 | ------------------------------ | -------------------------------------------- | ----------------------------------------------------- |
 | Build cannot resolve a package | An old workspace import remains              | Replace it with the published subpath                 |
-| App renders but is unstyled    | Style imports still point at the old package | Use `@workbench-kit/workbench/styles/*`               |
+| App renders but is unstyled    | Style imports still point at the old package | Use `vscode-workbench/styles/*`                       |
 | Custom elements are empty      | Element registrations were dropped           | Import the per-tag entries                            |
 | Tabs or layout reset           | The copied app used a different storage key  | Keep `desktop-ui-template:v1` or migrate deliberately |
-| Type errors on props           | The published types are the only source now  | Import types from `@workbench-kit/workbench`          |
+| Type errors on props           | The published types are the only source now  | Import types from `vscode-workbench`                  |
 
 If you want to leave the preset behind instead of adopting it, start with the
 [eject recipe](../recipes/eject.md).

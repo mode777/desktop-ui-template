@@ -1,10 +1,10 @@
-import '@workbench-kit/workbench/elements/icon'
-import '@workbench-kit/workbench/elements/tab-header'
-import '@workbench-kit/workbench/styles/tokens.css'
-import '@workbench-kit/workbench/styles/global.css'
-import '@workbench-kit/workbench/styles/shell.css'
-import '@workbench-kit/workbench/styles/tab-strip.css'
-import { TabStrip, WorkbenchShell } from '@workbench-kit/workbench/react'
+import 'vscode-workbench/elements/icon'
+import 'vscode-workbench/elements/tab-header'
+import 'vscode-workbench/styles/tokens.css'
+import 'vscode-workbench/styles/global.css'
+import 'vscode-workbench/styles/shell.css'
+import 'vscode-workbench/styles/tab-strip.css'
+import { TabStrip, WorkbenchShell } from 'vscode-workbench/react'
 
 const tabs = [{ id: 'readme', title: 'README.md' }]
 

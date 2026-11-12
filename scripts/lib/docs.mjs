@@ -4,7 +4,7 @@ import { dirname, isAbsolute, relative, resolve } from 'node:path'
 /** Matches inline Markdown links, excluding images. */
 const MARKDOWN_LINK = /(?<!!)\[[^\]]*\]\(([^)]+)\)/g
 const NPM_RUN = /\bnpm run ([A-Za-z0-9:_-]+)/g
-const PUBLISHED_SPECIFIER = /@workbench-kit\/workbench(?:\/[A-Za-z0-9._/-]+)?/g
+const PUBLISHED_SPECIFIER = /vscode-workbench(?![-\w])(?:\/[A-Za-z0-9._/-]+)?/g
 const PLACEHOLDER_CHARS = /[<{*]/
 
 const PUBLIC_ENTRIES = [
@@ -124,7 +124,7 @@ export function extractPublishedSpecifiers(markdown) {
 }
 
 export function specifierToExportKey(specifier) {
-  const prefix = '@workbench-kit/workbench'
+  const prefix = 'vscode-workbench'
   if (specifier === prefix) return '.'
   if (!specifier.startsWith(`${prefix}/`)) return null
   return `.${specifier.slice(prefix.length)}`

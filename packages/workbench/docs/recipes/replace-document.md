@@ -23,7 +23,7 @@ src/
 
 ```tsx
 // src/DocumentView.tsx
-import type { WorkbenchTab } from '@workbench-kit/workbench'
+import type { WorkbenchTab } from 'vscode-workbench'
 
 export function DocumentView({ tab }: { tab: WorkbenchTab }) {
   return (
@@ -48,7 +48,7 @@ instances in your own state keyed by tab id.
 
 ```tsx
 // src/App.tsx
-import { VSCodeWorkbench } from '@workbench-kit/workbench'
+import { VSCodeWorkbench } from 'vscode-workbench'
 import { DocumentView } from './DocumentView'
 import { commands } from './commands'
 import { menus } from './menus'
