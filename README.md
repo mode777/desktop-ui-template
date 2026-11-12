@@ -1,4 +1,4 @@
-# Desktop UI Template
+# vscode-workbench
 
 A configurable, VS Code-style desktop UI shell for the web. Built with **React 19**, **TypeScript**, **Vite 8**, **Zustand** and the [**vscode-elements**](https://github.com/vscode-elements/elements) web components.
 
@@ -8,7 +8,7 @@ A configurable, VS Code-style desktop UI shell for the web. Built with **React 1
 
 **Live:** [full template](https://mode777.github.io/vscode-workbench/) · [minimal example](https://mode777.github.io/vscode-workbench/minimal/) · [custom-shell example](https://mode777.github.io/vscode-workbench/custom-shell/)
 
-![Desktop UI Template screenshot](docs/screenshot.png)
+![vscode-workbench screenshot](docs/screenshot.png)
 
 ## What this is
 

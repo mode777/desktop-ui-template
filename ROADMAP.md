@@ -566,7 +566,7 @@ These should be resolved before publishing, not necessarily before the internal 
 - **vscode-elements:** peer dependency or optional adapter? Recommendation: peer for `elements` and `preset-vscode`; core stays framework-agnostic.
 - **CSS:** plain prefixed CSS with layers vs CSS modules. Recommendation: prefixed CSS + layers for overrideability and simpler library builds.
 - **Preset contents:** shell only, or shell + demo views? Recommendation: shell + generic commands, with demo views in the template.
-- **Public package scope/name:** resolved — `vscode-workbench` (unscoped). The provisional `@workbench-kit/workbench` name was never published.
+- **Public package scope/name:** resolved — `vscode-workbench` (unscoped). The provisional pre-release name was never published.
 - **Public facade build:** resolved for Phase 5 — copy the module output and styles into the facade, rewrite specifiers and complete extensions; no bundler. The contract remains one tarball with stable subpaths.
 - **Internal versioning:** all five modules share the facade's version for 0.x; independent versioning is out of scope unless a real consumer requires it.
 - **Monorepo tool:** npm workspaces is sufficient unless release tooling requires pnpm/turborepo.

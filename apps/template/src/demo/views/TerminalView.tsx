@@ -8,7 +8,7 @@ interface TerminalLine {
   text: string
 }
 
-const banner = ['Desktop UI Template — mock terminal', 'Type "help" to see the available commands.']
+const banner = ['vscode-workbench — mock terminal', 'Type "help" to see the available commands.']
 
 let lineSequence = 0
 const nextId = () => ++lineSequence

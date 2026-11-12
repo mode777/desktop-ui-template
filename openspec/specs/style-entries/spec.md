@@ -67,7 +67,7 @@ style entry.
 #### Scenario: Public style subpath resolves from the tarball
 
 - **WHEN** a consumer imports a declared
-  `@workbench-kit/workbench/styles/<component>.css` entry from an installed
+  `vscode-workbench/styles/<component>.css` entry from an installed
   tarball
 - **THEN** the stylesheet resolves and loads
 

@@ -129,7 +129,7 @@ export const useWorkbenchStore = create<WorkbenchState>()(
 )
 `,
   'package.json': `{
-  "name": "desktop-ui-template",
+  "name": "vscode-workbench-workspace",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -199,7 +199,7 @@ createRoot(document.getElementById('root')!).render(
 
 ## Project
 
-Desktop UI Template — a VS Code-style workbench shell built with React,
+vscode-workbench — a VS Code-style workbench shell built with React,
 TypeScript, Vite and vscode-elements.
 
 ## Commands
@@ -219,9 +219,9 @@ TypeScript, Vite and vscode-elements.
 - Import workspace packages by name; do not reach into packages/*/src by relative path.
 - This template intentionally does not include a real code editor.
 `,
-  'README.md': `# Desktop UI Template
+  'README.md': `# vscode-workbench
 
-A VS Code-style desktop UI template for React.
+A VS Code-style workbench shell for React.
 
 - Configurable workbench regions
 - Activity bar, primary sidebar, secondary sidebar, panel, status bar
@@ -325,7 +325,7 @@ This is a mock Markdown document.
 
   if (language === 'yaml') {
     return `# ${path}
-name: desktop-ui-template
+name: vscode-workbench
 template: vs-code
 mock: true
 regions:
@@ -353,7 +353,7 @@ regions:
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Desktop UI Template</title>
+    <title>vscode-workbench</title>
   </head>
   <body>
     <div id="root"></div>
@@ -370,7 +370,7 @@ regions:
 // Replace DocumentView with your own renderer when you add one.
 
 export const template = {
-  name: 'desktop-ui-template',
+  name: 'vscode-workbench',
   layout: 'vs-code',
   elements: ['workbench', 'sidebars', 'panel', 'status-bar'],
 }
@@ -411,7 +411,7 @@ const folder = (
 })
 
 export const workspaceTree: WorkspaceNode = folder(
-  'desktop-ui-template',
+  'vscode-workbench',
   '',
   [
     folder('.github', '.github', [

@@ -10,10 +10,10 @@ makes that possible without storing a long-lived npm token, but the package must
 exist before the trust relationship can be configured, so the first step is a
 one-time placeholder publish.
 
-The provisional `@workbench-kit/workbench` name cannot be published because the
-`@workbench-kit` scope is unavailable. The public package will use the available
-unscoped name `vscode-workbench` instead. The provisional name was never
-published, so this is a pre-release rename, not a consumer migration.
+The provisional scoped name cannot be published because its scope is
+unavailable. The public package will use the available unscoped name
+`vscode-workbench` instead. The provisional name was never published, so this is
+a pre-release rename, not a consumer migration.
 
 ## What Changes
 

@@ -10,7 +10,7 @@ This file is the project-specific instruction set for OpenCode (and other coding
 
 ## Project
 
-**Desktop UI Template** — a configurable VS Code-style workbench for the browser, built with React 19, TypeScript, Vite and [vscode-elements](https://github.com/vscode-elements/elements).
+**vscode-workbench** — a configurable VS Code-style workbench for the browser, built with React 19, TypeScript, Vite and [vscode-elements](https://github.com/vscode-elements/elements).
 
 The product is the **shell**, not an editor. Tabs, panes, menus, panels, the status bar and the mock views are all real interactive UI. The document area, file tree, source control and chat are intentionally mock surfaces.
 

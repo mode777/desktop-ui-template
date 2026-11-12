@@ -47,7 +47,7 @@ export function WelcomeView() {
             <vscode-icon name="code" size={42} />
           </div>
           <div>
-            <h1>Desktop UI Template</h1>
+            <h1>vscode-workbench</h1>
             <p className="welcome-tagline">A VS Code-style workbench, ready to make your own.</p>
             <p className="welcome-copy">
               React 19, TypeScript, Vite and <strong>vscode-elements</strong> web components. Every

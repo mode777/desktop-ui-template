@@ -158,7 +158,7 @@ describe('VSCodeWorkbench composition', () => {
 
     expect(screen.getByText('No editors are open')).toBeInTheDocument()
     expect(screen.queryByText(/Explorer/)).not.toBeInTheDocument()
-    expect(screen.queryByText(/Desktop UI Template/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/vscode-workbench/)).not.toBeInTheDocument()
   })
 })
 

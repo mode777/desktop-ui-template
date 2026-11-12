@@ -43,7 +43,7 @@ The API reference SHALL name only exports and subpaths declared by the public pa
 
 #### Scenario: Unknown subpath in documentation
 
-- **WHEN** documentation references a `@workbench-kit/workbench` subpath that the export map does not declare
+- **WHEN** documentation references a `vscode-workbench` subpath that the export map does not declare
 - **THEN** the documentation check fails and names the file and specifier
 
 #### Scenario: Deep generated path is not advertised
@@ -63,7 +63,7 @@ The documentation SHALL map each repository-internal module name to its publishe
 #### Scenario: Consumer examples use published names
 
 - **WHEN** a code example is presented for an external consumer
-- **THEN** it imports from `@workbench-kit/workbench` subpaths and does not instruct the reader to install or import a private workspace module
+- **THEN** it imports from `vscode-workbench` subpaths and does not instruct the reader to install or import a private workspace module
 
 ### Requirement: A migration guide moves the template to the published package
 

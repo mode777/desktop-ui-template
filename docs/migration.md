@@ -4,9 +4,8 @@ This guide moves an application from a copied template or from the repository's
 private workspace packages to the single published package. The target is always
 one install: `vscode-workbench`.
 
-The package is published as `vscode-workbench`; the provisional
-`@workbench-kit/workbench` name was never published. See
-[`release.md`](./release.md).
+The package is published as `vscode-workbench`; the provisional pre-release name
+was never published. See [`release.md`](./release.md).
 
 - [Choose the adoption level](#choose-the-adoption-level)
 - [Install](#install)

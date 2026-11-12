@@ -35,7 +35,7 @@ export function StatusBar() {
             onClick={() => notify('Connected to the mock workspace')}
           >
             <vscode-icon name="remote" size={13} />
-            <span>Desktop UI Template</span>
+            <span>vscode-workbench</span>
           </button>
           <button
             type="button"

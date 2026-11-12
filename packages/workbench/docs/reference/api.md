@@ -5,7 +5,7 @@ It exposes the full VS Code-style preset, the controlled composition primitives,
 the headless helpers, per-tag element registration and the stylesheets through
 subpath exports.
 
-Current version: **0.1.1**. The package is **browser-only** and has no SSR
+Current version: **0.1.2**. The package is **browser-only** and has no SSR
 support in the `0.x` line. The npm scope and package name are provisional until
 the first publish is approved; see the [changelog](../changelog.md).
 

@@ -5,7 +5,7 @@ exposes a full preset, controlled composition primitives, headless helpers,
 per-tag `vscode-elements` registrations and the VS Code-style stylesheets through
 subpath exports.
 
-Version **0.1.1**. The package is `0.x` and browser-only: minor releases may
+Version **0.1.2**. The package is `0.x` and browser-only: minor releases may
 include breaking changes, patch releases do not, and SSR is out of scope.
 
 ## Install

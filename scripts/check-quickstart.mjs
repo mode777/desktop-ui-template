@@ -104,7 +104,7 @@ try {
         type: 'module',
         scripts: { build: 'vite build', typecheck: 'tsc --noEmit' },
         dependencies: {
-          'vscode-workbench': '0.1.1',
+          'vscode-workbench': '0.1.2',
           '@vscode-elements/elements': '^2.5.1',
           react: '^19.0.0',
           'react-dom': '^19.0.0',

@@ -19,7 +19,7 @@ export const LEAK_MARKERS = [
   'chat-view',
   'welcome-view',
   'quick-open-overlay',
-  'Desktop UI Template',
+  'vscode-workbench',
 ]
 
 function normalizePath(value) {

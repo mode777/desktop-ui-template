@@ -63,7 +63,7 @@ export function App() {
       }}
       emptyEditor={<TemplateEmptyEditor />}
       branding={{
-        title: 'Desktop UI Template',
+        title: 'vscode-workbench',
         icon: 'code',
         onActivate: () => runWorkbenchCommand('go.welcome'),
       }}

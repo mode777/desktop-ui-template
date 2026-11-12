@@ -1,5 +1,5 @@
 {
-  "name": "desktop-ui-template",
+  "name": "vscode-workbench-workspace",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "apps/*",
     "docs-site"
   ],
-  "description": "A configurable VS Code-style desktop UI template built with React, TypeScript, Vite and vscode-elements.",
+  "description": "A configurable VS Code-style workbench built with React, TypeScript, Vite and vscode-elements.",
   "license": "MIT",
   "homepage": "https://mode777.github.io/vscode-workbench/",
   "repository": {

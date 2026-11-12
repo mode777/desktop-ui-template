@@ -8,7 +8,7 @@ export function ReadmeView() {
           <vscode-icon name="markdown" size={15} />
           Template guide
         </div>
-        <h1>Desktop UI Template</h1>
+        <h1>vscode-workbench</h1>
         <p className="readme-lede">
           A configurable VS Code-style workbench built with React 19, TypeScript, Vite and{' '}
           <a href="https://github.com/vscode-elements/elements" target="_blank" rel="noreferrer">

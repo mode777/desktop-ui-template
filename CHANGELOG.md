@@ -31,8 +31,7 @@ minor releases may include breaking changes; patch releases do not.
 ### Changed
 
 - The public package is now named `vscode-workbench`. The provisional
-  `@workbench-kit/workbench` name was never published, so there is no consumer
-  migration.
+  pre-release name was never published, so there is no consumer migration.
 - The preset region components are now thin adapters over the React primitives;
   the custom-shell example composes the same primitives with local state.
 - The minimal and custom-shell examples import only the component stylesheets
@@ -41,6 +40,18 @@ minor releases may include breaking changes; patch releases do not.
 - The package README and root README now link the adoption and release guides.
 - The template's mock package content reflects the release metadata, shipped
   files and per-component stylesheet entries.
+
+## [0.1.2] - 2026-11-12
+
+Repository and documentation alignment for the `vscode-workbench` name.
+
+### Changed
+
+- The repository is now `mode777/vscode-workbench`; package metadata, README
+  links, badges, consumer docs, the hosted docs base path and demo branding use
+  the new name.
+- The fixed `desktop-ui-template:v1` persistence key is intentionally unchanged
+  for compatibility.
 
 ## [0.1.1] - 2026-11-12
 
@@ -55,8 +66,8 @@ Documentation-only patch for the first published release.
 ## [0.1.0] - 2026-11-12
 
 The first prepared public release of `vscode-workbench`. The provisional
-`@workbench-kit/workbench` name was never published; the first release uses the
-final unscoped name.
+pre-release name was never published; the first release uses the final unscoped
+name.
 
 ### Added
 
@@ -78,6 +89,7 @@ final unscoped name.
 - MIT license and third-party notices covering React, React DOM, Zustand,
   vscode-elements and Codicons.
 
-[Unreleased]: https://github.com/mode777/vscode-workbench/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/mode777/vscode-workbench/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.2
 [0.1.1]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.1
 [0.1.0]: https://github.com/mode777/vscode-workbench/releases/tag/v0.1.0

@@ -7,9 +7,8 @@ See `proposal.md` for motivation. The current state that shapes the design:
 - `packages/workbench` is the only publishable package; its manifest already
   declares `publishConfig.access: "public"`, the repository metadata and the
   shipped files. The five internal modules stay `private: true`.
-- The facade’s provisional name is `@workbench-kit/workbench`. The
-  `@workbench-kit` scope is unavailable, so the final public name is the
-  available unscoped package `vscode-workbench`. The old name was never
+- The facade’s original scoped name is unavailable, so the final public name is
+  the available unscoped package `vscode-workbench`. The old name was never
   published, so the rename has no consumer migration.
 - The rename touches the facade manifest, `distribution.json`,
   `boundaries.json`, the root workspace selector, the lockfile, consumer docs,
@@ -58,12 +57,13 @@ See `proposal.md` for motivation. The current state that shapes the design:
 
 ### 1. Rename the public facade to `vscode-workbench` before bootstrapping
 
-The exact public string `@workbench-kit/workbench` becomes `vscode-workbench`
-(and its subpaths become `vscode-workbench/react`, `vscode-workbench/core`,
-`vscode-workbench/elements/*`, `vscode-workbench/styles/*`). The replacement is
-limited to the public facade; `@workbench-kit/core`, `@workbench-kit/react`,
-`@workbench-kit/elements`, `@workbench-kit/styles-vscode` and
-`@workbench-kit/preset-vscode` keep their names and `private: true`.
+The public specifier moves from the unavailable scoped form to
+`vscode-workbench` (and its subpaths become `vscode-workbench/react`,
+`vscode-workbench/core`, `vscode-workbench/elements/*`,
+`vscode-workbench/styles/*`). The replacement is limited to the public facade;
+`@workbench-kit/core`, `@workbench-kit/react`, `@workbench-kit/elements`,
+`@workbench-kit/styles-vscode` and `@workbench-kit/preset-vscode` keep their
+names and `private: true`.
 
 The source of truth for the public name becomes the facade manifest; the
 distribution declaration, boundary map, root workspace selector and lockfile are

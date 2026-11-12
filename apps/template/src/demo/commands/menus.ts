@@ -112,7 +112,7 @@ export const menuDefinitions: MenuDefinition[] = [
       { label: 'GitHub Repository', commandId: 'help.github' },
       { label: 'vscode-elements Documentation', commandId: 'help.elements' },
       { separator: true },
-      { label: 'About Desktop UI Template', commandId: 'help.about' },
+      { label: 'About vscode-workbench', commandId: 'help.about' },
     ],
   },
 ]
