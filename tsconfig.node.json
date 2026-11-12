@@ -19,5 +19,11 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.workspace.ts",
+    "vitest.config.ts",
+    "apps/template/vite.config.ts",
+    "apps/minimal/vite.config.ts",
+    "apps/custom-shell/vite.config.ts"
+  ]
 }

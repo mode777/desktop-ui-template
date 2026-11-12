@@ -1,0 +1,30 @@
+{
+  "app": "minimal",
+  "entries": [
+    "tokens.css",
+    "global.css",
+    "shell.css",
+    "resizable-pane.css",
+    "tab-strip.css",
+    "status-bar.css"
+  ],
+  "forbiddenSelectors": [
+    ".activitybar",
+    ".titlebar",
+    ".menubar",
+    ".icon-button",
+    ".sidebar",
+    ".secondary-sidebar",
+    ".view-header",
+    ".view-body",
+    ".editor-area",
+    ".editor-breadcrumbs",
+    ".breadcrumb-",
+    ".editor-preview-badge",
+    ".editor-content",
+    ".panel",
+    ".quick-open",
+    ".context-menu",
+    ".notification"
+  ]
+}

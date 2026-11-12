@@ -1,4 +1,13 @@
 {
   "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "references": [
+    { "path": "./apps/template/tsconfig.json" },
+    { "path": "./apps/minimal/tsconfig.json" },
+    { "path": "./apps/custom-shell/tsconfig.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./packages/core/tsconfig.json" },
+    { "path": "./packages/react/tsconfig.json" },
+    { "path": "./packages/elements/tsconfig.json" },
+    { "path": "./packages/preset-vscode/tsconfig.json" }
+  ]
 }

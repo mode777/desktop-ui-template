@@ -1,0 +1,109 @@
+/* Quick open overlay. */
+
+.quick-open-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 9vh;
+  background: var(--app-backdrop);
+  backdrop-filter: blur(2px);
+}
+
+.quick-open {
+  display: flex;
+  flex-direction: column;
+  width: min(680px, 92vw);
+  max-height: min(620px, 76vh);
+  overflow: hidden;
+  border: 1px solid var(--vscode-menu-border);
+  border-radius: 9px;
+  background: var(--vscode-menu-background);
+  box-shadow: var(--app-shadow);
+}
+
+.quick-open-input {
+  flex: 0 0 auto;
+  padding: 10px;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.quick-open-input vscode-textfield {
+  width: 100%;
+}
+
+.quick-open-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.quick-open-empty {
+  padding: 30px;
+  color: var(--vscode-descriptionForeground);
+  text-align: center;
+}
+
+.quick-open-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 6px 12px;
+  color: var(--vscode-menu-foreground);
+  text-align: left;
+}
+
+.quick-open-item.is-selected {
+  background: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+}
+
+.quick-open-label {
+  flex: none;
+  font-size: 12.5px;
+}
+
+.quick-open-detail {
+  overflow: hidden;
+  color: var(--vscode-descriptionForeground);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quick-open-item.is-selected .quick-open-detail {
+  color: color-mix(in srgb, var(--vscode-list-activeSelectionForeground) 70%, transparent);
+}
+
+.quick-open-keybinding {
+  margin-left: auto;
+  color: var(--vscode-descriptionForeground);
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+}
+
+.quick-open-footer {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 16px;
+  padding: 7px 12px;
+  border-top: 1px solid var(--app-border);
+  color: var(--vscode-descriptionForeground);
+  font-size: 10.5px;
+}
+
+.quick-open-footer span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quick-open-mode {
+  margin-left: auto;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

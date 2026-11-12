@@ -1,0 +1,123 @@
+/* Editor tab strip. */
+
+.editor-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  height: var(--app-tabs-height);
+  border-bottom: 1px solid var(--vscode-editorGroup-border);
+  background: var(--vscode-editorGroupHeader-tabsBackground);
+}
+
+.editor-tabs-scroll {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.editor-tab {
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 96px;
+  max-width: 240px;
+  border-right: 1px solid var(--vscode-tab-border);
+  background: var(--vscode-tab-inactiveBackground);
+  color: var(--vscode-tab-inactiveForeground);
+  --vscode-panelTitle-activeBorder: transparent;
+}
+
+.editor-tab.is-active {
+  background: var(--vscode-tab-activeBackground);
+  color: var(--vscode-tab-activeForeground);
+}
+
+.editor-tab::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: transparent;
+  content: '';
+}
+
+.editor-tab.is-active::after {
+  background: var(--vscode-tab-activeBorderTop);
+}
+
+.editor-tab.is-dragging {
+  opacity: 0.4;
+}
+
+.editor-tab.is-drag-over {
+  box-shadow: inset 2px 0 0 var(--vscode-focusBorder);
+}
+
+.editor-tab vscode-tab-header {
+  height: 100%;
+  font-size: 13px;
+}
+
+.editor-tab vscode-tab-header > vscode-icon[slot='content-before'] {
+  display: block;
+  margin-right: 6px;
+}
+
+.tab-title {
+  display: block;
+  overflow: hidden;
+  max-width: 150px;
+  line-height: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-close {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  border-radius: 4px;
+  color: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.editor-tab:hover .tab-close,
+.editor-tab.is-active .tab-close {
+  opacity: 0.9;
+  pointer-events: auto;
+}
+
+.tab-close:hover {
+  background: var(--vscode-toolbar-hoverBackground);
+}
+
+.tab-dirty-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.tab-close.is-dirty vscode-icon {
+  display: none;
+}
+
+.editor-tab:hover .tab-close.is-dirty vscode-icon {
+  display: inline-block;
+}
+
+.editor-tab:hover .tab-close.is-dirty .tab-dirty-dot {
+  display: none;
+}
+
+.editor-tabs-actions {
+  display: flex;
+  align-items: center;
+  flex: none;
+  padding: 0 5px;
+  border-left: 1px solid var(--vscode-tab-border);
+}

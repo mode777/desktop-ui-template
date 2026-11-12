@@ -1,0 +1,142 @@
+{
+  "name": "@workbench-kit/workbench",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Single distributable workbench package: preset, composition primitives, headless helpers, element registrations and styles.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mode777/desktop-ui-template.git",
+    "directory": "packages/workbench"
+  },
+  "homepage": "https://github.com/mode777/desktop-ui-template/tree/main/packages/workbench#readme",
+  "bugs": {
+    "url": "https://github.com/mode777/desktop-ui-template/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "./dist/elements/*.js",
+    "./dist/preset/elements.js"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "main": "./dist/preset/index.js",
+  "types": "./dist/preset/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/preset/index.d.ts",
+      "import": "./dist/preset/index.js",
+      "default": "./dist/preset/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js",
+      "default": "./dist/react/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js",
+      "default": "./dist/core/index.js"
+    },
+    "./elements/all": {
+      "types": "./dist/elements/all.d.ts",
+      "import": "./dist/elements/all.js",
+      "default": "./dist/elements/all.js"
+    },
+    "./elements/badge": {
+      "types": "./dist/elements/badge.d.ts",
+      "import": "./dist/elements/badge.js",
+      "default": "./dist/elements/badge.js"
+    },
+    "./elements/button": {
+      "types": "./dist/elements/button.d.ts",
+      "import": "./dist/elements/button.js",
+      "default": "./dist/elements/button.js"
+    },
+    "./elements/collapsible": {
+      "types": "./dist/elements/collapsible.d.ts",
+      "import": "./dist/elements/collapsible.js",
+      "default": "./dist/elements/collapsible.js"
+    },
+    "./elements/context-menu": {
+      "types": "./dist/elements/context-menu.d.ts",
+      "import": "./dist/elements/context-menu.js",
+      "default": "./dist/elements/context-menu.js"
+    },
+    "./elements/icon": {
+      "types": "./dist/elements/icon.d.ts",
+      "import": "./dist/elements/icon.js",
+      "default": "./dist/elements/icon.js"
+    },
+    "./elements/tab-header": {
+      "types": "./dist/elements/tab-header.d.ts",
+      "import": "./dist/elements/tab-header.js",
+      "default": "./dist/elements/tab-header.js"
+    },
+    "./elements/tab-panel": {
+      "types": "./dist/elements/tab-panel.d.ts",
+      "import": "./dist/elements/tab-panel.js",
+      "default": "./dist/elements/tab-panel.js"
+    },
+    "./elements/tabs": {
+      "types": "./dist/elements/tabs.d.ts",
+      "import": "./dist/elements/tabs.js",
+      "default": "./dist/elements/tabs.js"
+    },
+    "./elements/textarea": {
+      "types": "./dist/elements/textarea.d.ts",
+      "import": "./dist/elements/textarea.js",
+      "default": "./dist/elements/textarea.js"
+    },
+    "./elements/textfield": {
+      "types": "./dist/elements/textfield.d.ts",
+      "import": "./dist/elements/textfield.js",
+      "default": "./dist/elements/textfield.js"
+    },
+    "./elements/tree": {
+      "types": "./dist/elements/tree.d.ts",
+      "import": "./dist/elements/tree.js",
+      "default": "./dist/elements/tree.js"
+    },
+    "./elements/types": {
+      "types": "./dist/elements/global.d.ts"
+    },
+    "./styles": "./dist/styles/index.css",
+    "./styles/index.css": "./dist/styles/index.css",
+    "./styles/tokens.css": "./dist/styles/tokens.css",
+    "./styles/global.css": "./dist/styles/global.css",
+    "./styles/workbench.css": "./dist/styles/workbench.css",
+    "./styles/shell.css": "./dist/styles/shell.css",
+    "./styles/title-bar.css": "./dist/styles/title-bar.css",
+    "./styles/menu-bar.css": "./dist/styles/menu-bar.css",
+    "./styles/icon-button.css": "./dist/styles/icon-button.css",
+    "./styles/activity-bar.css": "./dist/styles/activity-bar.css",
+    "./styles/resizable-pane.css": "./dist/styles/resizable-pane.css",
+    "./styles/sidebar.css": "./dist/styles/sidebar.css",
+    "./styles/tab-strip.css": "./dist/styles/tab-strip.css",
+    "./styles/editor-area.css": "./dist/styles/editor-area.css",
+    "./styles/panel.css": "./dist/styles/panel.css",
+    "./styles/status-bar.css": "./dist/styles/status-bar.css",
+    "./styles/quick-open.css": "./dist/styles/quick-open.css",
+    "./styles/context-menu.css": "./dist/styles/context-menu.css",
+    "./styles/notifications.css": "./dist/styles/notifications.css"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-workbench-facade.mjs"
+  },
+  "dependencies": {
+    "zustand": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@vscode-elements/elements": ">=2.5.1 <3",
+    "react": ">=19",
+    "react-dom": ">=19"
+  }
+}

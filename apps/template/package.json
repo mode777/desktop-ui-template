@@ -1,0 +1,24 @@
+{
+  "name": "@workbench-kit/template-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The full VS Code-style template application, composed from the workbench kit preset.",
+  "license": "MIT",
+  "scripts": {
+    "predev": "node ../../scripts/sync-codicons.mjs",
+    "dev": "vite",
+    "prebuild": "node ../../scripts/sync-codicons.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vscode-elements/elements": "^2.5.1",
+    "@workbench-kit/elements": "*",
+    "@workbench-kit/preset-vscode": "*",
+    "@workbench-kit/react": "*",
+    "@workbench-kit/styles-vscode": "*",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}

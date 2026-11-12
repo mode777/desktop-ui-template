@@ -1,0 +1,65 @@
+/* Resizable panes and their sashes. */
+
+.resizable-pane {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.resizable-pane--left {
+  height: 100%;
+  border-right: 1px solid var(--app-border);
+}
+
+.resizable-pane--right {
+  height: 100%;
+  border-left: 1px solid var(--app-border);
+}
+
+.resizable-pane--bottom {
+  width: 100%;
+  border-top: 1px solid var(--app-panel-border);
+}
+
+.resizable-pane.is-maximized {
+  border-top: 0;
+}
+
+.resize-handle {
+  position: absolute;
+  z-index: 20;
+  background: transparent;
+}
+
+.resize-handle--vertical {
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  cursor: ew-resize;
+}
+
+.resizable-pane--left .resize-handle--vertical {
+  right: -4px;
+}
+
+.resizable-pane--right .resize-handle--vertical {
+  left: -4px;
+}
+
+.resize-handle--horizontal {
+  right: 0;
+  left: 0;
+  height: 7px;
+  cursor: ns-resize;
+}
+
+.resizable-pane--bottom .resize-handle--horizontal {
+  top: -4px;
+}
+
+.resize-handle:hover,
+.resize-handle:focus-visible,
+.is-resizing .resize-handle {
+  background: var(--vscode-sash-hoverBorder);
+}

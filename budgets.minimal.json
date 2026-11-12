@@ -1,0 +1,22 @@
+{
+  "baseline": "minimal example — one tab, one options sidebar and a status bar, built from kit core/react with per-component styles",
+  "recordedAt": "2026-11-12",
+  "tolerance": {
+    "percent": 1,
+    "minBytes": 1024
+  },
+  "enforcement": {
+    "js": "fail",
+    "css": "warn"
+  },
+  "budgets": {
+    "js": {
+      "raw": 254276,
+      "gzip": 79054
+    },
+    "css": {
+      "raw": 19261,
+      "gzip": 4106
+    }
+  }
+}

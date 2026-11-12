@@ -1,0 +1,36 @@
+{
+  "description": "Five private internal modules, one published package. The internal modules keep the architecture boundaries; packages/workbench is the single publish target and exposes them through subpath exports. See docs/architecture.md.",
+  "internalModules": [
+    {
+      "name": "@workbench-kit/core",
+      "path": "packages/core",
+      "mayDependOn": []
+    },
+    {
+      "name": "@workbench-kit/react",
+      "path": "packages/react",
+      "mayDependOn": ["@workbench-kit/core"]
+    },
+    {
+      "name": "@workbench-kit/elements",
+      "path": "packages/elements",
+      "mayDependOn": []
+    },
+    {
+      "name": "@workbench-kit/styles-vscode",
+      "path": "packages/styles-vscode",
+      "mayDependOn": []
+    },
+    {
+      "name": "@workbench-kit/preset-vscode",
+      "path": "packages/preset-vscode",
+      "mayDependOn": ["@workbench-kit/core", "@workbench-kit/react", "@workbench-kit/elements"]
+    }
+  ],
+  "publicPackage": {
+    "name": "@workbench-kit/workbench",
+    "path": "packages/workbench",
+    "requiredExportPrefixes": [".", "./react", "./core", "./elements/", "./styles/"],
+    "requiredPeers": ["react", "react-dom", "@vscode-elements/elements"]
+  }
+}

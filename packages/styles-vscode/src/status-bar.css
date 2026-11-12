@@ -1,0 +1,48 @@
+/* Status bar. */
+
+.statusbar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--app-statusbar-height);
+  border-top: 1px solid var(--vscode-statusBar-border);
+  background: var(--vscode-statusBar-background);
+  color: var(--vscode-statusBar-foreground);
+  font-size: 11px;
+  user-select: none;
+}
+
+.statusbar-side {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  padding: 0 7px;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.status-item:hover {
+  background: var(--vscode-statusBarItem-hoverBackground);
+}
+
+.status-item--brand {
+  padding: 0 9px;
+  background: var(--vscode-statusBarItem-remoteBackground);
+  color: var(--vscode-statusBarItem-remoteForeground);
+}
+
+.status-item--brand:hover {
+  background: color-mix(in srgb, var(--vscode-statusBarItem-remoteBackground) 88%, #ffffff);
+}
+
+.statusbar-side--right .status-item {
+  padding: 0 6px;
+}

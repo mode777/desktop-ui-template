@@ -1,0 +1,64 @@
+/* Primary and secondary sidebars. */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--vscode-sideBar-background);
+}
+
+.secondary-sidebar {
+  background: var(--vscode-sideBar-background);
+}
+
+.view-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  height: 35px;
+  padding: 0 8px 0 16px;
+  color: var(--vscode-sideBarTitle-foreground);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.view-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.view-header-title span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: auto;
+  opacity: 0.62;
+  transition: opacity 120ms ease;
+}
+
+.sidebar:hover .view-header-actions,
+.view-header:focus-within .view-header-actions {
+  opacity: 1;
+}
+
+.view-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}

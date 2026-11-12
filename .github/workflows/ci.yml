@@ -31,3 +31,23 @@ jobs:
 
       - name: Verify
         run: npm run check
+
+      # `npm run check` already built apps/template/dist and apps/minimal/dist,
+      # so reuse those outputs instead of building twice. Each step fails the
+      # job when that target's gzipped JavaScript grows beyond its own budget
+      # file; CSS overage is advisory in this phase.
+      - name: Bundle size
+        run: npm run size -- --no-build --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Bundle size (minimal example)
+        run: npm run size:minimal -- --no-build --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload size reports
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: size-report
+          path: |
+            size-report.json
+            size-report.minimal.json
+          if-no-files-found: warn

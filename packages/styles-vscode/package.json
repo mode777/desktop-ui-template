@@ -1,0 +1,36 @@
+{
+  "name": "@workbench-kit/styles-vscode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Token, base and workbench component CSS for the VS Code-style workbench kit.",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "src"
+  ],
+  "style": "./src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./index.css": "./src/index.css",
+    "./tokens.css": "./src/tokens.css",
+    "./global.css": "./src/global.css",
+    "./workbench.css": "./src/workbench.css",
+    "./shell.css": "./src/shell.css",
+    "./title-bar.css": "./src/title-bar.css",
+    "./menu-bar.css": "./src/menu-bar.css",
+    "./icon-button.css": "./src/icon-button.css",
+    "./activity-bar.css": "./src/activity-bar.css",
+    "./resizable-pane.css": "./src/resizable-pane.css",
+    "./sidebar.css": "./src/sidebar.css",
+    "./tab-strip.css": "./src/tab-strip.css",
+    "./editor-area.css": "./src/editor-area.css",
+    "./panel.css": "./src/panel.css",
+    "./status-bar.css": "./src/status-bar.css",
+    "./quick-open.css": "./src/quick-open.css",
+    "./context-menu.css": "./src/context-menu.css",
+    "./notifications.css": "./src/notifications.css"
+  }
+}

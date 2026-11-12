@@ -1,0 +1,7 @@
+/* Context menu positioner. */
+
+.context-menu-positioner {
+  position: fixed;
+  z-index: 1200;
+  min-width: 220px;
+}

@@ -1,5 +1,7 @@
-dist
+apps/*/dist
+packages/*/dist
 node_modules
 coverage
 public/codicons
 package-lock.json
+.opencode

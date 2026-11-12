@@ -1,0 +1,18 @@
+{
+  "app": "custom-shell",
+  "entries": [
+    "tokens.css",
+    "global.css",
+    "shell.css",
+    "title-bar.css",
+    "icon-button.css",
+    "activity-bar.css",
+    "resizable-pane.css",
+    "sidebar.css",
+    "tab-strip.css",
+    "editor-area.css",
+    "panel.css",
+    "status-bar.css"
+  ],
+  "forbiddenSelectors": [".menubar", ".quick-open", ".context-menu", ".notification"]
+}

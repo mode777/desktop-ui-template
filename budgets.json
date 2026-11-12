@@ -1,0 +1,22 @@
+{
+  "baseline": "full preset template \u2014 production build of the demo shell after the per-component CSS split (dist/assets scripts and styles)",
+  "recordedAt": "2026-11-12",
+  "tolerance": {
+    "percent": 1,
+    "minBytes": 1024
+  },
+  "enforcement": {
+    "js": "fail",
+    "css": "warn"
+  },
+  "budgets": {
+    "js": {
+      "raw": 430535,
+      "gzip": 118736
+    },
+    "css": {
+      "raw": 44515,
+      "gzip": 8172
+    }
+  }
+}

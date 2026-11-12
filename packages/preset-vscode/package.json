@@ -1,0 +1,38 @@
+{
+  "name": "@workbench-kit/preset-vscode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Composed VS Code-style workbench preset with a default store and generic commands.",
+  "license": "MIT",
+  "sideEffects": [
+    "./src/elements.ts",
+    "./dist/elements.js"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@workbench-kit/core": "*",
+    "@workbench-kit/elements": "*",
+    "@workbench-kit/react": "*",
+    "zustand": "^5.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  }
+}

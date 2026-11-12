@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "description": "A configurable VS Code-style desktop UI template built with React, TypeScript, Vite and vscode-elements.",
   "license": "MIT",
   "homepage": "https://mode777.github.io/desktop-ui-template/",
@@ -11,11 +15,16 @@
     "url": "https://github.com/mode777/desktop-ui-template.git"
   },
   "scripts": {
-    "predev": "node scripts/sync-codicons.mjs",
-    "dev": "vite",
-    "prebuild": "node scripts/sync-codicons.mjs",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
+    "dev": "npm run dev -w @workbench-kit/template-app",
+    "dev:minimal": "npm run dev -w @workbench-kit/minimal-app",
+    "dev:custom-shell": "npm run dev -w @workbench-kit/custom-shell-app",
+    "build": "npm run build:packages && tsc -b && npm run build -w @workbench-kit/template-app",
+    "build:packages": "npm run build -w @workbench-kit/core && npm run build -w @workbench-kit/react && npm run build -w @workbench-kit/elements && npm run build -w @workbench-kit/preset-vscode && npm run build:facade",
+    "build:facade": "npm run build -w @workbench-kit/workbench",
+    "build:minimal": "npm run build -w @workbench-kit/minimal-app",
+    "build:custom-shell": "npm run build -w @workbench-kit/custom-shell-app",
+    "build:site": "npm run build && npm run build:minimal && npm run build:custom-shell && node scripts/assemble-pages-site.mjs",
+    "preview": "npm run preview -w @workbench-kit/template-app",
     "lint": "oxlint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -23,14 +32,23 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "check": "npm run lint && npm run format:check && npm run typecheck && npm run test && npm run build"
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm run check:boundaries && npm run check:distribution && npm run check:docs && npm run check:release && npm run check:styles && npm run test && npm run build && npm run build:minimal && npm run check:minimal && npm run build:custom-shell && npm run check:custom-shell && npm run pack:check",
+    "size": "node scripts/size-report.mjs --target full-preset --build build --dist apps/template/dist --budget budgets.json --report size-report.json",
+    "size:minimal": "node scripts/size-report.mjs --target minimal-example --build build:minimal --dist apps/minimal/dist --budget budgets.minimal.json --report size-report.minimal.json --compare budgets.json",
+    "check:minimal": "node scripts/check-example-bundle.mjs --dist apps/minimal/dist --label minimal --build-command \"npm run build:minimal\" --style-config apps/minimal/style-subset.json",
+    "check:custom-shell": "node scripts/check-example-bundle.mjs --dist apps/custom-shell/dist --label custom-shell --build-command \"npm run build:custom-shell\" --style-config apps/custom-shell/style-subset.json",
+    "pack:check": "node scripts/check-workbench-pack.mjs",
+    "check:boundaries": "node scripts/check-boundaries.mjs",
+    "check:distribution": "node scripts/check-distribution.mjs",
+    "check:docs": "node scripts/check-docs.mjs",
+    "check:styles": "node scripts/check-styles.mjs",
+    "check:release": "node scripts/check-release.mjs"
   },
   "dependencies": {
     "@vscode-elements/elements": "^2.5.1",
     "@vscode/codicons": "^0.0.45",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "zustand": "^5.1.0"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^7.0.1",

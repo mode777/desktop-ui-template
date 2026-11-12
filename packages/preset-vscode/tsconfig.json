@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "../../node_modules/.tmp/tsconfig.preset-vscode.tsbuildinfo",
+    "types": []
+  },
+  "include": ["src", "../../test/setup.ts", "../../packages/elements/src/global.d.ts"]
+}

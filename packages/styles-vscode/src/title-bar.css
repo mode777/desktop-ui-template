@@ -1,0 +1,120 @@
+/* Title bar and its preset-owned content. */
+
+.titlebar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  height: var(--app-titlebar-height);
+  padding-left: 6px;
+  border-bottom: 1px solid var(--vscode-titleBar-border);
+  background: var(--vscode-titleBar-activeBackground);
+  color: var(--vscode-titleBar-activeForeground);
+  user-select: none;
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.app-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 28px;
+  border-radius: 5px;
+  color: var(--vscode-activityBar-foreground);
+}
+
+.app-mark:hover {
+  background: var(--vscode-toolbar-hoverBackground);
+}
+
+.command-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(44vw, 620px);
+  min-width: 180px;
+  height: 24px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 6px;
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  font-size: 12px;
+  text-align: left;
+}
+
+.command-center:hover {
+  border-color: var(--vscode-focusBorder);
+}
+
+.command-center-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.command-center-hint {
+  margin-left: auto;
+  color: var(--vscode-descriptionForeground);
+  font-size: 10px;
+}
+
+.command-center-spacer {
+  flex: 1;
+}
+
+.titlebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  margin-left: auto;
+  padding-left: 8px;
+}
+
+.layout-controls,
+.window-controls {
+  display: flex;
+  align-items: center;
+}
+
+.window-controls {
+  height: 100%;
+  margin-left: 6px;
+}
+
+.window-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 100%;
+  color: var(--vscode-titleBar-activeForeground);
+}
+
+.window-control:hover {
+  background: var(--vscode-toolbar-hoverBackground);
+}
+
+.window-control--close:hover {
+  background: #c42b1c;
+  color: #ffffff;
+}
+
+@media (max-width: 1100px) {
+  .command-center {
+    width: min(34vw, 420px);
+  }
+}
+
+@media (max-width: 820px) {
+  .command-center-hint,
+  .window-controls {
+    display: none;
+  }
+}

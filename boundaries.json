@@ -1,0 +1,121 @@
+{
+  "description": "Declared layer model for the template and minimal applications under apps/, the workspace packages and shared test support. The boundary check reads this file; the rules live here, not in the checker. See README.md#dependency-boundaries.",
+  "roots": ["apps/template/src", "apps/minimal/src", "apps/custom-shell/src", "packages"],
+  "workspacePackages": {
+    "@workbench-kit/core": {
+      "layer": "kit-core",
+      "root": "packages/core"
+    },
+    "@workbench-kit/react": {
+      "layer": "kit-react",
+      "root": "packages/react"
+    },
+    "@workbench-kit/elements": {
+      "layer": "kit-elements",
+      "root": "packages/elements"
+    },
+    "@workbench-kit/styles-vscode": {
+      "layer": "kit-styles",
+      "root": "packages/styles-vscode"
+    },
+    "@workbench-kit/preset-vscode": {
+      "layer": "kit-preset",
+      "root": "packages/preset-vscode"
+    },
+    "@workbench-kit/workbench": {
+      "layer": "kit-workbench",
+      "root": "packages/workbench"
+    }
+  },
+  "unclassified": {
+    "mayImport": [],
+    "allowedExternals": []
+  },
+  "layers": [
+    {
+      "name": "test",
+      "description": "Unit tests may assert across layers; each imported file is still checked on its own. Cross-package tests use package names, not relative paths.",
+      "priority": 100,
+      "include": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"],
+      "mayImport": ["*"],
+      "allowedExternals": ["*"]
+    },
+    {
+      "name": "kit-core",
+      "description": "Headless helpers. No React, no DOM, no app data.",
+      "include": ["packages/core/**"],
+      "mayImport": ["kit-core"],
+      "allowedExternals": []
+    },
+    {
+      "name": "kit-react",
+      "description": "Controlled primitives. May use kit-core, never app layers.",
+      "include": ["packages/react/**"],
+      "mayImport": ["kit-core", "kit-react"],
+      "allowedExternals": ["react", "react-dom"]
+    },
+    {
+      "name": "kit-elements",
+      "description": "Per-tag custom element registration and shared JSX typings.",
+      "include": ["packages/elements/**"],
+      "mayImport": ["kit-elements"],
+      "allowedExternals": ["@vscode-elements/elements", "react"]
+    },
+    {
+      "name": "kit-styles",
+      "description": "Token, base and workbench shell/component CSS. No demo view selectors.",
+      "include": ["packages/styles-vscode/**"],
+      "mayImport": ["kit-styles"],
+      "allowedExternals": []
+    },
+    {
+      "name": "kit-preset",
+      "description": "Composed preset: shell composition, generic regions, default store, commands and its element registration. Uses kit layers only, never app or demo modules.",
+      "include": ["packages/preset-vscode/**"],
+      "mayImport": ["kit-core", "kit-react", "kit-elements", "kit-styles", "kit-preset"],
+      "allowedExternals": ["react", "react-dom", "@vscode-elements/elements", "zustand"]
+    },
+    {
+      "name": "kit-workbench",
+      "description": "Public distribution facade: authored manifest/README and generated output only. Never imports implementation, app or demo modules.",
+      "include": ["packages/workbench/**"],
+      "mayImport": [],
+      "allowedExternals": []
+    },
+    {
+      "name": "app",
+      "description": "Template application composition root: apps/template/src/main.tsx, apps/template/src/vscode-elements.ts and apps/template/src/app.",
+      "include": ["apps/template/src/app/**", "apps/template/src/*.ts", "apps/template/src/*.tsx"],
+      "mayImport": ["*"],
+      "allowedExternals": ["react", "react-dom", "@vscode-elements/elements"]
+    },
+    {
+      "name": "demo",
+      "description": "Demo surfaces consumed by the template: views, commands, menus, mock data, demo components and demo CSS. Uses the preset through its public exports.",
+      "include": ["apps/template/src/demo/**"],
+      "mayImport": ["demo", "kit-core", "kit-react", "kit-elements", "kit-styles", "kit-preset"],
+      "allowedExternals": ["react", "react-dom", "@vscode-elements/elements"]
+    },
+    {
+      "name": "example-minimal",
+      "description": "Minimal application: primitives, core, element registration and shared styles only, never the preset, template app or demo layers.",
+      "include": ["apps/minimal/src/**"],
+      "mayImport": ["example-minimal", "kit-core", "kit-react", "kit-elements", "kit-styles"],
+      "allowedExternals": ["react", "react-dom", "@vscode-elements/elements"]
+    },
+    {
+      "name": "example-custom-shell",
+      "description": "Custom-shell application: primitives, core, element registration and shared styles only, never the preset, template app or demo layers.",
+      "include": ["apps/custom-shell/src/**"],
+      "mayImport": ["example-custom-shell", "kit-core", "kit-react", "kit-elements", "kit-styles"],
+      "allowedExternals": ["react", "react-dom", "@vscode-elements/elements"]
+    },
+    {
+      "name": "test-support",
+      "description": "Test environment setup.",
+      "include": ["test/**"],
+      "mayImport": [],
+      "allowedExternals": ["vitest", "@testing-library/jest-dom"]
+    }
+  ]
+}

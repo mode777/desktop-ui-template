@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Workspace source resolution for typecheck and tests */
+    "paths": {
+      "@workbench-kit/core": ["./packages/core/src/index.ts"],
+      "@workbench-kit/react": ["./packages/react/src/index.ts"],
+      "@workbench-kit/elements": ["./packages/elements/src/all.ts"],
+      "@workbench-kit/elements/*": ["./packages/elements/src/*"],
+      "@workbench-kit/preset-vscode": ["./packages/preset-vscode/src/index.ts"]
+    },
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}
