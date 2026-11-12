@@ -57,7 +57,5 @@ verify the result. The short version:
 
 ## Availability
 
-The package is currently in preview and is not yet on the public npm registry.
-Use the local-tarball instructions in the [quickstart](./quickstart.md) until the
-first owner-approved publish. The package is browser-only and `0.x`; minor
-releases may include breaking changes.
+The package is published as `vscode-workbench` on the public npm registry. It is
+browser-only and `0.x`; minor releases may include breaking changes.

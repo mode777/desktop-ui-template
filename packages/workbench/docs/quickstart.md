@@ -19,15 +19,6 @@ When the package is available on the registry:
 npm install vscode-workbench react react-dom @vscode-elements/elements
 ```
 
-The package is currently in preview. Until the first publish, build the package
-in the repository and install the packed tarball:
-
-```bash
-npm run build:packages
-npm pack ./packages/workbench
-npm install ./workbench-kit-workbench-0.1.0.tgz react react-dom @vscode-elements/elements
-```
-
 ## Create the application
 
 ```bash

@@ -5,25 +5,15 @@ exposes a full preset, controlled composition primitives, headless helpers,
 per-tag `vscode-elements` registrations and the VS Code-style stylesheets through
 subpath exports.
 
-Version **0.1.0**. The package is `0.x` and browser-only: minor releases may
+Version **0.1.1**. The package is `0.x` and browser-only: minor releases may
 include breaking changes, patch releases do not, and SSR is out of scope.
 
 ## Install
 
-The package is currently in **preview** and is not yet on the public npm
-registry. When the first owner-approved publish lands, install the package and
-its peers with:
+Install the package and its peers with:
 
 ```bash
 npm install vscode-workbench react react-dom @vscode-elements/elements
-```
-
-Until then, build the package in the repository and install the local tarball:
-
-```bash
-npm run build:packages
-npm pack ./packages/workbench
-npm install ./workbench-kit-workbench-0.1.0.tgz react react-dom @vscode-elements/elements
 ```
 
 React 19 and React DOM 19 are peers. `@vscode-elements/elements` must satisfy

@@ -85,13 +85,13 @@ repository docs. The repository docs describe how the kit is built and released.
 
 ### Working on the repository
 
-| Document                                         | What it covers                                                            |
-| ------------------------------------------------ | ------------------------------------------------------------------------- |
-| [Contributor migration guide](docs/migration.md) | Moving a template copy or workspace app to `vscode-workbench`.            |
-| [Release policy](docs/release.md)                | SemVer, changelog, release checklist and the owner-approved publish gate. |
-| [Architecture](docs/architecture.md)             | Five private modules, one public facade and the enforcement model.        |
-| [Roadmap](ROADMAP.md)                            | Staged plan, Phase 7 priority and acceptance criteria.                    |
-| [Third-party notices](THIRD_PARTY_NOTICES.md)    | Dependency licenses and the Codicons attribution.                         |
+| Document                                         | What it covers                                                                         |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [Contributor migration guide](docs/migration.md) | Moving a template copy or workspace app to `vscode-workbench`.                         |
+| [Release policy](docs/release.md)                | SemVer, changelog, release checklist and the tag-triggered trusted-publishing release. |
+| [Architecture](docs/architecture.md)             | Five private modules, one public facade and the enforcement model.                     |
+| [Roadmap](ROADMAP.md)                            | Staged plan, Phase 7 priority and acceptance criteria.                                 |
+| [Third-party notices](THIRD_PARTY_NOTICES.md)    | Dependency licenses and the Codicons attribution.                                      |
 
 The public package is `0.x` and browser-only; the npm scope is provisional until
 the first publish is approved. The repository stays copyable and works without

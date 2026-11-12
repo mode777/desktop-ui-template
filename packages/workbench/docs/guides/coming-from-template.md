@@ -37,9 +37,6 @@ default store. React, React DOM and `@vscode-elements/elements` are peers.
    npm install vscode-workbench react react-dom @vscode-elements/elements
    ```
 
-   While the package is in preview, pack it locally and install the tarball
-   instead. See the [quickstart](../quickstart.md).
-
 2. Replace the imports in your composition root. Before:
 
    ```tsx

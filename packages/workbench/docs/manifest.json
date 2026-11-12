@@ -1,7 +1,7 @@
 {
   "packageName": "vscode-workbench",
-  "version": "0.1.0",
-  "availability": "preview",
+  "version": "0.1.1",
+  "availability": "published",
   "siteUrl": "https://mode777.github.io/desktop-ui-template",
   "title": "Workbench Kit",
   "description": "A configurable VS Code-style workbench for React applications: preset shell, composition primitives, headless helpers, element registrations and styles.",
@@ -147,7 +147,7 @@
       "path": "changelog.md",
       "route": "/changelog",
       "title": "Changelog",
-      "description": "Consumer-visible changes and the prepared 0.1.0 surface.",
+      "description": "Consumer-visible changes and the initial public surface.",
       "section": "project",
       "order": 1
     }

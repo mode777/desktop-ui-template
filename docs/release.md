@@ -4,7 +4,7 @@ The public artifact is one package, `vscode-workbench`, generated from five
 private internal modules. This document defines how it is versioned, prepared,
 published and verified.
 
-Current prepared version: **0.1.0**. The package has a one-time npm bootstrap
+Current prepared version: **0.1.1**. The package has a one-time npm bootstrap
 version, `0.0.0-bootstrap.0`; the first real release is published by the Git tag
 workflow. The package name is final.
 
@@ -146,8 +146,8 @@ Run from a clean checkout on the release commit:
 9. `npm pack --dry-run` from `packages/workbench` and inspect the file list,
    license material, consumer docs, `AGENTS.md`, `llms.txt` and export targets.
    The tarball is named `vscode-workbench-<version>.tgz`.
-10. Confirm `availability` is `preview` in
-    `packages/workbench/docs/manifest.json` until the publish succeeds.
+10. Confirm `availability` is `published` after the first release, or `preview`
+    only before the first publish.
 11. Confirm the npm trusted publisher lists `publish.yml` for this repository.
 12. Commit the version and changelog, then tag the commit `v<version>` (for
     example `v0.1.0`) and push the tag. Do not run `npm publish` manually for a
@@ -174,7 +174,7 @@ In a clean temporary directory:
 
 ```bash
 npm init -y
-npm install vscode-workbench@0.1.0 react react-dom @vscode-elements/elements
+npm install vscode-workbench@0.1.1 react react-dom @vscode-elements/elements
 ```
 
 Then:
@@ -188,7 +188,7 @@ Then:
    package.
 5. Confirm the package version and export map on the registry, and confirm the
    release has a provenance attestation:
-   `npm view vscode-workbench@0.1.0 dist.attestations --json`.
+   `npm view vscode-workbench@0.1.1 dist.attestations --json`.
 6. Deprecate the bootstrap placeholder and retire its dist-tag:
    `npm deprecate vscode-workbench@0.0.0-bootstrap.0 "Bootstrap placeholder; use the current release."`
    followed by `npm dist-tag rm vscode-workbench bootstrap`.

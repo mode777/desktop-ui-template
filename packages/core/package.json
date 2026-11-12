@@ -1,6 +1,6 @@
 {
   "name": "@workbench-kit/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Headless layout, tab, resize and persistence helpers for the workbench kit.",

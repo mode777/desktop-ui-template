@@ -1,6 +1,6 @@
 {
   "name": "@workbench-kit/preset-vscode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Composed VS Code-style workbench preset with a default store and generic commands.",

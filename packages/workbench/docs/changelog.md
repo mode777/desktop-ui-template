@@ -42,6 +42,16 @@ minor releases may include breaking changes; patch releases do not.
   `docs/` copy and `llms.txt` by absolute URL.
 - The package tarball now ships the consumer documentation and agent guide.
 
+## [0.1.1] - 2026-11-12
+
+Documentation-only patch for the first published release.
+
+### Changed
+
+- The package README, quickstart and availability notes now describe the
+  published registry package.
+- The docs manifest marks the package as published.
+
 ## [0.1.0] - 2026-11-12
 
 The first prepared public release of `vscode-workbench`. The provisional
@@ -68,5 +78,6 @@ final unscoped name.
 - MIT license and third-party notices covering React, React DOM, Zustand,
   vscode-elements and Codicons.
 
-[Unreleased]: https://github.com/mode777/desktop-ui-template/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/mode777/desktop-ui-template/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.1
 [0.1.0]: https://github.com/mode777/desktop-ui-template/releases/tag/v0.1.0

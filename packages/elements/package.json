@@ -1,6 +1,6 @@
 {
   "name": "@workbench-kit/elements",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Per-tag vscode-elements registration entries and JSX typings for the workbench kit.",

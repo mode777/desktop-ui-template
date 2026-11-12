@@ -2,7 +2,7 @@
 
 > A configurable VS Code-style workbench for React applications: preset shell, composition primitives, headless helpers, element registrations and styles.
 
-Package: `vscode-workbench` 0.1.0. Availability: preview; not yet on the public npm registry.
+Package: `vscode-workbench` 0.1.1. Availability: published on the public npm registry.
 
 ## Start here
 
@@ -40,4 +40,4 @@ Package: `vscode-workbench` 0.1.0. Availability: preview; not yet on the public 
 
 ## Project
 
-- [Changelog](https://mode777.github.io/desktop-ui-template/docs/raw/changelog.md): Consumer-visible changes and the prepared 0.1.0 surface.
+- [Changelog](https://mode777.github.io/desktop-ui-template/docs/raw/changelog.md): Consumer-visible changes and the initial public surface.
