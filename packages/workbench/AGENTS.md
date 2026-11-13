@@ -29,6 +29,21 @@ If you only have the installed package, the same files are in
 Start with the preset unless the task requires otherwise. Do not mix the preset
 store with a second source of truth for the same layout or tab fields.
 
+## Sample applications
+
+Three complete applications are available as references. Each has public source
+code and a deployed build:
+
+| Sample       | Adoption level                           | Source code                                                                                  | Deployed sample                                                                  |
+| ------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Template     | Preset (`VSCodeWorkbench`)               | [apps/template](https://github.com/mode777/vscode-workbench/tree/main/apps/template)         | [Full workbench](https://mode777.github.io/vscode-workbench/)                    |
+| Custom shell | Composition (`WorkbenchShell` + regions) | [apps/custom-shell](https://github.com/mode777/vscode-workbench/tree/main/apps/custom-shell) | [Custom-shell example](https://mode777.github.io/vscode-workbench/custom-shell/) |
+| Minimal      | Primitives (`ResizablePane`, `TabStrip`) | [apps/minimal](https://github.com/mode777/vscode-workbench/tree/main/apps/minimal)           | [Minimal example](https://mode777.github.io/vscode-workbench/minimal/)           |
+
+Read a sample before inventing a new composition, but keep application code in
+the application. The samples are reference implementations, not files to edit
+inside `node_modules`.
+
 ## Public imports only
 
 Use the single package and its subpaths:

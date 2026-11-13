@@ -14,7 +14,9 @@ a view registry, commands, menus, quick-open files, a document renderer, brandin
 status-bar content and an initial session.
 
 Use the preset when you want the full workbench quickly and are happy to keep
-application behavior outside the kit.
+application behavior outside the kit. The template sample is the reference
+implementation: [source code](https://github.com/mode777/vscode-workbench/tree/main/apps/template)
+and [deployed build](https://mode777.github.io/vscode-workbench/).
 
 A complete preset entry looks like this:
 
@@ -63,13 +65,17 @@ selection. The primitives own region chrome, keyboard and pointer behavior, and
 the controlled callbacks.
 
 Use composition when you already have a state model, need a custom shell, or want
-to decide which regions exist at runtime.
+to decide which regions exist at runtime. The custom-shell sample is the
+reference implementation: [source code](https://github.com/mode777/vscode-workbench/tree/main/apps/custom-shell)
+and [deployed build](https://mode777.github.io/vscode-workbench/custom-shell/).
 
 ### Primitives
 
 Primitives are the smallest controlled pieces: a resizable pane, a tab strip, an
 icon button, and headless helpers from the package core entry. Use them inside an
-existing layout when you only need one behavior.
+existing layout when you only need one behavior. The minimal sample is the
+reference implementation: [source code](https://github.com/mode777/vscode-workbench/tree/main/apps/minimal)
+and [deployed build](https://mode777.github.io/vscode-workbench/minimal/).
 
 ## State ownership
 

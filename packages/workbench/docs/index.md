@@ -19,12 +19,15 @@ styles. You can adopt it at three levels.
 
 Start with the preset unless you already have a layout or need to own the shell
 state. Eject later if the preset becomes too opinionated; you do not have to
-choose the final level on day one.
+choose the final level on day one. The [sample applications](./examples.md) show
+a complete implementation and a deployed build at each level.
 
 ## Start here
 
 - [Quickstart](./quickstart.md) - install the package and render a selective
   workbench with one tab and one resizable sidebar.
+- [Sample applications](./examples.md) - browse the template, custom-shell and
+  minimal applications, with source code and deployed builds.
 - [Concepts](./concepts.md) - adoption levels, state, persistence, elements,
   styles and theming.
 - [Add a view](./recipes/add-view.md) - connect a component to a sidebar or panel.

@@ -28,7 +28,7 @@ export function createInitialTabs(): WorkbenchTab[] {
 
 export function createInitialOutputLines(): string[] {
   return [
-    '[info] vscode-workbench 0.1.2',
+    '[info] vscode-workbench 0.1.3',
     '[info] Workbench shell initialized',
     '[info] vscode-elements registered',
     '[info] Waiting for a task…',

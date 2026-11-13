@@ -75,13 +75,14 @@ repository docs. The repository docs describe how the kit is built and released.
 
 ### Using the package
 
-| Document                                                                 | What it covers                                                             |
-| ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| [Package README](packages/workbench/README.md)                           | Install, quickstart, adoption levels, offline docs and agent entry points. |
-| [Hosted documentation](https://mode777.github.io/vscode-workbench/docs/) | Quickstart, concepts, recipes, reference and the eject guide.              |
-| [llms.txt](https://mode777.github.io/vscode-workbench/llms.txt)          | A curated index for coding agents.                                         |
-| [Agent guide](packages/workbench/AGENTS.md)                              | App-level rules, public imports and the verification checklist.            |
-| [Package changelog](packages/workbench/docs/changelog.md)                | Consumer-visible changes and the prepared `0.1.0` surface.                 |
+| Document                                                                        | What it covers                                                              |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [Package README](packages/workbench/README.md)                                  | Install, quickstart, adoption levels, offline docs and agent entry points.  |
+| [Hosted documentation](https://mode777.github.io/vscode-workbench/docs/)        | Quickstart, concepts, recipes, reference and the eject guide.               |
+| [Sample applications](https://mode777.github.io/vscode-workbench/docs/examples) | Template, custom-shell and minimal examples with source and deployed links. |
+| [llms.txt](https://mode777.github.io/vscode-workbench/llms.txt)                 | A curated index for coding agents.                                          |
+| [Agent guide](packages/workbench/AGENTS.md)                                     | App-level rules, public imports and the verification checklist.             |
+| [Package changelog](packages/workbench/docs/changelog.md)                       | Consumer-visible changes and the prepared `0.1.0` surface.                  |
 
 ### Working on the repository
 
@@ -248,6 +249,11 @@ consumer that imports the full public surface. The standard `npm run check`
 includes it.
 
 ## Examples
+
+[`apps/template`](./apps/template) is the full preset application and the
+default live demo. It supplies config, views, commands, menus, quick-open files,
+a document renderer, branding and the initial session to `VSCodeWorkbench`, and
+keeps its demo layer in `apps/template/src/demo`. Live: [full template](https://mode777.github.io/vscode-workbench/).
 
 [`apps/minimal`](./apps/minimal/README.md) is the smallest application built
 directly from `@workbench-kit/react` primitives, backed by `@workbench-kit/core`.

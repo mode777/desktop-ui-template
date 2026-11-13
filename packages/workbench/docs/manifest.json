@@ -1,6 +1,6 @@
 {
   "packageName": "vscode-workbench",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "availability": "published",
   "siteUrl": "https://mode777.github.io/vscode-workbench",
   "title": "Workbench Kit",
@@ -30,6 +30,14 @@
       "description": "Install the package and render a selective workbench with one tab and one resizable sidebar.",
       "section": "start",
       "order": 2
+    },
+    {
+      "path": "examples.md",
+      "route": "/examples",
+      "title": "Sample applications",
+      "description": "Three complete applications at each adoption level, with source code and deployed builds.",
+      "section": "start",
+      "order": 3
     },
     {
       "path": "concepts.md",

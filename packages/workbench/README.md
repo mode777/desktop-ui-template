@@ -5,7 +5,7 @@ exposes a full preset, controlled composition primitives, headless helpers,
 per-tag `vscode-elements` registrations and the VS Code-style stylesheets through
 subpath exports.
 
-Version **0.1.2**. The package is `0.x` and browser-only: minor releases may
+Version **0.1.3**. The package is `0.x` and browser-only: minor releases may
 include breaking changes, patch releases do not, and SSR is out of scope.
 
 ## Install
@@ -93,10 +93,24 @@ the Vite setup, is in the hosted documentation.
 Start with the preset unless you already have a layout or need to own the shell
 state. You can eject later without forking the components.
 
+## Sample applications
+
+Three complete applications exercise the adoption levels. Each one links to its
+source code and to a deployed build on GitHub Pages.
+
+| Sample       | Adoption level                           | Source code                                                                                  | Deployed sample                                                                  |
+| ------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Template     | Preset (`VSCodeWorkbench`)               | [apps/template](https://github.com/mode777/vscode-workbench/tree/main/apps/template)         | [Full workbench](https://mode777.github.io/vscode-workbench/)                    |
+| Custom shell | Composition (`WorkbenchShell` + regions) | [apps/custom-shell](https://github.com/mode777/vscode-workbench/tree/main/apps/custom-shell) | [Custom-shell example](https://mode777.github.io/vscode-workbench/custom-shell/) |
+| Minimal      | Primitives (`ResizablePane`, `TabStrip`) | [apps/minimal](https://github.com/mode777/vscode-workbench/tree/main/apps/minimal)           | [Minimal example](https://mode777.github.io/vscode-workbench/minimal/)           |
+
 ## Documentation
 
 - [Hosted documentation](https://mode777.github.io/vscode-workbench/docs/) -
   quickstart, concepts, recipes, reference and eject guide.
+- [Sample applications](https://mode777.github.io/vscode-workbench/docs/examples) -
+  the template, custom-shell and minimal examples with source and deployed
+  builds.
 - [llms.txt](https://mode777.github.io/vscode-workbench/llms.txt) - a curated
   index for coding agents.
 - [Offline docs](./docs/index.md) - the same Markdown ships inside this package.

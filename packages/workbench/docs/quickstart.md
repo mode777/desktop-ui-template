@@ -188,6 +188,11 @@ only `vscode-icon` and `vscode-tab-header`. It imports `tokens.css` and
 `global.css` first, then only the component stylesheets it renders. It does not
 import the preset, `elements/all` or the aggregate `workbench.css`.
 
+The same composition is available as a complete sample:
+[source code](https://github.com/mode777/vscode-workbench/tree/main/apps/minimal)
+and [deployed build](https://mode777.github.io/vscode-workbench/minimal/). See
+[sample applications](./examples.md) for all three adoption levels.
+
 When you need more regions, move to [composition](./concepts.md) or the
 [preset](./concepts.md), or start from the [eject guide](./recipes/eject.md) in
 reverse.

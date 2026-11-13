@@ -242,7 +242,7 @@ export const demoCommands: WorkbenchCommand[] = [
     id: 'help.about',
     title: 'About vscode-workbench',
     category: 'Help',
-    run: () => notify('vscode-workbench 0.1.2 — React, Vite and vscode-elements', 'info'),
+    run: () => notify('vscode-workbench 0.1.3 — React, Vite and vscode-elements', 'info'),
   },
   {
     id: 'app.accounts',
